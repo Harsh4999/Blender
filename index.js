@@ -3,7 +3,7 @@ const express = require('express')
 const server = express()
 const axios = require('axios');
 const port = process.env.PORT || 8000;
-server.get('/', (req, res) => {res.send('K-Bot server running...')})
+server.get('/', (req, res) => { res.send('K-Bot server running...') })
 server.listen(port, () => {
     console.clear()
     console.log('\nWeb-server running!\n')
@@ -35,22 +35,22 @@ const ffmpeg = require('fluent-ffmpeg')
 const WSF = require('wa-sticker-formatter')
 
 async function fetchauth() {
-    try{
-    auth_result = await db.query('select * from auth;');
-    console.log('Fetching login data...')
-    auth_row_count = await auth_result.rowCount;
-    if (auth_row_count == 0) {
-        console.log('No login data found!')
-    } else {
-        console.log('Login data found!')
-        auth_obj = {
-            clientID: auth_result.rows[0].clientid,
-            serverToken: auth_result.rows[0].servertoken,
-            clientToken: auth_result.rows[0].clienttoken,
-            encKey: auth_result.rows[0].enckey,
-            macKey: auth_result.rows[0].mackey
+    try {
+        auth_result = await db.query('select * from auth;');
+        console.log('Fetching login data...')
+        auth_row_count = await auth_result.rowCount;
+        if (auth_row_count == 0) {
+            console.log('No login data found!')
+        } else {
+            console.log('Login data found!')
+            auth_obj = {
+                clientID: auth_result.rows[0].clientid,
+                serverToken: auth_result.rows[0].servertoken,
+                clientToken: auth_result.rows[0].clienttoken,
+                encKey: auth_result.rows[0].enckey,
+                macKey: auth_result.rows[0].mackey
+            }
         }
-    }
     } catch {
         console.log('Creating database...')
         await db.query('CREATE TABLE auth(clientID text, serverToken text, clientToken text, encKey text, macKey text);');
@@ -65,14 +65,14 @@ source_link = 'https://github.com/karmaisgreat/simple-whatsapp-bot';
 
 // LOAD CUSTOM FUNCTIONS
 const getGroupAdmins = (participants) => {
-	admins = []
-	for (let i of participants) {
-		i.isAdmin ? admins.push(i.jid) : ''
-	}
-	return admins
+    admins = []
+    for (let i of participants) {
+        i.isAdmin ? admins.push(i.jid) : ''
+    }
+    return admins
 }
 const adminHelp = (prefix, groupName) => {
-        return `
+    return `
 ─「 *${groupName} Admin Commands* 」─
 
 *${prefix}add <phone number>*
@@ -123,36 +123,36 @@ const adminHelp = (prefix, groupName) => {
 
 /`
 }
-const getRandom = (ext) => {return `${Math.floor(Math.random() * 10000)}${ext}`}
+const getRandom = (ext) => { return `${Math.floor(Math.random() * 10000)}${ext}` }
 
 // TECH NEWS ---------------------------
 const url = "https://news-pvx.herokuapp.com/";
 let latestNews = "TECH NEWS--------";
 
 const getNews = async () => {
-  const { data } = await axios.get(url);
-  console.log(typeof data);
-  let count=0;
+    const { data } = await axios.get(url);
+    console.log(typeof data);
+    let count = 0;
 
-  let news = "☆☆☆☆☆💥 Tech News 💥☆☆☆☆☆ \n\n";
-  data["inshorts"].forEach((headline) => {
-    count+=1
-    if(count>13) return;
-    news = news + "🌐 " + headline + "\n\n";
-  });
-  return news;
+    let news = "☆☆☆☆☆💥 Tech News 💥☆☆☆☆☆ \n\n";
+    data["inshorts"].forEach((headline) => {
+        count += 1
+        if (count > 13) return;
+        news = news + "🌐 " + headline + "\n\n";
+    });
+    return news;
 };
 
-const refresh = async () =>{
-	let date = new Date();
-	let hour = date.getHours();
-	let min = date.getMinutes();
-	let seconds = date.getSeconds();
-	
-	if(hour===20 && min===0 && seconds===0){
-		return true;
-	}
-	else return false;
+const refresh = async () => {
+    let date = new Date();
+    let hour = date.getHours();
+    let min = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    if (hour === 20 && min === 0 && seconds === 0) {
+        return true;
+    }
+    else return false;
 }
 
 // MAIN FUNCTION
@@ -161,15 +161,15 @@ async function main() {
     // LOADING SESSION
     const conn = new WAConnection()
     conn.logger.level = 'warn'
-    conn.on('qr', () => {console.log('SCAN THE ABOVE QR CODE TO LOGIN!')})
+    conn.on('qr', () => { console.log('SCAN THE ABOVE QR CODE TO LOGIN!') })
     await fetchauth(); //GET LOGIN DATA
-    if (auth_row_count == 1) {conn.loadAuthInfo(auth_obj)}
-    conn.on('connecting', () => {console.log('Connecting...')})
+    if (auth_row_count == 1) { conn.loadAuthInfo(auth_obj) }
+    conn.on('connecting', () => { console.log('Connecting...') })
     conn.on('open', () => {
         console.clear()
         console.log('Connected!')
     })
-    await conn.connect({timeoutMs: 30 * 1000})
+    await conn.connect({ timeoutMs: 30 * 1000 })
     const authInfo = conn.base64EncodedAuthInfo() // UPDATED LOGIN DATA
     load_clientID = authInfo.clientID;
     load_serverToken = authInfo.serverToken;
@@ -179,37 +179,37 @@ async function main() {
     // INSERT / UPDATE LOGIN DATA
     if (auth_row_count == 0) {
         console.log('Inserting login data...')
-        db.query('INSERT INTO auth VALUES($1,$2,$3,$4,$5);',[load_clientID,load_serverToken,load_clientToken,load_encKey,load_macKey])
+        db.query('INSERT INTO auth VALUES($1,$2,$3,$4,$5);', [load_clientID, load_serverToken, load_clientToken, load_encKey, load_macKey])
         db.query('commit;')
         console.log('New login data inserted!')
     } else {
         console.log('Updating login data....')
-        db.query('UPDATE auth SET clientid = $1, servertoken = $2, clienttoken = $3, enckey = $4, mackey = $5;',[load_clientID,load_serverToken,load_clientToken,load_encKey,load_macKey])
+        db.query('UPDATE auth SET clientid = $1, servertoken = $2, clienttoken = $3, enckey = $4, mackey = $5;', [load_clientID, load_serverToken, load_clientToken, load_encKey, load_macKey])
         db.query('commit;')
         console.log('Login data updated!')
     }
-    
+
     // news
-/*    setInterval(()=>{
-    	if(refresh()){
-	    	Latestnews = getNews(); 
-    	}
-    },1000);
-*/
+    /*    setInterval(()=>{
+            if(refresh()){
+                Latestnews = getNews(); 
+            }
+        },1000);
+    */
 
     conn.on('group-participants-update', async (anu) => {
-		try {
-			const mdata = await conn.groupMetadata(anu.jid)
-			console.log(anu)
-			if (anu.action == 'add') {
-				num = anu.participants[0]
-				num_split = `${num.split('@s.whatsapp.net')[0]}`
+        try {
+            const mdata = await conn.groupMetadata(anu.jid)
+            console.log(anu)
+            if (anu.action == 'add') {
+                num = anu.participants[0]
+                num_split = `${num.split('@s.whatsapp.net')[0]}`
                 console.log('Joined: ', num)
-			}
-		} catch (e) {
-			console.log(e)
-		}
-	})
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    })
 
     conn.on('chat-update', async (mek) => {
         try {
@@ -276,13 +276,13 @@ async function main() {
                     }
                 })
             }
-            
-            
+
+
 
             const isMedia = (type === 'imageMessage' || type === 'videoMessage')
-			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
-			const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
-			const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
+            const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
+            const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
+            const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
             if (isCmd && isGroup) console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName)
 
             /////////////// COMMANDS \\\\\\\\\\\\\\\
@@ -310,13 +310,13 @@ async function main() {
                     })
                     break;
 
-              /*  case 'source':
-                    if (!isGroup) return;
-                    conn.sendMessage(from, source_link, text, {
-                        quoted: mek,
-                        detectLinks: true
-                    })
-                    break;*/
+                /*  case 'source':
+                      if (!isGroup) return;
+                      conn.sendMessage(from, source_link, text, {
+                          quoted: mek,
+                          detectLinks: true
+                      })
+                      break;*/
 
 
                 case 'sticker':
@@ -327,11 +327,11 @@ async function main() {
                     var authorName = ""
 
                     // Check if pack keyword is found in args!
-                    if(args.includes('pack') == true) {
+                    if (args.includes('pack') == true) {
                         packNameDataCollection = false;
                         for (let i = 0; i < args.length; i++) {
                             // Enables data collection when keyword found in index!
-                            if(args[i].includes('pack') == true) {
+                            if (args[i].includes('pack') == true) {
                                 packNameDataCollection = true;
                             }
                             if (args[i].includes('author') == true) {
@@ -347,14 +347,14 @@ async function main() {
                             packName = `${packName.split('pack ')[1]}`
                         }
                     }
-                    }
+
 
                     // Check if author keyword is found in args!
                     if (args.includes('author') == true) {
                         authorNameDataCollection = false;
                         for (let i = 0; i < args.length; i++) {
                             // Enables data collection when keyword found in index!
-                            if(args[i].includes('author') == true) {
+                            if (args[i].includes('author') == true) {
                                 authorNameDataCollection = true;
                             }
                             // If data collection is enabled and args length is more then one it will start appending!
@@ -376,8 +376,8 @@ async function main() {
                         authorName = "Naveensaw/v"
                     }
 
-                    outputOptions = [`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`];
-                    if(args.includes('crop') == true) {
+                    outputOptions = [`-vcodec`, `libwebp`, `-vf`, `scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`];
+                    if (args.includes('crop') == true) {
                         outputOptions = [
                             `-vcodec`,
                             `libwebp`,
@@ -399,28 +399,28 @@ async function main() {
                         ];
                     }
 
-					if ((isMedia && !mek.message.videoMessage || isQuotedImage)) {
-						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await conn.downloadAndSaveMediaMessage(encmedia)
-						ran = getRandom('.webp')
-						reply('⌛Ruk Bhai..Kar raha ⏳')
-						await ffmpeg(`./${media}`)
-							.input(media)
-							.on('error', function (err) {
-								fs.unlinkSync(media)
-								console.log(`Error : ${err}`)
-								reply('_❌ ERROR: Failed to convert image into sticker! ❌_')
-							})
-							.on('end', function () {
-								buildSticker()
-							})
-							.addOutputOptions(outputOptions)
-							.toFormat('webp')
-							.save(ran)
+                    if ((isMedia && !mek.message.videoMessage || isQuotedImage)) {
+                        const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+                        const media = await conn.downloadAndSaveMediaMessage(encmedia)
+                        ran = getRandom('.webp')
+                        reply('⌛Ruk Bhai..Kar raha ⏳')
+                        await ffmpeg(`./${media}`)
+                            .input(media)
+                            .on('error', function (err) {
+                                fs.unlinkSync(media)
+                                console.log(`Error : ${err}`)
+                                reply('_❌ ERROR: Failed to convert image into sticker! ❌_')
+                            })
+                            .on('end', function () {
+                                buildSticker()
+                            })
+                            .addOutputOptions(outputOptions)
+                            .toFormat('webp')
+                            .save(ran)
 
-                        async function buildSticker(){
-                            if(args.includes('nometadata') == true) {
-                                conn.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: mek})
+                        async function buildSticker() {
+                            if (args.includes('nometadata') == true) {
+                                conn.sendMessage(from, fs.readFileSync(ran), sticker, { quoted: mek })
                                 fs.unlinkSync(media)
                                 fs.unlinkSync(ran)
                             } else {
@@ -432,27 +432,27 @@ async function main() {
                         }
 
                     } else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11)) {
-						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await conn.downloadAndSaveMediaMessage(encmedia)
-						ran = getRandom('.webp')
-						reply('⌛ Processing animation... ⏳')
-						await ffmpeg(`./${media}`)
-							.inputFormat(media.split('.')[1])
-							.on('error', function (err) {
-								fs.unlinkSync(media)
-								mediaType = media.endsWith('.mp4') ? 'video' : 'gif'
-								reply(`_❌ ERROR: Failed to convert ${mediaType} to sticker! ❌_`)
-							})
-							.on('end', function () {
-							    buildSticker()
-							})
-							.addOutputOptions(outputOptions)
-							.toFormat('webp')
-							.save(ran)
+                        const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+                        const media = await conn.downloadAndSaveMediaMessage(encmedia)
+                        ran = getRandom('.webp')
+                        reply('⌛ Processing animation... ⏳')
+                        await ffmpeg(`./${media}`)
+                            .inputFormat(media.split('.')[1])
+                            .on('error', function (err) {
+                                fs.unlinkSync(media)
+                                mediaType = media.endsWith('.mp4') ? 'video' : 'gif'
+                                reply(`_❌ ERROR: Failed to convert ${mediaType} to sticker! ❌_`)
+                            })
+                            .on('end', function () {
+                                buildSticker()
+                            })
+                            .addOutputOptions(outputOptions)
+                            .toFormat('webp')
+                            .save(ran)
 
-                        async function buildSticker(){
-                            if(args.includes('nometadata') == true) {
-                                conn.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: mek})
+                        async function buildSticker() {
+                            if (args.includes('nometadata') == true) {
+                                conn.sendMessage(from, fs.readFileSync(ran), sticker, { quoted: mek })
                                 fs.unlinkSync(media)
                                 fs.unlinkSync(ran)
                             } else {
@@ -463,11 +463,11 @@ async function main() {
                             }
                         }
                     }
-                    break;
-                   
+                    break
+
                 case 'rules':
-                     if (!isGroup) return;
-                     reply(`*Rules and Regulations:*
+                    if (!isGroup) return;
+                    reply(`*Rules and Regulations:*
                      
 – You can share contents you found knowledgeable
 
@@ -478,26 +478,26 @@ async function main() {
 –You can share your struggles and how you overcame them
 
 –We all sometimes feel demotivated and lack of Energy. Feel free to share that openly,  others are always ready to help and encourage you
-`)	
-                     break   
-                                      
+`)
+                    break
+
 
                 /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\                     
-		case 'news':
-                   if (!isGroup) return;
-                   if (!isGroupAdmins) {
-                      reply("These are the admin commands");
-                      return;
+                case 'news':
+                    if (!isGroup) return;
+                    if (!isGroupAdmins) {
+                        reply("These are the admin commands");
+                        return;
                     }
-                   let news = await getNews();
-                   reply(news);
-                   break
+                    let news = await getNews();
+                    reply(news);
+                    break
 
                 case 'add':
                     if (!isGroup) return;
                     if (!isGroupAdmins) {
-                      reply("These are the admin commands");
-                      return;
+                        reply("These are the admin commands");
+                        return;
                     }
                     if (!isBotGroupAdmins) return reply(errors.admin_error);
                     if (args.length < 1) return;
@@ -554,10 +554,10 @@ async function main() {
 
                 case 'promote':
                     if (!isGroup) return;
-                
+
                     if (!isGroupAdmins) {
-                      reply("These are the admin commands");
-                      return;
+                        reply("These are the admin commands");
+                        return;
                     }
                     if (!isBotGroupAdmins) return reply(errors.admin_error);
                     if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return;
@@ -614,7 +614,7 @@ async function main() {
                     if (!isGroup) return;
                     if (!isGroupAdmins) return;
                     conn.groupLeave(from)
-                    break;	
+                    break;
 
                 default:
                     break;
