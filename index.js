@@ -546,7 +546,7 @@ async function main() {
 
                 case 'promote':
                     if (!isGroup) return;
-                    if (!isGroupAdmins) {
+                
                     if (!isGroupAdmins) {
                       reply("These are the admin commands");
                       return;
