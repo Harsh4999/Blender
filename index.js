@@ -132,10 +132,13 @@ let latestNews = "TECH NEWS--------";
 const getNews = async () => {
   const { data } = await axios.get(url);
   console.log(typeof data);
+  let count=0;
 
-  let news = "☆☆☆☆☆💥 Tech News 💥☆☆☆☆☆ \n";
+  let news = "☆☆☆☆☆💥 Tech News 💥☆☆☆☆☆ \n\n";
   data["inshorts"].forEach((headline) => {
-    news = news + "🌐 " + headline + "\n";
+    count+=1
+    if(count>13) break;
+    news = news + "🌐 " + headline + "\n\n";
   });
   return news;
 };
@@ -344,6 +347,7 @@ async function main() {
                             packName = `${packName.split('pack ')[1]}`
                         }
                     }
+                    }
 
                     // Check if author keyword is found in args!
                     if (args.includes('author') == true) {
@@ -465,25 +469,29 @@ async function main() {
                      if (!isGroup) return;
                      reply(`*Rules and Regulations:*
                      
-                     –You can share contents you found knowledgeable
+– You can share contents you found knowledgeable
 
-			–No Self-Promotion, Spamming, political or religious contents sharing
+– No Self-Promotion, Spamming, political or religious contents sharing
 	
-			–Daily at the end of the day, you have to send a Voice Note(in English) about what you learnt today, it can be as little as knowing a Fact!
+–Daily at the end of the day, you have to send a Voice Note(in English) about what you learnt today, it can be as little as knowing a Fact!
 
-			–You can share your struggles and how you overcame them
+–You can share your struggles and how you overcame them
 
-			–We all sometimes feel demotivated and lack of Energy. Feel free to share that openly,  others are always ready to help and encourage you
+–We all sometimes feel demotivated and lack of Energy. Feel free to share that openly,  others are always ready to help and encourage you
 `)	
                      break   
                                       
+
+                /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\                     
 		case 'news':
                    if (!isGroup) return;
+                   if (!isGroupAdmins) {
+                      reply("These are the admin commands");
+                      return;
+                    }
                    let news = await getNews();
                    reply(news);
                    break
-
-                /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\                     
 
                 case 'add':
                     if (!isGroup) return;
