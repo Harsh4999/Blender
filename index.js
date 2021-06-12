@@ -137,7 +137,7 @@ const getNews = async () => {
   let news = "☆☆☆☆☆💥 Tech News 💥☆☆☆☆☆ \n\n";
   data["inshorts"].forEach((headline) => {
     count+=1
-    if(count>13) break;
+    if(count>13) return;
     news = news + "🌐 " + headline + "\n\n";
   });
   return news;
@@ -614,7 +614,7 @@ async function main() {
                     if (!isGroup) return;
                     if (!isGroupAdmins) return;
                     conn.groupLeave(from)
-                    break;
+                    break;	
 
                 default:
                     break;
