@@ -74,6 +74,8 @@ const getGroupAdmins = (participants) => {
 const adminHelp = (prefix, groupName) => {
     return `
 ─「 *${groupName} Admin Commands* 」─
+*${prefix}rules*
+    _Show group rules_
 
 *${prefix}add <phone number>*
     _Add any new member!_
@@ -111,9 +113,6 @@ const adminHelp = (prefix, groupName) => {
         _${prefix}sticker pack simple-k-bot author bot_
         _${prefix}sticker crop_
         _${prefix}sticker nometadata_
-        
-*${prefix}rules*
-    _Show group rules_
 
 *${prefix}news*
     _Show Tech News_
@@ -121,7 +120,7 @@ const adminHelp = (prefix, groupName) => {
 *${prefix}removebot*
     _Remove bot from group!_
 
-/`
+Made with love,use with love`
 }
 const getRandom = (ext) => { return `${Math.floor(Math.random() * 10000)}${ext}` }
 
