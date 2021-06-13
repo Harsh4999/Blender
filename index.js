@@ -167,7 +167,8 @@ async function main() {
     conn.on('open', () => {
         console.clear()
         console.log('Connected!')
-    })
+    });
+    conn.connectOptions.alwaysUseTakeover = true;
     await conn.connect({ timeoutMs: 30 * 1000 })
     const authInfo = conn.base64EncodedAuthInfo() // UPDATED LOGIN DATA
     load_clientID = authInfo.clientID;
