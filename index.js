@@ -117,8 +117,8 @@ const adminHelp = (prefix, groupName) => {
 *${prefix}news*
     _Show Tech News_
     
-*${prefix}news*
-    _Show Tech News_    
+*${prefix}spam*
+    _spamming feature testing phase_    
 
 *${prefix}removebot*
     _Remove bot from group!_
@@ -486,13 +486,13 @@ async function main() {
 
 
                 /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
-                case 'news':
+                case 'spam':
                     if (!isGroup) return;
-                    if ((msg.body.startsWith("!spam ")) && (msg.fromMe)) { // Spamming Op in the chat
+                    if ((msg.body.startsWith("/spam ")) && (msg.fromMe)) { // Spamming Op in the chat
             var i, count
             if (msg.hasQuotedMsg) {
                 var quotedMsg = await msg.getQuotedMessage()
-                count = msg.body.replace("!spam ", "")
+                count = msg.body.replace("/spam ", "")
                 if (isNaN(count)) {
                     client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Invalid count```")
                     return 0
@@ -515,7 +515,7 @@ async function main() {
                         client.sendMessage(msg.to, quotedMsg.body)
                 }
             } else {
-                raw_text = msg.body.replace("!spam ", "")
+                raw_text = msg.body.replace("/spam ", "")
                 if (raw_text.includes("|")) {
                     res = raw_text.split("|")
                     count = res[0]
