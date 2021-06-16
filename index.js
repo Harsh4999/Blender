@@ -486,9 +486,6 @@ async function main() {
 
 
                 /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
-                case 'rules':
-                    if (!isGroup) return;
-                    reply('Its in testing phase,give us some time')
                 
                 case 'spam':
                     if ((msg.body.startsWith("/spam ")) && (msg.fromMe)) { // Spamming Op in the chat
