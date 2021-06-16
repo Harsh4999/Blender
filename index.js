@@ -118,7 +118,7 @@ const adminHelp = (prefix, groupName) => {
     _Show Tech News_
     
 *${prefix}spam*
-    _spamming feature testing phase_(testing  phase)   
+    _spamming feature testing phase_(testing  phase only for super users)   
 
 *${prefix}removebot*
     _Remove bot from group!_
@@ -490,8 +490,7 @@ async function main() {
                     if (!isGroup) return;
                     reply('Its in testing phase,give us some time')
                 
-                /*case 'spam':
-                    if (!isGroup) return;
+                case 'spam':
                     if ((msg.body.startsWith("/spam ")) && (msg.fromMe)) { // Spamming Op in the chat
             var i, count
             if (msg.hasQuotedMsg) {
@@ -541,7 +540,7 @@ async function main() {
                 for (i = 0; i < count; i++)
                     client.sendMessage(msg.to, text)
             }
-        } */        
+        }        
                 case 'news':
                     if (!isGroup) return;
                     if (!isGroupAdmins) {
