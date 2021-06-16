@@ -297,8 +297,9 @@ async function main() {
                 case 'help':
                 case 'acmd':
                     if (!isGroup) return;
-//                    await costum(adminHelp(prefix, groupName), text);
-await costum("askdjfakjsfjkasf HELP");
+                    console.log("text: ",text);
+                    await costum(adminHelp(prefix, groupName), text);
+		     await costum("askdjfakjsfjkasf", text);
                     break
 
                 case 'link':
@@ -503,7 +504,7 @@ await costum("askdjfakjsfjkasf HELP");
                    i=0
                    while(i<count){
 			//reply(msgToSpam);
-		 await	costum("",msgToSpam);
+		 await	costum(msgToSpam,text);
                    	++i;
                    }                   
 
