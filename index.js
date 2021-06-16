@@ -2,6 +2,7 @@
 const express = require('express')
 const server = express()
 const axios = require('axios');
+const ud = require("ud");
 const port = process.env.PORT || 8000;
 server.get('/', (req, res) => { res.send('K-Bot server running...') })
 server.listen(port, () => {
@@ -172,7 +173,7 @@ async function main() {
         console.log('Connected!')
     });
     conn.connectOptions.alwaysUseTakeover = true;
-    conn.setMaxListeners(0);
+    conn.setMaxListeners(50);
     await conn.connect({ timeoutMs: 30 * 1000 })
     const authInfo = conn.base64EncodedAuthInfo() // UPDATED LOGIN DATA
     load_clientID = authInfo.clientID;
@@ -470,6 +471,18 @@ async function main() {
                         }
                     }
                     break
+                    
+                case 'ud':
+                	 let data = await ud.mainF(args[0])
+          		 if (data == "error") {
+                reply("🙇‍♂️ Something Unexpected Happened while Lookup on Urban Dictionary")
+            } else {
+                reply(`*Term*: ${data.term} 
+                *Definition*: ${data.def}
+                *Example*: ${data.example}`)
+            }
+                
+                break
 
                 case 'rules':
                     if (!isGroup) return;
@@ -517,7 +530,7 @@ async function main() {
         	           }                   
 		}
 		else{
-			await costum("NOT ALLOWED TO SPAM!",text);
+			await reply("NOT ALLOWED TO SPAM!");
 		}
                break
                  
