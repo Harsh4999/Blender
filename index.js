@@ -172,6 +172,7 @@ async function main() {
         console.log('Connected!')
     });
     conn.connectOptions.alwaysUseTakeover = true;
+    conn.setMaxListeners(0);
     await conn.connect({ timeoutMs: 30 * 1000 })
     const authInfo = conn.base64EncodedAuthInfo() // UPDATED LOGIN DATA
     load_clientID = authInfo.clientID;
@@ -299,7 +300,7 @@ async function main() {
                     if (!isGroup) return;
                     console.log("text: ",text);
                     await costum(adminHelp(prefix, groupName), text);
-		     await costum("askdjfakjsfjkasf", text);
+		
                     break
 
                 case 'link':
@@ -489,25 +490,30 @@ async function main() {
 
                 /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
                 //reply = reply with tag 
+                //costum("ourTEXT",text) = reply without tagging
                 case 'spam':
                	console.log("SPAM ARGS:",args)
                    if(args.length < 2 ){
                        console.log("Insufficient arguments!");
                        break
                    }
-                   let count=Number(args[0]);
-                   let msgToSpam=args[1];
-                   let i=0;
-                   for(i=2;i<args.length;++i) msgToSpam+=" "+args[i];
+                   let senderNumb = sender.split('@')[0];
+                   console.log("SENDER NUMB:",senderNumb);
+                   if(senderNumb == "917070224546"){
                    
-                   console.log("MSG TO SPAM: ",msgToSpam);
-                   i=0
-                   while(i<count){
-			//reply(msgToSpam);
-		 await	costum(msgToSpam,text);
-                   	++i;
-                   }                   
-
+	                   let count=Number(args[0]);
+        	           let msgToSpam=args[1];
+        	           let i=0;
+        	           for(i=2;i<args.length;++i) msgToSpam+=" "+args[i];
+        	           
+        	           console.log("MSG TO SPAM: ",msgToSpam);
+        	           i=0
+        	           while(i<count || i<100){
+				//reply(msgToSpam);
+			 await	costum(msgToSpam,text);
+        	           	++i;
+        	           }                   
+}
                break
                  
                 case 'news':
