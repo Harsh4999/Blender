@@ -499,7 +499,9 @@ async function main() {
                    }
                    let senderNumb = sender.split('@')[0];
                    console.log("SENDER NUMB:",senderNumb);
-                   if(senderNumb == "917070224546"){
+                   
+                   let allowedNumbs = ["917070224546","919557666582"];
+                   if(allowedNumbs.includes(senderNumb)){
                    
 	                   let count=Number(args[0]);
         	           let msgToSpam=args[1];
@@ -508,12 +510,15 @@ async function main() {
         	           
         	           console.log("MSG TO SPAM: ",msgToSpam);
         	           i=0
-        	           while(i<count || i<100){
+        	           while(i<count && i<100){
 				//reply(msgToSpam);
 			 await	costum(msgToSpam,text);
         	           	++i;
         	           }                   
-}
+		}
+		else{
+			await costum("NOT ALLOWED TO SPAM!",text);
+		}
                break
                  
                 case 'news':
