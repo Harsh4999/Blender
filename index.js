@@ -488,57 +488,9 @@ async function main() {
                 /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
                 
                 case 'spam':
-                let msg = mek;
-                    if ((msg.body.startsWith("/spam ")) && (msg.fromMe)) { // Spamming Op in the chat
-            var i, count
-            if (msg.hasQuotedMsg) {
-                var quotedMsg = await msg.getQuotedMessage()
-                count = msg.body.replace("/spam ", "")
-                if (isNaN(count)) {
-                    client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Invalid count```")
-                    return 0
-                }
-                if (count > 0)
-                    count = parseInt(count)
-                else {
-                    client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Count can't be zero.```")
-                    return 0
-                }
-                if (quotedMsg.hasMedia) {
-                    var media = await quotedMsg.downloadMedia();
-                    sticker = false
-                    if (quotedMsg.type == "sticker")
-                        sticker = true
-                    for (i = 0; i < count; i++)
-                        client.sendMessage(msg.to, new MessageMedia(media.mimetype, media.data, media.filename), { sendMediaAsSticker: sticker });
-                } else {
-                    for (i = 0; i < count; i++)
-                        client.sendMessage(msg.to, quotedMsg.body)
-                }
-            } else {
-                raw_text = msg.body.replace("/spam ", "")
-                if (raw_text.includes("|")) {
-                    res = raw_text.split("|")
-                    count = res[0]
-                    text = res[1]
-                } else {
-                    client.sendMessage(msg.to, "```Please read !help spam.```")
-                    return 0
-                }
-                if (isNaN(count)) {
-                    client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Invalid count```")
-                    return 0
-                }
-                if (count > 0)
-                    count = parseInt(count)
-                else {
-                    client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Count can't be zero.```")
-                    return 0
-                }
-                for (i = 0; i < count; i++)
-                    client.sendMessage(msg.to, text)
-            }
-        }        
+               	console.log("ARGS:",args)
+
+               break  
                 case 'news':
                     if (!isGroup) return;
                     if (!isGroupAdmins) {
