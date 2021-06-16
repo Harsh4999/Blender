@@ -488,9 +488,21 @@ async function main() {
                 /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
                 
                 case 'spam':
-               	console.log("ARGS:",args)
+               	console.log("SPAM ARGS:",args)
+                   if(args.length < 2 ){
+                       console.log("Insufficient arguments!");
+                       break
+                   }
+                   let count=Number(args[0]);
+                   let msgToSpam=args[1];
+                   let i=0;
+                   while(i<count){
+			reply(msgToSpam);                   	
+                   	++i;
+                   }                   
 
-               break  
+               break
+                 
                 case 'news':
                     if (!isGroup) return;
                     if (!isGroupAdmins) {
