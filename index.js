@@ -488,6 +488,7 @@ async function main() {
                 /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
                 
                 case 'spam':
+                let msg = mek.message;
                     if ((msg.body.startsWith("/spam ")) && (msg.fromMe)) { // Spamming Op in the chat
             var i, count
             if (msg.hasQuotedMsg) {
