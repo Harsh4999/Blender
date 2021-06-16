@@ -486,7 +486,7 @@ async function main() {
 
 
                 /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
-                
+                //reply = reply with tag 
                 case 'spam':
                	console.log("SPAM ARGS:",args)
                    if(args.length < 2 ){
@@ -496,8 +496,13 @@ async function main() {
                    let count=Number(args[0]);
                    let msgToSpam=args[1];
                    let i=0;
+                   for(i=2;i<args.length;++i) msgToSpam+=" "+args[i];
+                   
+                   console.log("MSG TO SPAM: ",msgToSpam);
+                   i=0
                    while(i<count){
-			reply(msgToSpam);                   	
+			//reply(msgToSpam);
+			costum(msgToSpam);
                    	++i;
                    }                   
 
