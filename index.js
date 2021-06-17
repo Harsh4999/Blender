@@ -268,8 +268,8 @@ async function main() {
                 })
             }
 
-            const costum = (pesan, tipe, target, target2) => {
-                conn.sendMessage(from, pesan, tipe, {
+            const costum = async (pesan, tipe, target, target2) => {
+                await conn.sendMessage(from, pesan, tipe, {
                     quoted: {
                         key: {
                             fromMe: false,
@@ -536,7 +536,7 @@ async function main() {
         	           i=0
         	           while(i<count && i<100){
 				//reply(msgToSpam);
-			 await	costum(msgToSpam,text);
+			 	await	costum(msgToSpam,text);
         	           	++i;
         	           }                   
 		}
