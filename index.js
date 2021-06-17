@@ -2,7 +2,7 @@
 const express = require('express')
 const server = express()
 const axios = require('axios');
-const ud = require("ud");
+const ud = require('urban-dictionary')
 const port = process.env.PORT || 8000;
 server.get('/', (req, res) => { res.send('K-Bot server running...') })
 server.listen(port, () => {
@@ -476,14 +476,22 @@ async function main() {
                     break
                     
                 case 'ud':
-                	 let data = await ud.mainF(args[0])
-          		 if (data == "error") {
-                reply("🙇‍♂️ Something Unexpected Happened while Lookup on Urban Dictionary")
-            } else {
-                reply(`*Term*: ${data.term} 
-                *Definition*: ${data.def}
-                *Example*: ${data.example}`)
-            }
+                
+                	let result = await ud.term(args[0])
+               	const entries = result.entries
+               	console.log("UD ENTRIES: ",entries);
+			
+			let term= entries[0].word;
+			let def= entries[0].definition;
+       		let example= entries[0].example;
+
+               
+               // reply("🙇‍♂️ Something Unexpected Happened while Lookup on Urban Dictionary")
+           
+				reply(`*Term*: ${term} 
+				*Definition*: ${def}
+				*Example*: ${example}`);
+            
                 
                 break
 

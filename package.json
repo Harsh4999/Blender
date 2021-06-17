@@ -21,7 +21,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "fs": "0.0.1-security",
     "pg": "^8.5.1",
-    "ud": "^3.3.0",
+    "urban-dictionary": "^3.0.1",
     "wa-sticker-formatter": "^3.6.0"
   },
   "homepage": "https://github.com/karmaisgreat/simple-whatsapp-bot#readme",
