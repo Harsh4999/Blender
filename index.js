@@ -117,7 +117,10 @@ const adminHelp = (prefix, groupName) => {
 
 *${prefix}news*
     _Show Tech News_
-    
+
+*${prefix}ud*
+    _Show Meaning of your name_    
+
 *${prefix}spam*
     _spamming feature testing phase_(testing  phase only for super users)   
 
