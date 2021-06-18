@@ -476,13 +476,13 @@ async function main() {
                     
                 case 'ud':
                 
-                	let result = await ud.term(args[0])
-               	const entries = result.entries
-               	console.log("UD ENTRIES: ",entries);
+                	let result = await ud.define(args[0])
+
+               	//console.log("UD ENTRIES: ",result);
 			
-			let term= entries[0].word;
-			let def= entries[0].definition;
-       		let example= entries[0].example;
+			let term= result[0].word;
+			let def= result[0].definition;
+       		let example= result[0].example;
 
                
                // reply("🙇‍♂️ Something Unexpected Happened while Lookup on Urban Dictionary")
