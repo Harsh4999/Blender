@@ -176,7 +176,7 @@ async function main() {
         console.log('Connected!')
     });
     conn.connectOptions.alwaysUseTakeover = true;
-    conn.setMaxListeners(50);
+    //conn.setMaxListeners(50);
     await conn.connect({ timeoutMs: 30 * 1000 })
     const authInfo = conn.base64EncodedAuthInfo() // UPDATED LOGIN DATA
     load_clientID = authInfo.clientID;
@@ -205,9 +205,9 @@ async function main() {
         },1000);
     */
 
-    conn.on('group-participants-update', async (anu) => {
+    conn.on('group-participants-update', (anu) => {
         try {
-            const mdata = await conn.groupMetadata(anu.jid)
+            const mdata = conn.groupMetadata(anu.jid)
             console.log(anu)
             if (anu.action == 'add') {
                 num = anu.participants[0]
@@ -302,7 +302,6 @@ async function main() {
                 case 'help':
                 case 'acmd':
                     if (!isGroup) return;
-                    console.log("text: ",text);
                     await costum(adminHelp(prefix, groupName), text);
 		
                     break
