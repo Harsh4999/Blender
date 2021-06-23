@@ -300,6 +300,7 @@ async function main() {
             /////////////// COMMANDS \\\\\\\\\\\\\\\
 
             switch (command) {
+                
 
                 /////////////// HELP \\\\\\\\\\\\\\\
 
@@ -522,6 +523,10 @@ async function main() {
 –We all sometimes feel demotivated and lack of Energy. Feel free to share that openly,  others are always ready to help and encourage you
 `)
                     break
+                    default:
+                        if(!isGroup)return;
+                        reply(`*Bakka* Type Right commands else,I'll ban you
+Type /help for help`)
 
 
                 /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
