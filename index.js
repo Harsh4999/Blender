@@ -327,7 +327,7 @@ async function main() {
                 case 'tagall':
                     if (`${(await msg.getContact()).id._serialized}` in permi_dict) {
                         const chat = await msg.getChat();
-                        var tt = msg.body.replace("!tagall",)
+                        var tt = msg.body.replace("/tagall",)
                         let text = "";
                         let mentions = [];
 
