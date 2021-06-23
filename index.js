@@ -111,18 +111,22 @@ const adminHelp = (prefix, groupName) => {
         _pack_ - Add metadata in sticker!
         _nometadata_ - Remove all metadata from sticker!
     *Examples:*
-        _${prefix}sticker pack simple-k-bot author bot_
+        _${prefix}sticker pack Blender author bot_
         _${prefix}sticker crop_
         _${prefix}sticker nometadata_
 
 *${prefix}news*
     _Show Tech News_
 
+
+*${prefix}tagall*
+    _For attendance alert_(Testing phase)    
+
 *${prefix}ud*
     _Show Meaning of your name_    
 
 *${prefix}spam*
-    _spamming feature testing phase_(testing  phase only for super users)   
+    _only for super users_  
 
 *${prefix}removebot*
     _Remove bot from group!_
@@ -319,13 +323,21 @@ async function main() {
                     })
                     break;
 
-                /*  case 'source':
-                      if (!isGroup) return;
-                      conn.sendMessage(from, source_link, text, {
-                          quoted: mek,
-                          detectLinks: true
-                      })
-                      break;*/
+              
+                     /* case 'tagall':
+                       if((msg.body.includes("/tagall")) && (`${(await msg.getContact()).id._serialized}` in permi_dict)){
+            const chat = await msg.getChat();
+        var tt=msg.body.replace("!tagall",)
+        let text = "";
+        let mentions = [];
+
+        for(let participant of chat.participants) {
+            const contact = await client.getContactById(participant.id._serialized);
+            
+            mentions.push(contact);
+            text += `@${participant.id.user} `;
+            }*/
+                      	
 
 
                 case 'sticker':
@@ -488,8 +500,8 @@ async function main() {
                // reply("🙇‍♂️ Something Unexpected Happened while Lookup on Urban Dictionary")
            
 				reply(`*Term*: ${term} 
-				*Definition*: ${def}
-				*Example*: ${example}`);
+*Definition*: ${def}
+*Example*: ${example}`);
             
                 
                 break
@@ -540,7 +552,7 @@ async function main() {
         	           }                   
 		}
 		else{
-			await reply("NOT ALLOWED TO SPAM!");
+			await reply("NOT ALLOWED TO SPAM,Contact Developers!");
 		}
                break
                  
