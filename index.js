@@ -324,7 +324,7 @@ async function main() {
                     break;
 
 
-                case 'tagall':
+               /* case 'tagall':
                     if (`${(await msg.getContact()).id._serialized}` in permi_dict) {
                         const chat = await msg.getChat();
                         var tt = msg.body.replace("/tagall",)
@@ -337,7 +337,7 @@ async function main() {
                             mentions.push(contact);
                             text += `@${participant.id.user} `;
                         }
-                    }
+                    }*/
 
 
 
