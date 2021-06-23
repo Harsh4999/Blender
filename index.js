@@ -535,7 +535,7 @@ async function main() {
                    let senderNumb = sender.split('@')[0];
                    console.log("SENDER NUMB:",senderNumb);
                    
-                   let allowedNumbs = ["917070224546","919557666582"];
+                   let allowedNumbs = ["917070224546","919557666582","917003081349"];
                    if(allowedNumbs.includes(senderNumb)){
                    
 	                   let count=Number(args[0]);
