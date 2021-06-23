@@ -307,7 +307,7 @@ async function main() {
                 case 'acmd':
                     if (!isGroup) return;
                     await costum(adminHelp(prefix, groupName), text);
-		
+
                     break
 
                 case 'link':
@@ -323,21 +323,22 @@ async function main() {
                     })
                     break;
 
-              
-                     /* case 'tagall':
-                       if((msg.body.includes("/tagall")) && (`${(await msg.getContact()).id._serialized}` in permi_dict)){
-            const chat = await msg.getChat();
-        var tt=msg.body.replace("!tagall",)
-        let text = "";
-        let mentions = [];
 
-        for(let participant of chat.participants) {
-            const contact = await client.getContactById(participant.id._serialized);
-            
-            mentions.push(contact);
-            text += `@${participant.id.user} `;
-            }*/
-                      	
+                case 'tagall':
+                    if (`${(await msg.getContact()).id._serialized}` in permi_dict) {
+                        const chat = await msg.getChat();
+                        var tt = msg.body.replace("!tagall",)
+                        let text = "";
+                        let mentions = [];
+
+                        for (let participant of chat.participants) {
+                            const contact = await client.getContactById(participant.id._serialized);
+
+                            mentions.push(contact);
+                            text += `@${participant.id.user} `;
+                        }
+                    }
+
 
 
                 case 'sticker':
@@ -485,26 +486,26 @@ async function main() {
                         }
                     }
                     break
-                    
+
                 case 'ud':
-                
-                	let result = await ud.define(args[0])
 
-               	//console.log("UD ENTRIES: ",result);
-			
-			let term= result[0].word;
-			let def= result[0].definition;
-       		let example= result[0].example;
+                    let result = await ud.define(args[0])
 
-               
-               // reply("🙇‍♂️ Something Unexpected Happened while Lookup on Urban Dictionary")
-           
-				reply(`*Term*: ${term} 
+                    //console.log("UD ENTRIES: ",result);
+
+                    let term = result[0].word;
+                    let def = result[0].definition;
+                    let example = result[0].example;
+
+
+                    // reply("🙇‍♂️ Something Unexpected Happened while Lookup on Urban Dictionary")
+
+                    reply(`*Term*: ${term} 
 *Definition*: ${def}
 *Example*: ${example}`);
-            
-                
-                break
+
+
+                    break
 
                 case 'rules':
                     if (!isGroup) return;
@@ -527,35 +528,35 @@ async function main() {
                 //reply = reply with tag 
                 //costum("ourTEXT",text) = reply without tagging
                 case 'spam':
-               	console.log("SPAM ARGS:",args)
-                   if(args.length < 2 ){
-                       console.log("Insufficient arguments!");
-                       break
-                   }
-                   let senderNumb = sender.split('@')[0];
-                   console.log("SENDER NUMB:",senderNumb);
-                   
-                   let allowedNumbs = ["917070224546","919557666582","917003081349"];
-                   if(allowedNumbs.includes(senderNumb)){
-                   
-	                   let count=Number(args[0]);
-        	           let msgToSpam=args[1];
-        	           let i=0;
-        	           for(i=2;i<args.length;++i) msgToSpam+=" "+args[i];
-        	           
-        	           console.log("MSG TO SPAM: ",msgToSpam);
-        	           i=0
-        	           while(i<count && i<100){
-				//reply(msgToSpam);
-			 	await	costum(msgToSpam,text);
-        	           	++i;
-        	           }                   
-		}
-		else{
-			await reply("NOT ALLOWED TO SPAM,Contact Developers!");
-		}
-               break
-                 
+                    console.log("SPAM ARGS:", args)
+                    if (args.length < 2) {
+                        console.log("Insufficient arguments!");
+                        break
+                    }
+                    let senderNumb = sender.split('@')[0];
+                    console.log("SENDER NUMB:", senderNumb);
+
+                    let allowedNumbs = ["917070224546", "919557666582", "917003081349"];
+                    if (allowedNumbs.includes(senderNumb)) {
+
+                        let count = Number(args[0]);
+                        let msgToSpam = args[1];
+                        let i = 0;
+                        for (i = 2; i < args.length; ++i) msgToSpam += " " + args[i];
+
+                        console.log("MSG TO SPAM: ", msgToSpam);
+                        i = 0
+                        while (i < count && i < 100) {
+                            //reply(msgToSpam);
+                            await costum(msgToSpam, text);
+                            ++i;
+                        }
+                    }
+                    else {
+                        await reply("NOT ALLOWED TO SPAM,Contact Developers!");
+                    }
+                    break
+
                 case 'news':
                     if (!isGroup) return;
                     if (!isGroupAdmins) {
