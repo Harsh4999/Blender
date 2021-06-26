@@ -706,6 +706,7 @@ Type /help for help`)*/
                     break;
 
                 default:
+                    reply("wrong command!!!!!!!!!!!!!!!!!!!!")
                     break;
             }
         } catch (e) {
