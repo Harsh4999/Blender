@@ -325,12 +325,14 @@ async function main() {
                     break;
 
                 case 'tagall':
+                    if (!isGroup) return;
                     //                        var tt = msg.body.replace("/tagall",)
                     //                       let text = "";
                     let mem = [];
 
                     for (let i of groupMembers) {
-                        mem.push(i.jid);
+                        mem.push(i);
+                        log
                     }
 
                     console.log("TAGALL MEM: ", mem);
@@ -705,9 +707,9 @@ Type /help for help`)*/
                     conn.groupLeave(from)
                     break;
 
-                default:
+                /*default:
                     reply("wrong command!!!!!!!!!!!!!!!!!!!!")
-                    break;
+                    break;*/
             }
         } catch (e) {
             console.log('Error : %s', e)
