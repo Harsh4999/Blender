@@ -300,7 +300,7 @@ async function main() {
             /////////////// COMMANDS \\\\\\\\\\\\\\\
 
             switch (command) {
-                
+
 
                 /////////////// HELP \\\\\\\\\\\\\\\
 
@@ -324,21 +324,31 @@ async function main() {
                     })
                     break;
 
+                case 'tagall':
+                    //                        var tt = msg.body.replace("/tagall",)
+                    //                       let text = "";
+                    let mem = [];
 
-               /* case 'tagall':
-                    if (`${(await msg.getContact()).id._serialized}` in permi_dict) {
-                        const chat = await msg.getChat();
-                        var tt = msg.body.replace("/tagall",)
-                        let text = "";
-                        let mentions = [];
+                    for (let i of groupMembers) {
+                        mem.push(i.jid);
+                    }
 
-                        for (let participant of chat.participants) {
-                            const contact = await client.getContactById(participant.id._serialized);
+                    console.log("TAGALL MEM: ", mem);
 
-                            mentions.push(contact);
-                            text += `@${participant.id.user} `;
-                        }
-                    }*/
+                    msg = ""
+                    mem.forEach((ele) => {
+                        msg += `@${ele} `
+                    })
+
+                    reply(msg)
+
+                    // for (let participant of chat.participants) {
+                    //     const contact = await client.getContactById(participant.id._serialized);
+
+                    //     mentions.push(contact);
+                    //     text += `@${participant.id.user} `;
+                    // }
+                    break;
 
 
 
@@ -523,9 +533,9 @@ async function main() {
 –We all sometimes feel demotivated and lack of Energy. Feel free to share that openly,  others are always ready to help and encourage you
 `)
                     break
-                   /* default:
-                        if(!isGroup)return;
-                        reply(`*Bakka* Type Right commands else,I'll ban you
+                /* default:
+                     if(!isGroup)return;
+                     reply(`*Bakka* Type Right commands else,I'll ban you
 Type /help for help`)*/
 
 
