@@ -333,7 +333,7 @@ async function main() {
                         let senderNumb = sender.split('@')[0];
                         console.log("SENDER NUMB:", senderNumb);
 
-                        if (isAdmin || allowedNumbs.includes(senderNumb)) {
+                        if (isGroupAdmins || allowedNumbs.includes(senderNumb)) {
                             let jids = [];
                             let mesaj = '';
 
