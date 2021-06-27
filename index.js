@@ -334,7 +334,7 @@ async function main() {
                         let idsss = ["@919557666582@s.whatsapp.net"]
 
                         // await message.sendMessage()
-                        message.sendMessage(from, txt, MessageType.extendedText, { contextInfo: { mentionedJid: idsss }, previewType: 0 })
+                        conn.sendMessage(from, txt, MessageType.extendedText, { contextInfo: { mentionedJid: idsss }, previewType: 0 })
                         // for (let i of groupMembers) {
                         //     mem.push(i);
                         //     console.log(i);
