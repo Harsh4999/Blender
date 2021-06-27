@@ -295,234 +295,235 @@ async function main() {
             const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
             const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
             const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
-            if (isCmd && isGroup) console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName)
+            if (isCmd && isGroup) {
+                console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName)
 
-            /////////////// COMMANDS \\\\\\\\\\\\\\\
+                /////////////// COMMANDS \\\\\\\\\\\\\\\
 
-            switch (command) {
+                switch (command) {
 
+                    /////////////// HELP \\\\\\\\\\\\\\\
 
-                /////////////// HELP \\\\\\\\\\\\\\\
+                    case 'help':
+                    case 'acmd':
+                        if (!isGroup) return;
+                        await costum(adminHelp(prefix, groupName), text);
 
-                case 'help':
-                case 'acmd':
-                    if (!isGroup) return;
-                    await costum(adminHelp(prefix, groupName), text);
+                        break
 
-                    break
+                    case 'link':
+                    case 'getlink':
+                    case 'grouplink':
+                        if (!isGroup) return;
+                        if (!isBotGroupAdmins) return reply(errors.admin_error);
+                        gc_invite_code = await conn.groupInviteCode(from)
+                        gc_link = `https://chat.whatsapp.com/${gc_invite_code}`
+                        conn.sendMessage(from, gc_link, text, {
+                            quoted: mek,
+                            detectLinks: true
+                        })
+                        break;
 
-                case 'link':
-                case 'getlink':
-                case 'grouplink':
-                    if (!isGroup) return;
-                    if (!isBotGroupAdmins) return reply(errors.admin_error);
-                    gc_invite_code = await conn.groupInviteCode(from)
-                    gc_link = `https://chat.whatsapp.com/${gc_invite_code}`
-                    conn.sendMessage(from, gc_link, text, {
-                        quoted: mek,
-                        detectLinks: true
-                    })
-                    break;
+                    case 'tagall':
+                        if (!isGroup) return;
+                        //                        var tt = msg.body.replace("/tagall",)
+                        //                       let text = "";
+                        let mem = [];
+                        console.log(groupMembers[0]);
 
-                case 'tagall':
-                    if (!isGroup) return;
-                    //                        var tt = msg.body.replace("/tagall",)
-                    //                       let text = "";
-                    let mem = [];
-
-                    for (let i of groupMembers) {
-                        mem.push(i);
-                        log
-                    }
-
-                    console.log("TAGALL MEM: ", mem);
-
-                    msg = ""
-                    mem.forEach((ele) => {
-                        msg += `@${ele} `
-                    })
-
-                    reply(msg)
-
-                    // for (let participant of chat.participants) {
-                    //     const contact = await client.getContactById(participant.id._serialized);
-
-                    //     mentions.push(contact);
-                    //     text += `@${participant.id.user} `;
-                    // }
-                    break;
-
-
-
-                case 'sticker':
-                    if (!isGroup) return;
-
-                    // Format should be <prefix>sticker pack <pack_name> author <author_name>
-                    var packName = ""
-                    var authorName = ""
-
-                    // Check if pack keyword is found in args!
-                    if (args.includes('pack') == true) {
-                        packNameDataCollection = false;
-                        for (let i = 0; i < args.length; i++) {
-                            // Enables data collection when keyword found in index!
-                            if (args[i].includes('pack') == true) {
-                                packNameDataCollection = true;
-                            }
-                            if (args[i].includes('author') == true) {
-                                packNameDataCollection = false;
-                            }
-                            // If data collection is enabled and args length is more then one it will start appending!
-                            if (packNameDataCollection == true) {
-                                packName = packName + args[i] + ' '
-                            }
+                        for (let i of groupMembers) {
+                            mem.push(i);
+                            console.log(i);
                         }
-                        // Check if variable contain unnecessary startup word!
-                        if (packName.startsWith('pack ')) {
-                            packName = `${packName.split('pack ')[1]}`
-                        }
-                    }
+
+                        // console.log("TAGALL MEM: ", mem);
+
+                        // msg = ""
+                        // mem.forEach((ele) => {
+                        //     msg += `@${ele} `
+                        // })
+
+                        // reply(msg)
+
+                        // for (let participant of chat.participants) {
+                        //     const contact = await client.getContactById(participant.id._serialized);
+
+                        //     mentions.push(contact);
+                        //     text += `@${participant.id.user} `;
+                        // }
+                        break;
 
 
-                    // Check if author keyword is found in args!
-                    if (args.includes('author') == true) {
-                        authorNameDataCollection = false;
-                        for (let i = 0; i < args.length; i++) {
-                            // Enables data collection when keyword found in index!
-                            if (args[i].includes('author') == true) {
-                                authorNameDataCollection = true;
-                            }
-                            // If data collection is enabled and args length is more then one it will start appending!
-                            if (authorNameDataCollection == true) {
-                                authorName = authorName + args[i] + ' '
+
+                    case 'sticker':
+                        if (!isGroup) return;
+
+                        // Format should be <prefix>sticker pack <pack_name> author <author_name>
+                        var packName = ""
+                        var authorName = ""
+
+                        // Check if pack keyword is found in args!
+                        if (args.includes('pack') == true) {
+                            packNameDataCollection = false;
+                            for (let i = 0; i < args.length; i++) {
+                                // Enables data collection when keyword found in index!
+                                if (args[i].includes('pack') == true) {
+                                    packNameDataCollection = true;
+                                }
+                                if (args[i].includes('author') == true) {
+                                    packNameDataCollection = false;
+                                }
+                                // If data collection is enabled and args length is more then one it will start appending!
+                                if (packNameDataCollection == true) {
+                                    packName = packName + args[i] + ' '
+                                }
                             }
                             // Check if variable contain unnecessary startup word!
-                            if (authorName.startsWith('author ')) {
-                                authorName = `${authorName.split('author ')[1]}`
-                            }
-                        }
-                    }
-
-                    // Check if packName and authorName is empty it will pass default values!
-                    if (packName == "") {
-                        packName = "botwork"
-                    }
-                    if (authorName == "") {
-                        authorName = "Naveensaw/v"
-                    }
-
-                    outputOptions = [`-vcodec`, `libwebp`, `-vf`, `scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`];
-                    if (args.includes('crop') == true) {
-                        outputOptions = [
-                            `-vcodec`,
-                            `libwebp`,
-                            `-vf`,
-                            `crop=w='min(min(iw\,ih)\,500)':h='min(min(iw\,ih)\,500)',scale=500:500,setsar=1,fps=15`,
-                            `-loop`,
-                            `0`,
-                            `-ss`,
-                            `00:00:00.0`,
-                            `-t`,
-                            `00:00:10.0`,
-                            `-preset`,
-                            `default`,
-                            `-an`,
-                            `-vsync`,
-                            `0`,
-                            `-s`,
-                            `512:512`
-                        ];
-                    }
-
-                    if ((isMedia && !mek.message.videoMessage || isQuotedImage)) {
-                        const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-                        const media = await conn.downloadAndSaveMediaMessage(encmedia)
-                        ran = getRandom('.webp')
-                        reply('⌛Ruk Bhai..Kar raha ⏳')
-                        await ffmpeg(`./${media}`)
-                            .input(media)
-                            .on('error', function (err) {
-                                fs.unlinkSync(media)
-                                console.log(`Error : ${err}`)
-                                reply('_❌ ERROR: Failed to convert image into sticker! ❌_')
-                            })
-                            .on('end', function () {
-                                buildSticker()
-                            })
-                            .addOutputOptions(outputOptions)
-                            .toFormat('webp')
-                            .save(ran)
-
-                        async function buildSticker() {
-                            if (args.includes('nometadata') == true) {
-                                conn.sendMessage(from, fs.readFileSync(ran), sticker, { quoted: mek })
-                                fs.unlinkSync(media)
-                                fs.unlinkSync(ran)
-                            } else {
-                                const webpWithMetadata = await WSF.setMetadata(packName, authorName, ran)
-                                conn.sendMessage(from, webpWithMetadata, MessageType.sticker)
-                                fs.unlinkSync(media)
-                                fs.unlinkSync(ran)
+                            if (packName.startsWith('pack ')) {
+                                packName = `${packName.split('pack ')[1]}`
                             }
                         }
 
-                    } else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11)) {
-                        const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-                        const media = await conn.downloadAndSaveMediaMessage(encmedia)
-                        ran = getRandom('.webp')
-                        reply('⌛ Processing animation... ⏳')
-                        await ffmpeg(`./${media}`)
-                            .inputFormat(media.split('.')[1])
-                            .on('error', function (err) {
-                                fs.unlinkSync(media)
-                                mediaType = media.endsWith('.mp4') ? 'video' : 'gif'
-                                reply(`_❌ ERROR: Failed to convert ${mediaType} to sticker! ❌_`)
-                            })
-                            .on('end', function () {
-                                buildSticker()
-                            })
-                            .addOutputOptions(outputOptions)
-                            .toFormat('webp')
-                            .save(ran)
 
-                        async function buildSticker() {
-                            if (args.includes('nometadata') == true) {
-                                conn.sendMessage(from, fs.readFileSync(ran), sticker, { quoted: mek })
-                                fs.unlinkSync(media)
-                                fs.unlinkSync(ran)
-                            } else {
-                                const webpWithMetadata = await WSF.setMetadata(packName, authorName, ran)
-                                conn.sendMessage(from, webpWithMetadata, MessageType.sticker)
-                                fs.unlinkSync(media)
-                                fs.unlinkSync(ran)
+                        // Check if author keyword is found in args!
+                        if (args.includes('author') == true) {
+                            authorNameDataCollection = false;
+                            for (let i = 0; i < args.length; i++) {
+                                // Enables data collection when keyword found in index!
+                                if (args[i].includes('author') == true) {
+                                    authorNameDataCollection = true;
+                                }
+                                // If data collection is enabled and args length is more then one it will start appending!
+                                if (authorNameDataCollection == true) {
+                                    authorName = authorName + args[i] + ' '
+                                }
+                                // Check if variable contain unnecessary startup word!
+                                if (authorName.startsWith('author ')) {
+                                    authorName = `${authorName.split('author ')[1]}`
+                                }
                             }
                         }
-                    }
-                    break
 
-                case 'ud':
+                        // Check if packName and authorName is empty it will pass default values!
+                        if (packName == "") {
+                            packName = "botwork"
+                        }
+                        if (authorName == "") {
+                            authorName = "Naveensaw/v"
+                        }
 
-                    let result = await ud.define(args[0])
+                        outputOptions = [`-vcodec`, `libwebp`, `-vf`, `scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`];
+                        if (args.includes('crop') == true) {
+                            outputOptions = [
+                                `-vcodec`,
+                                `libwebp`,
+                                `-vf`,
+                                `crop=w='min(min(iw\,ih)\,500)':h='min(min(iw\,ih)\,500)',scale=500:500,setsar=1,fps=15`,
+                                `-loop`,
+                                `0`,
+                                `-ss`,
+                                `00:00:00.0`,
+                                `-t`,
+                                `00:00:10.0`,
+                                `-preset`,
+                                `default`,
+                                `-an`,
+                                `-vsync`,
+                                `0`,
+                                `-s`,
+                                `512:512`
+                            ];
+                        }
 
-                    //console.log("UD ENTRIES: ",result);
+                        if ((isMedia && !mek.message.videoMessage || isQuotedImage)) {
+                            const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+                            const media = await conn.downloadAndSaveMediaMessage(encmedia)
+                            ran = getRandom('.webp')
+                            reply('⌛Ruk Bhai..Kar raha ⏳')
+                            await ffmpeg(`./${media}`)
+                                .input(media)
+                                .on('error', function (err) {
+                                    fs.unlinkSync(media)
+                                    console.log(`Error : ${err}`)
+                                    reply('_❌ ERROR: Failed to convert image into sticker! ❌_')
+                                })
+                                .on('end', function () {
+                                    buildSticker()
+                                })
+                                .addOutputOptions(outputOptions)
+                                .toFormat('webp')
+                                .save(ran)
 
-                    let term = result[0].word;
-                    let def = result[0].definition;
-                    let example = result[0].example;
+                            async function buildSticker() {
+                                if (args.includes('nometadata') == true) {
+                                    conn.sendMessage(from, fs.readFileSync(ran), sticker, { quoted: mek })
+                                    fs.unlinkSync(media)
+                                    fs.unlinkSync(ran)
+                                } else {
+                                    const webpWithMetadata = await WSF.setMetadata(packName, authorName, ran)
+                                    conn.sendMessage(from, webpWithMetadata, MessageType.sticker)
+                                    fs.unlinkSync(media)
+                                    fs.unlinkSync(ran)
+                                }
+                            }
+
+                        } else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11)) {
+                            const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+                            const media = await conn.downloadAndSaveMediaMessage(encmedia)
+                            ran = getRandom('.webp')
+                            reply('⌛ Processing animation... ⏳')
+                            await ffmpeg(`./${media}`)
+                                .inputFormat(media.split('.')[1])
+                                .on('error', function (err) {
+                                    fs.unlinkSync(media)
+                                    mediaType = media.endsWith('.mp4') ? 'video' : 'gif'
+                                    reply(`_❌ ERROR: Failed to convert ${mediaType} to sticker! ❌_`)
+                                })
+                                .on('end', function () {
+                                    buildSticker()
+                                })
+                                .addOutputOptions(outputOptions)
+                                .toFormat('webp')
+                                .save(ran)
+
+                            async function buildSticker() {
+                                if (args.includes('nometadata') == true) {
+                                    conn.sendMessage(from, fs.readFileSync(ran), sticker, { quoted: mek })
+                                    fs.unlinkSync(media)
+                                    fs.unlinkSync(ran)
+                                } else {
+                                    const webpWithMetadata = await WSF.setMetadata(packName, authorName, ran)
+                                    conn.sendMessage(from, webpWithMetadata, MessageType.sticker)
+                                    fs.unlinkSync(media)
+                                    fs.unlinkSync(ran)
+                                }
+                            }
+                        }
+                        break
+
+                    case 'ud':
+
+                        let result = await ud.define(args[0])
+
+                        //console.log("UD ENTRIES: ",result);
+
+                        let term = result[0].word;
+                        let def = result[0].definition;
+                        let example = result[0].example;
 
 
-                    // reply("🙇‍♂️ Something Unexpected Happened while Lookup on Urban Dictionary")
+                        // reply("🙇‍♂️ Something Unexpected Happened while Lookup on Urban Dictionary")
 
-                    reply(`*Term*: ${term} 
+                        reply(`*Term*: ${term} 
 *Definition*: ${def}
 *Example*: ${example}`);
 
 
-                    break
+                        break
 
-                case 'rules':
-                    if (!isGroup) return;
-                    reply(`*Rules and Regulations:*
+                    case 'rules':
+                        if (!isGroup) return;
+                        reply(`*Rules and Regulations:*
                      
 – You can share contents you found knowledgeable
 
@@ -534,182 +535,183 @@ async function main() {
 
 –We all sometimes feel demotivated and lack of Energy. Feel free to share that openly,  others are always ready to help and encourage you
 `)
-                    break
-                /* default:
-                     if(!isGroup)return;
-                     reply(`*Bakka* Type Right commands else,I'll ban you
-Type /help for help`)*/
-
-
-                /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
-                //reply = reply with tag 
-                //costum("ourTEXT",text) = reply without tagging
-                case 'spam':
-                    console.log("SPAM ARGS:", args)
-                    if (args.length < 2) {
-                        console.log("Insufficient arguments!");
                         break
-                    }
-                    let senderNumb = sender.split('@')[0];
-                    console.log("SENDER NUMB:", senderNumb);
+                    /* default:
+                         if(!isGroup)return;
+                         reply(`*Bakka* Type Right commands else,I'll ban you
+    Type /help for help`)*/
 
-                    let allowedNumbs = ["917070224546", "919557666582", "917003081349"];
-                    if (allowedNumbs.includes(senderNumb)) {
 
-                        let count = Number(args[0]);
-                        let msgToSpam = args[1];
-                        let i = 0;
-                        for (i = 2; i < args.length; ++i) msgToSpam += " " + args[i];
-
-                        console.log("MSG TO SPAM: ", msgToSpam);
-                        i = 0
-                        while (i < count && i < 100) {
-                            //reply(msgToSpam);
-                            await costum(msgToSpam, text);
-                            ++i;
+                    /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
+                    //reply = reply with tag 
+                    //costum("ourTEXT",text) = reply without tagging
+                    case 'spam':
+                        console.log("SPAM ARGS:", args)
+                        if (args.length < 2) {
+                            console.log("Insufficient arguments!");
+                            break
                         }
-                    }
-                    else {
-                        await reply("NOT ALLOWED TO SPAM,Contact Developers!");
-                    }
-                    break
+                        let senderNumb = sender.split('@')[0];
+                        console.log("SENDER NUMB:", senderNumb);
 
-                case 'news':
-                    if (!isGroup) return;
-                    if (!isGroupAdmins) {
-                        reply("These are the admin commands");
-                        return;
-                    }
-                    let news = await getNews();
-                    reply(news);
-                    break
+                        let allowedNumbs = ["917070224546", "919557666582", "917003081349"];
+                        if (allowedNumbs.includes(senderNumb)) {
 
-                case 'add':
-                    if (!isGroup) return;
-                    if (!isGroupAdmins) {
-                        reply("These are the admin commands");
-                        return;
-                    }
-                    if (!isBotGroupAdmins) return reply(errors.admin_error);
-                    if (args.length < 1) return;
-                    var num = '';
-                    if (args.length > 1) {
-                        for (let j = 0; j < args.length; j++) {
-                            num = num + args[j]
+                            let count = Number(args[0]);
+                            let msgToSpam = args[1];
+                            let i = 0;
+                            for (i = 2; i < args.length; ++i) msgToSpam += " " + args[i];
+
+                            console.log("MSG TO SPAM: ", msgToSpam);
+                            i = 0
+                            while (i < count && i < 100) {
+                                //reply(msgToSpam);
+                                await costum(msgToSpam, text);
+                                ++i;
+                            }
                         }
-                        num = `${num.replace(/ /g, '')}@s.whatsapp.net`
-                    } else {
-                        num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
-                    }
-                    if (num.startsWith('+')) {
-                        num = `${num.split('+')[1]}`
-                    }
-                    const response = await conn.groupAdd(from, [num])
-                    get_status = `${num.split('@s.whatsapp.net')[0]}`
-                    get_status = response[`${get_status}@c.us`];
-                    if (get_status == 400) {
-                        reply('_❌ ERROR: Invalid number! ❌_');
-                    }
-                    if (get_status == 403) {
-                        reply('_❌ ERROR: Number has privacy on adding group! ❌_');
-                    }
-                    if (get_status == 408) {
-                        reply('_❌ ERROR: Number has left the group recently! ❌_');
-                    }
-                    if (get_status == 409) {
-                        reply('_❌ ERROR: Number is already exists! ❌_');
-                    }
-                    if (get_status == 500) {
-                        reply('_❌ ERROR: Group is currently full! ❌_');
-                    }
-                    if (get_status == 200) {
-                        reply('_✔ SUCCESS: Number added to group! ✔_');
-                    }
-                    break;
+                        else {
+                            await reply("NOT ALLOWED TO SPAM,Contact Developers!");
+                        }
+                        break
 
-                case 'kick':
-                case 'remove':
-                case 'ban':
-                    if (!isGroup) return;
-                    if (!isGroupAdmins) return;
-                    if (!isBotGroupAdmins) return reply(errors.admin_error);
-                    if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return;
-                    mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
-                    if (groupAdmins.includes(`${mentioned}`) == true) return;
-                    if (mentioned.length > 1) {
-                        return;
-                    } else {
-                        conn.groupRemove(from, mentioned)
-                    }
-                    break;
+                    case 'news':
+                        if (!isGroup) return;
+                        if (!isGroupAdmins) {
+                            reply("These are the admin commands");
+                            return;
+                        }
+                        let news = await getNews();
+                        reply(news);
+                        break
 
-                case 'promote':
-                    if (!isGroup) return;
+                    case 'add':
+                        if (!isGroup) return;
+                        if (!isGroupAdmins) {
+                            reply("These are the admin commands");
+                            return;
+                        }
+                        if (!isBotGroupAdmins) return reply(errors.admin_error);
+                        if (args.length < 1) return;
+                        var num = '';
+                        if (args.length > 1) {
+                            for (let j = 0; j < args.length; j++) {
+                                num = num + args[j]
+                            }
+                            num = `${num.replace(/ /g, '')}@s.whatsapp.net`
+                        } else {
+                            num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
+                        }
+                        if (num.startsWith('+')) {
+                            num = `${num.split('+')[1]}`
+                        }
+                        const response = await conn.groupAdd(from, [num])
+                        get_status = `${num.split('@s.whatsapp.net')[0]}`
+                        get_status = response[`${get_status}@c.us`];
+                        if (get_status == 400) {
+                            reply('_❌ ERROR: Invalid number! ❌_');
+                        }
+                        if (get_status == 403) {
+                            reply('_❌ ERROR: Number has privacy on adding group! ❌_');
+                        }
+                        if (get_status == 408) {
+                            reply('_❌ ERROR: Number has left the group recently! ❌_');
+                        }
+                        if (get_status == 409) {
+                            reply('_❌ ERROR: Number is already exists! ❌_');
+                        }
+                        if (get_status == 500) {
+                            reply('_❌ ERROR: Group is currently full! ❌_');
+                        }
+                        if (get_status == 200) {
+                            reply('_✔ SUCCESS: Number added to group! ✔_');
+                        }
+                        break;
 
-                    if (!isGroupAdmins) {
-                        reply("These are the admin commands");
-                        return;
-                    }
-                    if (!isBotGroupAdmins) return reply(errors.admin_error);
-                    if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return;
-                    mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
-                    if (groupAdmins.includes(`${mentioned}`) == true) return;
-                    if (mentioned.length > 1) {
-                        return;
-                    } else {
-                        conn.groupMakeAdmin(from, mentioned)
-                    }
-                    break;
+                    case 'kick':
+                    case 'remove':
+                    case 'ban':
+                        if (!isGroup) return;
+                        if (!isGroupAdmins) return;
+                        if (!isBotGroupAdmins) return reply(errors.admin_error);
+                        if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return;
+                        mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+                        if (groupAdmins.includes(`${mentioned}`) == true) return;
+                        if (mentioned.length > 1) {
+                            return;
+                        } else {
+                            conn.groupRemove(from, mentioned)
+                        }
+                        break;
 
-                case 'demote':
-                    if (!isGroup) return;
-                    if (!isGroupAdmins) return;
-                    if (!isBotGroupAdmins) return reply(errors.admin_error);
-                    if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('_⚠ USAGE: /demote <@mention> ⚠_');
-                    mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
-                    if (groupAdmins.includes(`${mentioned}`) == false) return;
-                    if (mentioned.length > 1) {
-                        return;
-                    } else {
-                        conn.groupDemoteAdmin(from, mentioned)
-                    }
-                    break;
+                    case 'promote':
+                        if (!isGroup) return;
 
-                case 'chat':
-                    if (!isGroup) return;
-                    if (!isGroupAdmins) return;
-                    if (!isBotGroupAdmins) return reply(errors.admin_error);
-                    if (args.length < 1) return;
-                    if (args[0] == 'on') {
-                        conn.groupSettingChange(from, GroupSettingChange.messageSend, false);
-                    } else if (args[0] == 'off') {
-                        conn.groupSettingChange(from, GroupSettingChange.messageSend, true);
-                    } else {
-                        return;
-                    }
-                    break;
+                        if (!isGroupAdmins) {
+                            reply("These are the admin commands");
+                            return;
+                        }
+                        if (!isBotGroupAdmins) return reply(errors.admin_error);
+                        if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return;
+                        mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+                        if (groupAdmins.includes(`${mentioned}`) == true) return;
+                        if (mentioned.length > 1) {
+                            return;
+                        } else {
+                            conn.groupMakeAdmin(from, mentioned)
+                        }
+                        break;
 
-                case 'rename':
-                    if (!isGroup) return;
-                    if (!isGroupAdmins) return;
-                    if (!isBotGroupAdmins) return reply(errors.admin_error);
-                    if (args.length < 1) return;
-                    get_subject = '';
-                    for (i = 0; i < args.length; i++) {
-                        get_subject = get_subject + args[i] + ' ';
-                    }
-                    conn.groupUpdateSubject(from, get_subject);
-                    break;
+                    case 'demote':
+                        if (!isGroup) return;
+                        if (!isGroupAdmins) return;
+                        if (!isBotGroupAdmins) return reply(errors.admin_error);
+                        if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('_⚠ USAGE: /demote <@mention> ⚠_');
+                        mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+                        if (groupAdmins.includes(`${mentioned}`) == false) return;
+                        if (mentioned.length > 1) {
+                            return;
+                        } else {
+                            conn.groupDemoteAdmin(from, mentioned)
+                        }
+                        break;
 
-                case 'removebot':
-                    if (!isGroup) return;
-                    if (!isGroupAdmins) return;
-                    conn.groupLeave(from)
-                    break;
+                    case 'chat':
+                        if (!isGroup) return;
+                        if (!isGroupAdmins) return;
+                        if (!isBotGroupAdmins) return reply(errors.admin_error);
+                        if (args.length < 1) return;
+                        if (args[0] == 'on') {
+                            conn.groupSettingChange(from, GroupSettingChange.messageSend, false);
+                        } else if (args[0] == 'off') {
+                            conn.groupSettingChange(from, GroupSettingChange.messageSend, true);
+                        } else {
+                            return;
+                        }
+                        break;
 
-                /*default:
-                    reply("wrong command!!!!!!!!!!!!!!!!!!!!")
-                    break;*/
+                    case 'rename':
+                        if (!isGroup) return;
+                        if (!isGroupAdmins) return;
+                        if (!isBotGroupAdmins) return reply(errors.admin_error);
+                        if (args.length < 1) return;
+                        get_subject = '';
+                        for (i = 0; i < args.length; i++) {
+                            get_subject = get_subject + args[i] + ' ';
+                        }
+                        conn.groupUpdateSubject(from, get_subject);
+                        break;
+
+                    case 'removebot':
+                        if (!isGroup) return;
+                        if (!isGroupAdmins) return;
+                        conn.groupLeave(from)
+                        break;
+
+                    default:
+                        reply("wrong command !!!!!!!!!!!!")
+                        break;
+                }
             }
         } catch (e) {
             console.log('Error : %s', e)
