@@ -330,8 +330,11 @@ async function main() {
                         //                       let text = "";
                         let mem = [];
                         console.log(groupMembers[0]);
+                        let txt = "@919557666582 "
+                        let idsss = ["@919557666582@s.whatsapp.net"]
 
-                        reply(`@919557666582 @919557666582@s.whatsapp.net @919557666582@c.us`)
+                        // await message.sendMessage()
+                        message.sendMessage(from, txt, MessageType.extendedText, { contextInfo: { mentionedJid: idsss }, previewType: 0 })
                         // for (let i of groupMembers) {
                         //     mem.push(i);
                         //     console.log(i);
