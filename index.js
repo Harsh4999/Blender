@@ -326,19 +326,22 @@ async function main() {
 
                     case 'tagall':
                         if (!isGroup) return;
-                        //                        var tt = msg.body.replace("/tagall",)
-                        //                       let text = "";
-                        let mem = [];
-                        console.log(groupMembers[0]);
-                        let txt = "@919557666582 "
-                        let idsss = ["@919557666582@s.whatsapp.net"]
 
-                        // await message.sendMessage()
-                        conn.sendMessage(from, txt, MessageType.extendedText, { contextInfo: { mentionedJid: idsss }, previewType: 0 })
-                        // for (let i of groupMembers) {
-                        //     mem.push(i);
-                        //     console.log(i);
-                        // }
+                        let jids = [];
+                        let mesaj = '';
+
+                        for (let i of groupMembers) {
+                            mesaj += '@' + i.id.split('@')[0] + ' ';
+                            jids.push(i.id.replace('c.us', 's.whatsapp.net'));
+                        }
+                        // var tx = message.reply_message.text
+                        console.log(mesaj);
+                        console.log(jids);
+                        let tx = "xyz"
+                        await conn.sendMessage(from, tx, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 })
+
+
+                        // conn.sendMessage(from, txt, MessageType.extendedText, { contextInfo: { mentionedJid: idsss }, previewType: 0 })
 
                         // console.log("TAGALL MEM: ", mem);
 
