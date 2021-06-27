@@ -338,7 +338,7 @@ async function main() {
                         console.log(mesaj);
                         console.log(jids);
                         let tx = "xyz"
-                        await conn.sendMessage(from, tx, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 })
+                        await conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 })
 
 
                         // conn.sendMessage(from, txt, MessageType.extendedText, { contextInfo: { mentionedJid: idsss }, previewType: 0 })
