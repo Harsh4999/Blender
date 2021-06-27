@@ -331,10 +331,11 @@ async function main() {
                         let mem = [];
                         console.log(groupMembers[0]);
 
-                        for (let i of groupMembers) {
-                            mem.push(i);
-                            console.log(i);
-                        }
+                        reply(`@919557666582 @919557666582@s.whatsapp.net 919557666582@c.us`)
+                        // for (let i of groupMembers) {
+                        //     mem.push(i);
+                        //     console.log(i);
+                        // }
 
                         // console.log("TAGALL MEM: ", mem);
 
