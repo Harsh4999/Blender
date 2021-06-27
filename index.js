@@ -133,6 +133,11 @@ const adminHelp = (prefix, groupName) => {
 
 Made with love,use with love`
 }
+
+
+let allowedNumbs = ["917070224546", "919557666582", "917003081349"];
+
+
 const getRandom = (ext) => { return `${Math.floor(Math.random() * 10000)}${ext}` }
 
 // TECH NEWS ---------------------------
@@ -164,7 +169,6 @@ const refresh = async () => {
     }
     else return false;
 }
-
 // MAIN FUNCTION
 async function main() {
 
@@ -326,40 +330,27 @@ async function main() {
 
                     case 'tagall':
                         if (!isGroup) return;
+                        let senderNumb = sender.split('@')[0];
+                        console.log("SENDER NUMB:", senderNumb);
 
-                        let jids = [];
-                        let mesaj = '';
+                        if (isAdmin || allowedNumbs.includes(senderNumb)) {
+                            let jids = [];
+                            let mesaj = '';
 
-                        for (let i of groupMembers) {
-                            mesaj += '@' + i.id.split('@')[0] + ' ';
-                            jids.push(i.id.replace('c.us', 's.whatsapp.net'));
+                            for (let i of groupMembers) {
+                                mesaj += '@' + i.id.split('@')[0] + ' ';
+                                jids.push(i.id.replace('c.us', 's.whatsapp.net'));
+                            }
+                            // var tx = message.reply_message.text
+                            console.log(mesaj);
+                            console.log(jids);
+                            let tx = "xyz"
+                            await conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 })
                         }
-                        // var tx = message.reply_message.text
-                        console.log(mesaj);
-                        console.log(jids);
-                        let tx = "xyz"
-                        await conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 })
-
-
-                        // conn.sendMessage(from, txt, MessageType.extendedText, { contextInfo: { mentionedJid: idsss }, previewType: 0 })
-
-                        // console.log("TAGALL MEM: ", mem);
-
-                        // msg = ""
-                        // mem.forEach((ele) => {
-                        //     msg += `@${ele} `
-                        // })
-
-                        // reply(msg)
-
-                        // for (let participant of chat.participants) {
-                        //     const contact = await client.getContactById(participant.id._serialized);
-
-                        //     mentions.push(contact);
-                        //     text += `@${participant.id.user} `;
-                        // }
+                        else {
+                            reply("No Permission !")
+                        }
                         break;
-
 
 
                     case 'sticker':
@@ -561,7 +552,6 @@ async function main() {
                         let senderNumb = sender.split('@')[0];
                         console.log("SENDER NUMB:", senderNumb);
 
-                        let allowedNumbs = ["917070224546", "919557666582", "917003081349"];
                         if (allowedNumbs.includes(senderNumb)) {
 
                             let count = Number(args[0]);
