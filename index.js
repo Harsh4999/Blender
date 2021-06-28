@@ -573,7 +573,7 @@ async function main() {
 
                     case 'news':
                         if (!isGroup) return;
-                        if (!isGroupAdmins) {
+                        if (!isGroupAdmins ||allowedNumbs ) {
                             reply("These are the admin commands");
                             return;
                         }
