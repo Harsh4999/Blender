@@ -75,8 +75,6 @@ const getGroupAdmins = (participants) => {
 const adminHelp = (prefix, groupName) => {
     return `
 ─「 *${groupName} Admin Commands* 」─
-*${prefix}rules*
-    _Show group rules_
 
 *${prefix}add <phone number>*
     _Add any new member!_
@@ -126,7 +124,8 @@ const adminHelp = (prefix, groupName) => {
     _Show Meaning of your name_    
 
 *${prefix}spam*
-    _only for super users_  
+    _only for super users_
+    _Eg-/spam 30 Bot is love_  
 
 *${prefix}removebot*
     _Remove bot from group!_
@@ -257,7 +256,7 @@ async function main() {
             const isCmd = body.startsWith(prefix)
 
             errors = {
-                admin_error: '_❌ ERROR: Admin se baat kar,tere bas ka nai hai... ❌_'
+                admin_error: '_❌ ERROR: Admin se baat kar,tere bas ka nai hai...(*Baka*Mujhe Admin bana Pehle) ❌_'
             }
 
             const botNumber = conn.user.jid
@@ -404,10 +403,10 @@ async function main() {
 
                         // Check if packName and authorName is empty it will pass default values!
                         if (packName == "") {
-                            packName = "botwork"
+                            packName = "Blender"
                         }
                         if (authorName == "") {
-                            authorName = "Naveensaw/v"
+                            authorName = "Blender N/v"
                         }
 
                         outputOptions = [`-vcodec`, `libwebp`, `-vf`, `scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`];
@@ -469,7 +468,7 @@ async function main() {
                             const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
                             const media = await conn.downloadAndSaveMediaMessage(encmedia)
                             ran = getRandom('.webp')
-                            reply('⌛ Processing animation... ⏳')
+                            reply('⌛ Ho raha Thoda wait karle... ⏳')
                             await ffmpeg(`./${media}`)
                                 .inputFormat(media.split('.')[1])
                                 .on('error', function (err) {
@@ -519,7 +518,7 @@ async function main() {
 
                         break
 
-                    case 'rules':
+                   /* case 'rules':
                         if (!isGroup) return;
                         reply(`*Rules and Regulations:*
                      
@@ -533,7 +532,7 @@ async function main() {
 
 –We all sometimes feel demotivated and lack of Energy. Feel free to share that openly,  others are always ready to help and encourage you
 `)
-                        break
+                        break*/
                     /* default:
                          if(!isGroup)return;
                          reply(`*Bakka* Type Right commands else,I'll ban you
@@ -568,7 +567,7 @@ async function main() {
                             }
                         }
                         else {
-                            await reply("NOT ALLOWED TO SPAM,Contact Developers!");
+                            await reply("*Baka* NOT ALLOWED TO SPAM,Contact Developers!");
                         }
                         break
 
@@ -645,7 +644,7 @@ async function main() {
                         if (!isGroup) return;
 
                         if (!isGroupAdmins) {
-                            reply("These are the admin commands");
+                            reply("*Baka*These are the admin commands,Admin Ban ja phir baat karte hai..");
                             return;
                         }
                         if (!isBotGroupAdmins) return reply(errors.admin_error);
@@ -706,8 +705,7 @@ async function main() {
                         break;
 
                     default:
-                        reply(`*Bakka* Type Right commands else,I'll ban you
-                        Type /help for help`)
+                        reply(`*Bakka*,Type Right commands or else,I'll ban you Type */help* for Assistance`)
                         break;
                 }
             }
