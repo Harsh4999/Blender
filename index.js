@@ -330,7 +330,7 @@ async function main() {
 
                     case 'tagall':
                         if (!isGroup) return;
-                        let senderNumb = sender.split('@')[0];
+                        $: senderNumb = sender.split('@')[0];
                         console.log("SENDER NUMB:", senderNumb);
 
                         if (isGroupAdmins || allowedNumbs.includes(senderNumb)) {
