@@ -299,6 +299,7 @@ async function main() {
             const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
             const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
             let senderNumb = sender.split('@')[0];
+            //console.log("SENDER NUMB:", senderNumb);
 
             if (isCmd && isGroup) {
                 console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName)
@@ -509,11 +510,11 @@ async function main() {
                             let example = result[0].example;
 
                             reply(`*Term*: ${term} 
-                            *Definition*: ${def}
-                            *Example*: ${example}`);
+*Definition*: ${def}
+*Example*: ${example}`);
                         }
                         catch {
-                            reply("🙇‍♂️ Something Unexpected Happened while Lookup on Urban Dictionary")
+                            reply("🙇‍♂️ Sorry to say but this word/creature does not exist")
                         }
 
                         break
@@ -572,6 +573,7 @@ async function main() {
 
                     case 'news':
                         if (!isGroup) return;
+                        console.log("SENDER NUMB:", senderNumb);
                         if (!isGroupAdmins || !allowedNumbs.includes(senderNumb)) {
                             reply("These are the admin commands");
                             return;
