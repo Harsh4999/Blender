@@ -706,7 +706,8 @@ async function main() {
                         break;
 
                     default:
-                        reply("wrong command !!!!!!!!!!!!")
+                        reply(`*Bakka* Type Right commands else,I'll ban you
+                        Type /help for help`)
                         break;
                 }
             }
