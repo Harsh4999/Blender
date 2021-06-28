@@ -572,7 +572,7 @@ async function main() {
 
                     case 'news':
                         if (!isGroup) return;
-                        if (!isGroupAdmins || allowedNumbs.includes(senderNumb)) {
+                        if (!isGroupAdmins || !allowedNumbs.includes(senderNumb)) {
                             reply("These are the admin commands");
                             return;
                         }
@@ -627,7 +627,10 @@ async function main() {
                     case 'remove':
                     case 'ban':
                         if (!isGroup) return;
-                        if (!isGroupAdmins) return;
+                        if (!isGroupAdmins) {
+                            reply("These are the admin commands");
+                            return;
+                        }
                         if (!isBotGroupAdmins) return reply(errors.admin_error);
                         if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return;
                         mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
@@ -643,7 +646,7 @@ async function main() {
                         if (!isGroup) return;
 
                         if (!isGroupAdmins) {
-                            reply("*Baka*These are the admin commands,Admin Ban ja phir baat karte hai..");
+                            reply("These are the admin commands");
                             return;
                         }
                         if (!isBotGroupAdmins) return reply(errors.admin_error);
@@ -659,7 +662,10 @@ async function main() {
 
                     case 'demote':
                         if (!isGroup) return;
-                        if (!isGroupAdmins) return;
+                        if (!isGroupAdmins) {
+                            reply("These are the admin commands");
+                            return;
+                        }
                         if (!isBotGroupAdmins) return reply(errors.admin_error);
                         if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('_⚠ USAGE: /demote <@mention> ⚠_');
                         mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
@@ -673,7 +679,10 @@ async function main() {
 
                     case 'chat':
                         if (!isGroup) return;
-                        if (!isGroupAdmins) return;
+                        if (!isGroupAdmins) {
+                            reply("These are the admin commands");
+                            return;
+                        }
                         if (!isBotGroupAdmins) return reply(errors.admin_error);
                         if (args.length < 1) return;
                         if (args[0] == 'on') {
@@ -687,7 +696,10 @@ async function main() {
 
                     case 'rename':
                         if (!isGroup) return;
-                        if (!isGroupAdmins) return;
+                        if (!isGroupAdmins) {
+                            reply("These are the admin commands");
+                            return;
+                        }
                         if (!isBotGroupAdmins) return reply(errors.admin_error);
                         if (args.length < 1) return;
                         get_subject = '';
@@ -699,7 +711,10 @@ async function main() {
 
                     case 'removebot':
                         if (!isGroup) return;
-                        if (!isGroupAdmins) return;
+                        if (!isGroupAdmins) {
+                            reply("These are the admin commands");
+                            return;
+                        }
                         conn.groupLeave(from)
                         break;
 
