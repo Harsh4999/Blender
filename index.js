@@ -574,7 +574,7 @@ async function main() {
                     case 'news':
                         if (!isGroup) return;
                         console.log("SENDER NUMB:", senderNumb);
-                        if (!isGroupAdmins || !allowedNumbs.includes(senderNumb)) {
+                        if (!isGroupAdmins && !allowedNumbs.includes(senderNumb)) {
                             reply("These are the admin commands");
                             return;
                         }
