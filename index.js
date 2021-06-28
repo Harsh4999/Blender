@@ -549,7 +549,7 @@ async function main() {
                             console.log("Insufficient arguments!");
                             break
                         }
-                        senderNumb = sender.split('@')[0];
+                        let senderNumb = sender.split('@')[0];
                         console.log("SENDER NUMB:", senderNumb);
 
                         if (allowedNumbs.includes(senderNumb)) {
