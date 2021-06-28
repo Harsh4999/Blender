@@ -298,6 +298,8 @@ async function main() {
             const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
             const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
             const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
+            let senderNumb = sender.split('@')[0];
+
             if (isCmd && isGroup) {
                 console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName)
 
@@ -329,7 +331,6 @@ async function main() {
 
                     case 'tagall':
                         if (!isGroup) return;
-                        $: senderNumb = sender.split('@')[0];
                         console.log("SENDER NUMB:", senderNumb);
 
                         if (isGroupAdmins || allowedNumbs.includes(senderNumb)) {
@@ -499,40 +500,39 @@ async function main() {
                         break
 
                     case 'ud':
+                        try {
 
-                        let result = await ud.define(args[0])
+                            let result = await ud.define(args[0])
 
-                        //console.log("UD ENTRIES: ",result);
+                            let term = result[0].word;
+                            let def = result[0].definition;
+                            let example = result[0].example;
 
-                        let term = result[0].word;
-                        let def = result[0].definition;
-                        let example = result[0].example;
-
-
-                        // reply("🙇‍♂️ Something Unexpected Happened while Lookup on Urban Dictionary")
-
-                        reply(`*Term*: ${term} 
-*Definition*: ${def}
-*Example*: ${example}`);
-
+                            reply(`*Term*: ${term} 
+                            *Definition*: ${def}
+                            *Example*: ${example}`);
+                        }
+                        catch {
+                            reply("🙇‍♂️ Something Unexpected Happened while Lookup on Urban Dictionary")
+                        }
 
                         break
 
-                   /* case 'rules':
-                        if (!isGroup) return;
-                        reply(`*Rules and Regulations:*
-                     
-– You can share contents you found knowledgeable
-
-– No Self-Promotion, Spamming, political or religious contents sharing
-	
-–Daily at the end of the day, you have to send a Voice Note(in English) about what you learnt today, it can be as little as knowing a Fact!
-
-–You can share your struggles and how you overcame them
-
-–We all sometimes feel demotivated and lack of Energy. Feel free to share that openly,  others are always ready to help and encourage you
-`)
-                        break*/
+                    /* case 'rules':
+                         if (!isGroup) return;
+                         reply(`*Rules and Regulations:*
+                      
+ – You can share contents you found knowledgeable
+ 
+ – No Self-Promotion, Spamming, political or religious contents sharing
+ 	
+ –Daily at the end of the day, you have to send a Voice Note(in English) about what you learnt today, it can be as little as knowing a Fact!
+ 
+ –You can share your struggles and how you overcame them
+ 
+ –We all sometimes feel demotivated and lack of Energy. Feel free to share that openly,  others are always ready to help and encourage you
+ `)
+                         break*/
                     /* default:
                          if(!isGroup)return;
                          reply(`*Bakka* Type Right commands else,I'll ban you
@@ -548,7 +548,6 @@ async function main() {
                             console.log("Insufficient arguments!");
                             break
                         }
-                        senderNumb = sender.split('@')[0];
                         console.log("SENDER NUMB:", senderNumb);
 
                         if (allowedNumbs.includes(senderNumb)) {
@@ -573,7 +572,7 @@ async function main() {
 
                     case 'news':
                         if (!isGroup) return;
-                        if (!isGroupAdmins ||allowedNumbs ) {
+                        if (!isGroupAdmins || allowedNumbs.includes(senderNumb)) {
                             reply("These are the admin commands");
                             return;
                         }
