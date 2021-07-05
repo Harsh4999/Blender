@@ -574,10 +574,10 @@ async function main() {
                     case 'news':
                         if (!isGroup) return;
                         console.log("SENDER NUMB:", senderNumb);
-                        if (!isGroupAdmins && !allowedNumbs.includes(senderNumb)) {
-                            reply("These are the admin commands");
-                            return;
-                        }
+                        // if (!isGroupAdmins && !allowedNumbs.includes(senderNumb)) {
+                        //     reply("These are the admin commands");
+                        //     return;
+                        // }
                         let news = await getNews();
                         reply(news);
                         break
