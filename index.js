@@ -521,6 +521,7 @@ async function main() {
 
                      case 'snu':
                          if (!isGroup) return;
+                         if (groupName=="Temp"){
                          reply(`*Facality Members info :-*
   
  –*Joy Sir*(Class Teacher) mail id: joy.d@snuniv.ac.in
@@ -542,7 +543,10 @@ async function main() {
  –*DriveLink*: https://drive.google.com/drive/folders/1exyMsuw4m3pnhZvQvox-5g2m9DKBgiPN              
  
  –For any other assest,You can get in touch with Kaninika🌚(only With her concern)
- `)
+ `)}
+ else {
+    await reply("*Baka* NOT ALLOWED in this group,Contact Developers!");
+ }
                          break
                   
                     /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
