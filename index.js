@@ -524,11 +524,11 @@ async function main() {
                          reply(`*Facality Members info :-*
   
  –*Joy Sir*(Class Teacher) mail id: joy.d@snuniv.ac.in
-                          phoneNo.: +91 89815 32753
+                          *phoneNo*: +91 89815 32753
 
- –*Mousumi* ma'am (HOD computer science Dept.) mail id: mousumi.b@snuniv.ac.in
+ –*Mousumi* ma'am (HOD Cse) mail id: mousumi.b@snuniv.ac.in
  
- –•Chemistry* Prof's ID(Sudipta MAm): sudipta.b@snuniv.ac.in
+ –*Chemistry* Prof's ID(Sudipta Mam): sudipta.b@snuniv.ac.in
  	
  –*Electronics* Prof's ID: ayan.m@snuniv.ac.in
  
@@ -539,7 +539,7 @@ async function main() {
  –*English* Mam : you can directly text her on her whatsapp from offical group😜
 
  –*Chandan Sir* mailId: chan.muk@gmail.com
-             driveLink: https://drive.google.com/drive/folders/1exyMsuw4m3pnhZvQvox-5g2m9DKBgiPN              
+ –*DriveLink*: https://drive.google.com/drive/folders/1exyMsuw4m3pnhZvQvox-5g2m9DKBgiPN              
  
  –For any other assest,You can get in touch with Kaninika🌚(only With her concern)
  `)
