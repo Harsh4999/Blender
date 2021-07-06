@@ -521,11 +521,11 @@ async function main() {
 
                      case 'snu':
                          if (!isGroup) return;
-                         if (groupName=="Temp"){
+                         if (groupName=="Cambradge Univaarsity📚🪄🍻🤩"||"Temp"){
                          reply(`*Facality Members info :-*
   
  –*Joy Sir*(Class Teacher) mail id: joy.d@snuniv.ac.in
-                          *phoneNo*: +91 89815 32753
+  *phoneNo*: +91 89815 32753
 
  –*Mousumi* ma'am (HOD Cse) mail id: mousumi.b@snuniv.ac.in
  
