@@ -521,7 +521,7 @@ async function main() {
 
                      case 'snu':
                          if (!isGroup) return;
-                         if (groupName=="Cambradge Univaarsity📚🪄🍻🤩"||"Temp"){
+                         if (groupName=="Cambradge Univaarsity📚🪄🍻🤩"){
                          reply(`*Facality Members info :-*
   
  –*Joy Sir*(Class Teacher) mail id: joy.d@snuniv.ac.in
