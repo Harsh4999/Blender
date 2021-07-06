@@ -519,7 +519,7 @@ async function main() {
 
                         break
 
-                     case 'info':
+                     case 'snu':
                          if (!isGroup) return;
                          reply(`*Facality Members info :-*
   
