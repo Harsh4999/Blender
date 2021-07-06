@@ -519,27 +519,32 @@ async function main() {
 
                         break
 
-                    /* case 'rules':
+                     case 'info':
                          if (!isGroup) return;
-                         reply(`*Rules and Regulations:*
-                      
- – You can share contents you found knowledgeable
+                         reply(`*Facality Members info :-*
+  
+ –*Joy Sir*(Class Teacher) mail id: joy.d@snuniv.ac.in
+                          phoneNo.: +91 89815 32753
+
+ –*Mousumi* ma'am (HOD computer science Dept.) mail id: mousumi.b@snuniv.ac.in
  
- – No Self-Promotion, Spamming, political or religious contents sharing
+ –•Chemistry* Prof's ID(Sudipta MAm): sudipta.b@snuniv.ac.in
  	
- –Daily at the end of the day, you have to send a Voice Note(in English) about what you learnt today, it can be as little as knowing a Fact!
+ –*Electronics* Prof's ID: ayan.m@snuniv.ac.in
  
- –You can share your struggles and how you overcame them
+ –*Cleartest Web Link*: https://test.direct.cleartestonline.com/
+
+ –*MProcess* Prof's ID: paramanand.n@snuniv.ac.in
+
+ –*English* Mam : you can directly text her on her whatsapp from offical group😜
+
+ –*Chandan Sir* mailId: chan.muk@gmail.com
+             driveLink: https://drive.google.com/drive/folders/1exyMsuw4m3pnhZvQvox-5g2m9DKBgiPN              
  
- –We all sometimes feel demotivated and lack of Energy. Feel free to share that openly,  others are always ready to help and encourage you
+ –For any other assest,You can get in touch with Kaninika🌚(only With her concern)
  `)
-                         break*/
-                    /* default:
-                         if(!isGroup)return;
-                         reply(`*Bakka* Type Right commands else,I'll ban you
-    Type /help for help`)*/
-
-
+                         break
+                  
                     /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
                     //reply = reply with tag 
                     //costum("ourTEXT",text) = reply without tagging
