@@ -183,7 +183,7 @@ async function getPrice(cryptoCode) {
             var data = response.data
             console.log(data)
             var cryptoCodeINR = cryptoCode + "INR"
-            if (data[cryptoCode] != undefined || data[cryptoCodeINR] != undefined) {
+            if (data[cryptoCode.toString()] != undefined || data[cryptoCodeINR.toString()] != undefined) {
                 cryptoCode = data[cryptoCode] == undefined ? cryptoCodeINR : cryptoCode
                 var out = ({
                     name: cryptoCode,
