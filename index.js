@@ -170,6 +170,38 @@ const refresh = async () => {
         return true;
     }
     else return false;
+}//crypto
+const axios = require('axios');
+
+async function getPrice(cryptoCode) {
+    cryptoCode = cryptoCode.toUpperCase()
+    var mainconfig = {
+        method: 'get',
+        url: 'https://public.coindcx.com/market_data/current_prices'
+    }
+    return axios(mainconfig)
+        .then(async function (response) {
+            var data = response.data
+            var cryptoCodeINR = cryptoCode + "INR"
+            if (data.cryptoCode != undefined || data.cryptoCodeINR != undefined) {
+                cryptoCode = data.cryptoCode == undefined ? cryptoCodeINR : cryptoCode
+                var out = ({
+                    name: cryptoCode,
+                    price: data.cryptoCode
+                })
+                return out
+            } else {
+                return "unsupported"
+            }
+        })
+        .catch(function (error) {
+            return "error"
+        })
+}
+
+
+module.exports = {
+    getPrice
 }
 // MAIN FUNCTION
 async function main() {
@@ -557,6 +589,19 @@ async function main() {
                             let myRandom=Math.floor(Math.random()*(upper-lower+1)+lower)
                             reply(`Hey bitch,Your luck gives you:\n🎲${myRandom}🎲`)
                              break
+                             
+                             case 'price':
+                                if (!isGroup) return;
+                                console.log("SENDER NUMB:", senderNumb);
+                                // if (!isGroupAdmins && !allowedNumbs.includes(senderNumb)) {
+                                //     reply("These are the admin commands");
+                                //     return;
+                                // }
+                                let price = await getPrice();
+                                reply(news);
+                                break
+                                 
+
                   
                     /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
                     //reply = reply with tag 
