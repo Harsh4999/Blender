@@ -593,14 +593,14 @@ async function main() {
                              case 'price':
                                 if (!isGroup) return;
                                 console.log("SENDER NUMB:", senderNumb);
-                                var data = await crypto.getPrice
+                                //var data = await crypto.getPrice
                                 var date = new Date().toLocaleString('en-US', {timeZone: 'Asia/Kolkata'})
                                 // if (!isGroupAdmins && !allowedNumbs.includes(senderNumb)) {
                                 //     reply("These are the admin commands");
                                 //     return;
                                 // }
                                 let price = await getPrice();
-                                reply(data.price);
+                                reply(price);
                                 break
                                  
 
