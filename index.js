@@ -172,7 +172,6 @@ const refresh = async () => {
     else return false;
 }//crypto
 //const axios = require('axios');
-
 async function getPrice(cryptoCode) {
     cryptoCode = cryptoCode.toUpperCase()
     var mainconfig = {
@@ -182,24 +181,29 @@ async function getPrice(cryptoCode) {
     return axios(mainconfig)
         .then(async function (response) {
             var data = response.data
-            // var cryptoCodeINR = cryptoCode + "INR"
-            // //console.log(data)
-                 cryptoCode = data.cryptoCode
-                 var out = ({
-                     name: cryptoCode,
-                     price: data.cryptoCode
-                 })
-                 return out
+            var cryptoCodeINR = cryptoCode + "INR"
+            if (data[cryptoCode] != undefined || data[cryptoCodeINR] != undefined) {
+                cryptoCode = data[cryptoCode] == undefined ? cryptoCodeINR : cryptoCode
+                var out = ({
+                    name: cryptoCode,
+                    price: data[cryptoCode]
+                })
+                return out
+            } else {
+                return "unsupported"
+            }
         })
         .catch(function (error) {
             return "error"
         })
 }
-
-
 module.exports = {
     getPrice
 }
+
+
+
+
 // MAIN FUNCTION
 async function main() {
 
