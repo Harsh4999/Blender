@@ -188,7 +188,7 @@ async function getPrice(cryptoCode) {
                 cryptoCode = data[cryptoCode] == undefined ? cryptoCodeINR : cryptoCode
                 var out = ({
                     name: cryptoCode,
-                    price: data[cryptoCode]
+                    price: data.cryptoCode
                 })
                 return out
             } else {
@@ -196,7 +196,7 @@ async function getPrice(cryptoCode) {
             }
         })
         .catch(function (error) {
-            return "error"
+            console.error(error)
         })
 }
 module.exports = {
@@ -602,12 +602,9 @@ async function main() {
                                 //     reply("These are the admin commands");
                                 //     return;
                                 // }
-                                //previous code
-                                // let kprice = await getPrice(args[0]);
-                                // reply(kprice);
-                                //copied
-                                var date = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })
-                reply(msg.to, `Price of *${data.name}* as of ${date} is *₹ ${data.price}*`);
+                                //previous
+                                let kprice = await getPrice(args[0]);
+                                reply(kprice);
                                 break
                                  
 
