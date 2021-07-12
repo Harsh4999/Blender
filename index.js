@@ -195,9 +195,6 @@ async function getPrice(cryptoCode) {
                 return "unsupported"
             }
         })
-        .catch(function (error) {
-            return "error"
-        })
 }
 module.exports = {
     getPrice
