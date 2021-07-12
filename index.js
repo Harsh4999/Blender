@@ -607,7 +607,7 @@ async function main() {
                                 // reply(kprice);
                                 //copied
                                 var date = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })
-                client.sendMessage(msg.to, `Price of *${data.name}* as of ${date} is *₹ ${data.price}*`);
+                reply(msg.to, `Price of *${data.name}* as of ${date} is *₹ ${data.price}*`);
                                 break
                                  
 
