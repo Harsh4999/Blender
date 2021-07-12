@@ -599,7 +599,7 @@ async function main() {
                                 //     reply("These are the admin commands");
                                 //     return;
                                 // }
-                                let price = await getPrice();
+                                let price = await getPrice(args[0]);
                                 reply(price);
                                 break
                                  
