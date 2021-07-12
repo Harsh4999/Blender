@@ -602,8 +602,12 @@ async function main() {
                                 //     reply("These are the admin commands");
                                 //     return;
                                 // }
-                                let kprice = await getPrice(args[0]);
-                                reply(kprice);
+                                //previous code
+                                // let kprice = await getPrice(args[0]);
+                                // reply(kprice);
+                                //copied
+                                var date = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })
+                client.sendMessage(msg.to, `Price of *${data.name}* as of ${date} is *₹ ${data.price}*`);
                                 break
                                  
 
