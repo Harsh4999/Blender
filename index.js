@@ -173,15 +173,15 @@ const refresh = async () => {
 }//crypto
 //const axios = require('axios');
 async function getPrice(cryptoCode) {
-    cryptoCode=cryptoCode.toString()
+    //cryptoCode=cryptoCode.toString()
     cryptoCode = cryptoCode.toUpperCase()
     var mainconfig = {
         method: 'get',
         url: 'https://public.coindcx.com/market_data/current_prices'
     }
     return axios(mainconfig)
-        .then(async function (response) {
-            var data = response.data
+        .then(async function (mainconfig) {
+            var data = mainconfig.data
             console.log(data)
             var cryptoCodeINR = cryptoCode + "INR"
             if (data.cryptoCode.toString() != undefined || data.cryptoCodeINR.toString() != undefined) {
