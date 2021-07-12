@@ -182,7 +182,7 @@ async function getPrice(cryptoCode) {
     return axios(mainconfig)
         .then(async function (response) {
             var data = response.data
-            $console.log(data)
+            console.log(data)
             var cryptoCodeINR = cryptoCode + "INR"
             if (data[cryptoCode.toString()] != undefined || data[cryptoCodeINR.toString()] != undefined) {
                 cryptoCode = data[cryptoCode] == undefined ? cryptoCodeINR : cryptoCode
