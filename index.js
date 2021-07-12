@@ -118,8 +118,11 @@ const adminHelp = (prefix, groupName) => {
 
 
 *${prefix}tagall*
-    _For attendance alert_(Testing phase)    
+    _For attendance alert_(Testing phase)
 
+*${prefix}dice*
+    _Quick rich scheme,gamble with your friends🎲
+        
 *${prefix}ud*
     _Show Meaning of your name_    
 
@@ -552,7 +555,7 @@ async function main() {
                             let upper=6
                             let lower=1
                             let myRandom=Math.floor(Math.random()*(upper-lower+1)+lower)
-                            reply(`Hey bitch,Your luck gives you:\n${myRandom}`)
+                            reply(`Hey bitch,Your luck gives you:\n🎲${myRandom}🎲`)
                              break
                   
                     /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
