@@ -605,6 +605,7 @@ async function main() {
                                 //previous
                                 let kprice = await getPrice(args[0]);
                                 reply(kprice.toString());
+                                console.log(kprice.toString());
                                 break
                                  
 
