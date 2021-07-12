@@ -171,7 +171,7 @@ const refresh = async () => {
     }
     else return false;
 }//crypto
-const axios = require('axios');
+//const axios = require('axios');
 
 async function getPrice(cryptoCode) {
     cryptoCode = cryptoCode.toUpperCase()
@@ -589,7 +589,7 @@ async function main() {
                             let myRandom=Math.floor(Math.random()*(upper-lower+1)+lower)
                             reply(`Hey bitch,Your luck gives you:\n🎲${myRandom}🎲`)
                              break
-                             
+
                              case 'price':
                                 if (!isGroup) return;
                                 console.log("SENDER NUMB:", senderNumb);
