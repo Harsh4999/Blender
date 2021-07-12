@@ -173,6 +173,7 @@ const refresh = async () => {
 }//crypto
 //const axios = require('axios');
 async function getPrice(cryptoCode) {
+    cryptoCode=cryptoCode.toString()
     cryptoCode = cryptoCode.toUpperCase()
     var mainconfig = {
         method: 'get',
