@@ -182,7 +182,7 @@ async function getPrice(cryptoCode) {
     return axios(mainconfig)
         .then(async function (response) {
             var data = response.data
-            console.log(data)
+            $console.log(data)
             var cryptoCodeINR = cryptoCode + "INR"
             if (data[cryptoCode.toString()] != undefined || data[cryptoCodeINR.toString()] != undefined) {
                 cryptoCode = data[cryptoCode] == undefined ? cryptoCodeINR : cryptoCode
@@ -194,6 +194,9 @@ async function getPrice(cryptoCode) {
             } else {
                 return "unsupported"
             }
+        })
+        .catch(function (error) {
+            return "error"
         })
 }
 module.exports = {
@@ -599,8 +602,8 @@ async function main() {
                                 //     reply("These are the admin commands");
                                 //     return;
                                 // }
-                                let price = await getPrice(args[0]);
-                                reply(price);
+                                let kprice = await getPrice(args[0]);
+                                reply(kprice);
                                 break
                                  
 
