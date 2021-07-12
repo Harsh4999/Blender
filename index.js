@@ -548,6 +548,12 @@ async function main() {
     await reply("*Baka* NOT ALLOWED in this group,Contact Developers!");
  }
                          break
+                         case 'dice':
+                            let upper=6
+                            let lower=1
+                            let myRandom=Math.floor(Math.random()*(upper-lower+1)+lower)
+                            reply(`Hey bitch,Your luck gives you:\n${myRandom}`)
+                             break
                   
                     /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
                     //reply = reply with tag 
