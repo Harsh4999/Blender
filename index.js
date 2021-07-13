@@ -612,7 +612,7 @@ async function main() {
                                    cc = cc.toUpperCase()+'INR';
                                   var kprice=resolved.data[cc]
                                    if(kprice){
-                                       reply(`${cc} = ₹${kprice.toPrecision(2)}`);
+                                       reply(`${cc} = ₹${parseFloat(kprice).toPrecision(2)}`);
                                    }else{
                                        reply('Coin not found');
                                    }
