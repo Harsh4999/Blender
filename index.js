@@ -612,7 +612,7 @@ async function main() {
                                    cc = cc.toUpperCase()+"USDT";
                                   var kprice=resolved.data[cc]
                                    if(kprice){
-                                       reply(`${cc} = ${Number(kprice)}`);
+                                       reply(`${cc} USDT = ${Number(kprice)}`);
                                    }else{
                                        reply('Coin not found');
                                    }
