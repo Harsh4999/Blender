@@ -610,8 +610,9 @@ async function main() {
                                getPrice().then((resolved)=>{
                                    var cc = args[0];
                                    cc = cc.toUpperCase()+'INR';
-                                   if(resolved.data[cc]){
-                                       reply(`${cc} = ₹${resolved.data[cc].toPrecision(2)}`);
+                                  var kprice=resolved.data[cc]
+                                   if(kprice){
+                                       reply(`${cc} = ₹${kprice.toPrecision(2)}`);
                                    }else{
                                        reply('Coin not found');
                                    }
