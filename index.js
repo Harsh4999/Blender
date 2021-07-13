@@ -172,32 +172,32 @@ const refresh = async () => {
     else return false;
 }//crypto
 //const axios = require('axios');
-async function getPrice(cryptoCode) {
+async function getPrice() {
     //cryptoCode=cryptoCode.toString()
-    cryptoCode = cryptoCode.toUpperCase()
+   // cryptoCode = cryptoCode.toUpperCase()
     var mainconfig = {
         method: 'get',
         url: 'https://public.coindcx.com/market_data/current_prices'
     }
     return axios(mainconfig)
-        .then(async function (mainconfig) {
-            var data = mainconfig.data
-            console.log(data)
-            var cryptoCodeINR = cryptoCode + "INR"
-            if (data.cryptoCode.toString() != undefined || data.cryptoCodeINR.toString() != undefined) {
-                cryptoCode = data.cryptoCode == undefined ? cryptoCodeINR : cryptoCode
-                var out = ({
-                    name: cryptoCode,
-                    price: data.cryptoCode
-                })
-                return out
-            } else {
-                return "unsupported"
-            }
-        })
-        .catch(function (error) {
-            return "error"
-        })
+        // .then(async function (response) {
+        //     var data = response.data
+        //     console.log(data)
+        //     var cryptoCodeINR = cryptoCode + "INR"
+        //     if (data.cryptoCode.toString() != undefined || data.cryptoCodeINR.toString() != undefined) {
+        //         cryptoCode = data.cryptoCode == undefined ? cryptoCodeINR : cryptoCode
+        //         var out = ({
+        //             name: cryptoCode,
+        //             price: data.cryptoCode
+        //         })
+        //         return out
+        //     } else {
+        //         return "unsupported"
+        //     }
+        // })
+        // .catch(function (error) {
+        //     return "error"
+        // })
 }
 module.exports = {
     getPrice
@@ -603,9 +603,22 @@ async function main() {
                                 //     return;
                                 // }
                                 //previous
-                                let kprice = await getPrice(args[0]);
-                                reply(kprice.toString());
-                                console.log(kprice.toString());
+            
+                                // let kprice = await getPrice(args[0]);
+                               // reply(kprice.toString());
+                               // console.log(kprice.toString());
+                               getPrice().then((resolved)=>{
+                                   var cc = args[0];
+                                   cc = cc.toUpperCase()+'INR';
+                                   if(resolved.data[cc]){
+                                       reply(resolved.data[cc]);
+                                   }else{
+                                       reply('Coin not found');
+                                   }
+                               }).catch((err)=>{
+                                   console.log(err);
+                               });
+
                                 break
                                  
 
