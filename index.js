@@ -611,7 +611,7 @@ async function main() {
                                    var cc = args[0];
                                    cc = cc.toUpperCase()+'INR';
                                    if(resolved.data[cc]){
-                                       reply(`${resolved.data[cc]}&#8377;`);
+                                       reply(`${cc} = ₹${resolved.data[cc]}`);
                                    }else{
                                        reply('Coin not found');
                                    }
