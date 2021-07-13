@@ -609,7 +609,7 @@ async function main() {
                                // console.log(kprice.toString());
                                getPrice().then((resolved)=>{
                                    var cc = args[0];
-                                   cc = cc.toUpperCase();
+                                   cc = cc.toUpperCase()+"USDT";
                                   var kprice=resolved.data[cc]
                                    if(kprice){
                                        reply(`${cc} = ${Number(kprice)}`);
