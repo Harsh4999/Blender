@@ -609,10 +609,15 @@ async function main() {
                                // console.log(kprice.toString());
                                getPrice().then((resolved)=>{
                                    var cc = args[0];
-                                   cc = cc.toUpperCase()+"USDT";
-                                  var kprice=resolved.data[cc]
+                                   var cc1=cc.toUpperCase()+"INR"
+                                   cc2 = cc.toUpperCase()+"USDT";
+                                  var kprice=resolved.data[cc2]
+                                  var iPrice=resolved.data[cc1]
                                    if(kprice){
-                                       reply(`${cc} = $${Number(kprice)}`);
+                                       reply(`${cc2} = $${Number(kprice)}`);
+                                       if(iPrice){
+                                           reply(`${cc1} = ₹${Number(kprice)}`)
+                                       }
                                    }else{
                                        reply('Coin not found');
                                    }
