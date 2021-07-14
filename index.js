@@ -616,7 +616,7 @@ async function main() {
                                    if(kprice){
                                        reply(`${cc2} = $${Number(kprice)}`);
                                        if(iPrice){
-                                           reply(`${cc1} = ₹${Number(kprice)}`)
+                                           reply(`${cc1} = ₹${Number(iPrice)}`)
                                        }
                                    }else{
                                        reply('Coin not found');
