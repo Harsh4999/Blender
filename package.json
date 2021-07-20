@@ -25,7 +25,9 @@
     "wa-sticker-formatter": "^3.6.0"
   },
   "homepage": "https://github.com/karmaisgreat/simple-whatsapp-bot#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "puppeteer": "^10.1.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/karmaisgreat/simple-whatsapp-bot.git"
