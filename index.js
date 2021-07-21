@@ -595,13 +595,13 @@ async function main() {
                             reply(`Hey bitch,Your luck gives you:\n🎲${myRandom}🎲`)
                              break
                              case 'youtube':
-                                 var url = args[0];
-                                 reply`${url}`
+                                 var url = args[0].toString();
+                                // reply`${url}`
                                  const dm=async(url)=>{
                                     let info=ytdl.getInfo(url)
-                                    await ytdl(url,{filter: info => info.itag==22 || info.itag==18})
+                                     await ytdl(url,{filter: info => info.itag==22 || info.itag==18})
                                       .pipe(fs.createWriteStream('video2012.mp4'))
-                                      await conn.sendMessage(
+                                      await (conn.sendMessage(
                                           from,
                                           fs.readFileSync('video2012.mp4'),
                                           MessageType.video,
