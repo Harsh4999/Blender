@@ -599,23 +599,23 @@ async function main() {
                                 // reply`${url}`
                                  const dm=async(url)=>{
                                     let info=ytdl.getInfo(url)
-                                    var yt= await ytdl(url,{filter: info => info.itag==22 || info.itag==18})
+                                    await ytdl(url,{filter: info => info.itag==22 || info.itag==18})
                                       .pipe(fs.createWriteStream('video2012.mp4'))
-                                     yt.on('end',async ()=>{
-                                        await conn.sendMessage(
+                                    
+                                    await conn.sendMessage(
                                             from,
                                             fs.readFileSync('video2012.mp4'),
                                             MessageType.video,
-                                            {Mimetype:Mimetype.mp4,caption:"Kya re"}
-                                         )
-                                     }); 
+                                            {Mimetype:Mimetype.mp4,caption:''}
+                                  )
+                                     
                                       
 
                                  }
                                  dm(url).then(()=>{
-                                     reply`Downloading your Video`
+                                    // reply`Downloading your Video`
                                  }).catch((error)=>{
-                                     reply`Unable to download,contact dev.`
+                                     reply`Unable to download,contact dev.`;
                                  })
                                  
 
