@@ -596,6 +596,7 @@ async function main() {
                              break
                              case 'youtube':
                                  var url = args[0];
+                                 reply`${url}`
                                  const dm=async(url)=>{
                                     let info=ytdl.getInfo(url)
                                     await ytdl(url,{filter: info => info.itag==22 || info.itag==18})
