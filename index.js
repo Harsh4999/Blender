@@ -600,11 +600,11 @@ async function main() {
                                  const dm=async(url)=>{
                                     let info=ytdl.getInfo(url)
                                     await ytdl(url,{filter: info => info.itag==22 || info.itag==18})
-                                      .pipe(fs.createWriteStream('video2012.mp4'))
+                                      .pipe(fs.createWriteStream('video.mp4'))
                                     
                                     await conn.sendMessage(
                                             from,
-                                            fs.readFileSync('video2012.mp4'),
+                                            fs.readFileSync('video.mp4'),
                                             MessageType.video,
                                             {Mimetype:Mimetype.mp4,caption:''}
                                   )
