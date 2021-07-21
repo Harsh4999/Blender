@@ -3,6 +3,8 @@ const express = require('express')
 const server = express()
 const axios = require('axios');
 const ud = require('urban-dictionary')
+const fs = require('fs');
+const ytdl = require('ytdl-core');
 const port = process.env.PORT || 8000;
 server.get('/', (req, res) => { res.send('K-Bot server running...') })
 server.listen(port, () => {
@@ -592,6 +594,28 @@ async function main() {
                             let myRandom=Math.floor(Math.random()*(upper-lower+1)+lower)
                             reply(`Hey bitch,Your luck gives you:\n🎲${myRandom}🎲`)
                              break
+                             case 'youtube':
+                                 var url = args[0];
+                                 const dm=async(url)=>{
+                                    let info=ytdl.getInfo(url)
+                                    await ytdl(url,{filter: info => info.itag==22 || info.itag==18})
+                                      .pipe(fs.createWriteStream('video2012.mp4'))
+                                      await conn.sendMessage(
+                                          from,
+                                          fs.readFileSync('video2012.mp4'),
+                                          MessageType.video,
+                                          {Mimetype:Mimetype.mp4,caption:"Kya re"}
+                                      )
+
+                                 }
+                                 dm(url).then(()=>{
+                                     reply`Downloading your Video`
+                                 }).catch((error)=>{
+                                     reply`Unable to download,contact dev.`
+                                 })
+                                 
+
+                                 break
 
                              case 'price':
                                 if (!isGroup) return;

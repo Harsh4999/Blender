@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/karmaisgreat/simple-whatsapp-bot#readme",
   "devDependencies": {
-    "puppeteer": "^10.1.0"
+    "puppeteer": "^10.1.0",
+    "ytdl-core": "^4.9.0"
   },
   "repository": {
     "type": "git",
