@@ -310,7 +310,7 @@ async function main() {
             const isGroupAdmins = groupAdmins.includes(sender) || false
 
             const reply = (teks) => {
-                conn.sendMessage(from, teks, text, {
+                conn.sendMessage(from, teks, text,video, {
                     quoted: mek
                 })
             }
