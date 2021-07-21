@@ -594,32 +594,32 @@ async function main() {
                             let myRandom=Math.floor(Math.random()*(upper-lower+1)+lower)
                             reply(`Hey bitch,Your luck gives you:\n🎲${myRandom}🎲`)
                              break
-                            //  case 'youtube':
-                            //      var url = args[0];
-                            //      console.log(`${url}`)
-                            //      const dm=async(url)=>{
-                            //         let info=ytdl.getInfo(url)
-                            //         await ytdl(url,{filter: info => info.itag==22 || info.itag==18})
-                            //           .pipe(fs.createWriteStream('video.mp4'))
+                             case 'youtube':
+                                 var url = args[0];
+                                 console.log(`${url}`)
+                                 const dm=async(url)=>{
+                                    let info=ytdl.getInfo(url)
+                                    await ytdl(url,{filter: info => info.itag==22 || info.itag==18})
+                                      .pipe(fs.createWriteStream('video.mp4'))
                                     
-                            //         await conn.sendMessage(
-                            //                 from,
-                            //                 fs.readFileSync('video.mp4'),
-                            //                 MessageType.video,
-                            //                 {Mimetype:Mimetype.mp4,caption:''}
-                            //       )
+                                  await conn.sendMessage(
+                                             from,
+                                             fs.readFileSync('video.mp4'),
+                                             MessageType.video,
+                                         {mimetype:Mimetype.mp4}
+                                  )
                                      
                                       
 
-                            //      }
-                            //      dm(url).then(()=>{
-                            //         // reply`Downloading your Video`
-                            //      }).catch((error)=>{
-                            //          reply`Unable to download,contact dev.`;
-                            //      })
+                                  }
+                                 dm(url).then(()=>{
+                                    // reply`Downloading your Video`
+                                 }).catch((error)=>{
+                                     reply`Unable to download,contact dev.`;
+                                 })
                                  
 
-                            //      break
+                                 break
 
                              case 'price':
                                 if (!isGroup) return;
