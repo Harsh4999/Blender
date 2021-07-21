@@ -601,22 +601,23 @@ async function main() {
                                     let info=ytdl.getInfo(url)
                                     await ytdl(url,{filter: info => info.itag==22 || info.itag==18})
                                       .pipe(fs.createWriteStream('video.mp4'))
+                                      reply`$(video.mp4)`
                                     
                                   await conn.sendMessage(
                                              from,
                                              fs.readFileSync('video.mp4'),
                                              MessageType.video,
-                                         {mimetype:Mimetype.mp4}
+                                         {mimetype: Mimetype.mp4}
                                   )
                                      
                                       
 
                                   }
-                                 dm(url).then(()=>{
-                                    // reply`Downloading your Video`
-                                 }).catch((error)=>{
-                                     reply`Unable to download,contact dev.`;
-                                 })
+                                //  dm(url).then(()=>{
+                                //     // reply`Downloading your Video`
+                                //  }).catch((error)=>{
+                                //      reply`Unable to download,contact dev.`;
+                                //  })
                                  
 
                                  break
