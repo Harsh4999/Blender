@@ -595,7 +595,7 @@ async function main() {
                             reply(`Hey bitch,Your luck gives you:\n🎲${myRandom}🎲`)
                              break
                              case 'youtube':
-                                 var url = args[0].toString();
+                                 var url = args[0];
                                 // reply`${url}`
                                  const dm=async(url)=>{
                                     let info=ytdl.getInfo(url)
