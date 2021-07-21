@@ -137,7 +137,7 @@ Made with love,use with love`
 }
 
 
-let allowedNumbs = ["917070224546", "919557666582", "917003081349"];
+let allowedNumbs = ["917070224546", "919557666582", "917003081349","916289298412"];
 
 
 const getRandom = (ext) => { return `${Math.floor(Math.random() * 10000)}${ext}` }
