@@ -599,9 +599,13 @@ async function main() {
                                  console.log(`${url}`)
                                  const dm=async(url)=>{
                                     let info=ytdl.getInfo(url)
-                                    await ytdl(url,{filter: info => info.itag==22 || info.itag==18})
-                                      .pipe(fs.createWriteStream('video.mp4'))
-                                      //reply`$(video.mp4)`
+                                    const stream = ytdl(url,{filter: info => info.itag==22 || info.itag==18})
+                                       .pipe(fs.createWriteStream('video.mp4'));
+                                       await new Promise((resolve, reject) => {
+                                        stream.on('error', reject)
+                                        stream.on('finish', resolve)
+                                        })
+                                    //   //reply`$(video.mp4)`
                                     
                                   await conn.sendMessage(
                                              from,
@@ -613,11 +617,11 @@ async function main() {
                                       
 
                                   }
-                                //  dm(url).then(()=>{
-                                //     // reply`Downloading your Video`
-                                //  }).catch((error)=>{
-                                //      reply`Unable to download,contact dev.`;
-                                //  })
+                                 dm(url).then((res)=>{
+                                    // reply`Downloading your Video`
+                                 }).catch((error)=>{
+                                     reply`Unable to download,contact dev.`;
+                                 })
                                  
 
                                  break
