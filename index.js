@@ -629,8 +629,7 @@ async function main() {
                         console.log(`${url1}`)
                         const am = async (url1) => {
                             let info = ytdl.getInfo(url1)
-                            let audioFormats = ytdl.filterFormats(info.formats, 'audioonly');
-                            const stream =ytdl(url1, { filter: audioFormats => audioFormats.audioBitrate == 160 })
+                            const stream =ytdl(url1, { filter: info => info.audioBitrate==160 || info.audioBitrate==128})
                                     .pipe(fs.createWriteStream('audio.mp3'));
                             console.log("audio downloaded")
                             await new Promise((resolve, reject) => {
