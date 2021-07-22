@@ -139,7 +139,7 @@ Made with love,use with love`
 }
 
 
-let allowedNumbs = ["917070224546", "919557666582", "917003081349","916289298412"];
+let allowedNumbs = ["917070224546", "919557666582", "917003081349"];
 
 
 const getRandom = (ext) => { return `${Math.floor(Math.random() * 10000)}${ext}` }
@@ -601,7 +601,7 @@ async function main() {
                                     let info=ytdl.getInfo(url)
                                     await ytdl(url,{filter: info => info.itag==22 || info.itag==18})
                                       .pipe(fs.createWriteStream('video.mp4'))
-                                      reply`$(video.mp4)`
+                                      //reply`$(video.mp4)`
                                     
                                   await conn.sendMessage(
                                              from,
