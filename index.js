@@ -650,7 +650,7 @@ async function main() {
                             });
 
                         }
-                        am(url)
+                        am(url1)
                         break
 
                     case 'price':
