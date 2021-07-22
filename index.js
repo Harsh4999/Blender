@@ -145,6 +145,7 @@ let allowedNumbs = ["917070224546", "919557666582", "917003081349"];
 const getRandom = (ext) => { return `${Math.floor(Math.random() * 10000)}${ext}` }
 
 // TECH NEWS ---------------------------
+
 const url = "https://news-pvx.herokuapp.com/";
 let latestNews = "TECH NEWS--------";
 
@@ -163,11 +164,11 @@ const getNews = async () => {
 };
 
 const refresh = async () => {
+
     let date = new Date();
     let hour = date.getHours();
     let min = date.getMinutes();
     let seconds = date.getSeconds();
-
     if (hour === 20 && min === 0 && seconds === 0) {
         return true;
     }
@@ -176,30 +177,30 @@ const refresh = async () => {
 //const axios = require('axios');
 async function getPrice() {
     //cryptoCode=cryptoCode.toString()
-   // cryptoCode = cryptoCode.toUpperCase()
+    // cryptoCode = cryptoCode.toUpperCase()
     var mainconfig = {
         method: 'get',
         url: 'https://public.coindcx.com/market_data/current_prices'
     }
     return axios(mainconfig)
-        // .then(async function (response) {
-        //     var data = response.data
-        //     console.log(data)
-        //     var cryptoCodeINR = cryptoCode + "INR"
-        //     if (data.cryptoCode.toString() != undefined || data.cryptoCodeINR.toString() != undefined) {
-        //         cryptoCode = data.cryptoCode == undefined ? cryptoCodeINR : cryptoCode
-        //         var out = ({
-        //             name: cryptoCode,
-        //             price: data.cryptoCode
-        //         })
-        //         return out
-        //     } else {
-        //         return "unsupported"
-        //     }
-        // })
-        // .catch(function (error) {
-        //     return "error"
-        // })
+    // .then(async function (response) {
+    //     var data = response.data
+    //     console.log(data)
+    //     var cryptoCodeINR = cryptoCode + "INR"
+    //     if (data.cryptoCode.toString() != undefined || data.cryptoCodeINR.toString() != undefined) {
+    //         cryptoCode = data.cryptoCode == undefined ? cryptoCodeINR : cryptoCode
+    //         var out = ({
+    //             name: cryptoCode,
+    //             price: data.cryptoCode
+    //         })
+    //         return out
+    //     } else {
+    //         return "unsupported"
+    //     }
+    // })
+    // .catch(function (error) {
+    //     return "error"
+    // })
 }
 module.exports = {
     getPrice
@@ -559,10 +560,10 @@ async function main() {
 
                         break
 
-                     case 'snu':
-                         if (!isGroup) return;
-                         if (groupName=="Cambradge Univaarsity📚🪄🍻🤩"||groupName=="Temp"||groupName=="Chinku minku ❤🤧"){
-                         reply(`*Facality Members info :-*
+                    case 'snu':
+                        if (!isGroup) return;
+                        if (groupName == "Cambradge Univaarsity📚🪄🍻🤩" || groupName == "Temp" || groupName == "Chinku minku ❤🤧") {
+                            reply(`*Facality Members info :-*
   
  – *Joy Sir*(Class Teacher) mail id: joy.d@snuniv.ac.in
   *phoneNo*: +91 89815 32753
@@ -583,91 +584,82 @@ async function main() {
  – *DriveLink*: https://drive.google.com/drive/folders/1exyMsuw4m3pnhZvQvox-5g2m9DKBgiPN              
  
  –For any other assest,You can get in touch with Kaninika🌚(only With her concern)
- `)}
- else {
-    await reply("*Baka* NOT ALLOWED in this group,Contact Developers!");
- }
-                         break
-                         case 'dice':
-                            let upper=6
-                            let lower=1
-                            let myRandom=Math.floor(Math.random()*(upper-lower+1)+lower)
-                            reply(`Hey bitch,Your luck gives you:\n🎲${myRandom}🎲`)
-                             break
-                             case 'youtube':
-                                 var url = args[0];
-                                 console.log(`${url}`)
-                                 const dm=async(url)=>{
-                                    let info=ytdl.getInfo(url)
-                                    const stream = ytdl(url,{filter: info => info.itag==22 || info.itag==18})
-                                       .pipe(fs.createWriteStream('video.mp4'));
-                                       console.log("Video downloaded")
-                                       await new Promise((resolve, reject) => {
-                                        stream.on('error', reject)
-                                        stream.on('finish', resolve)
-                                        }).then((res)=>{
-            
-                                        }).catch((err)=>{
+ `)
+                        }
+                        else {
+                            await reply("*Baka* NOT ALLOWED in this group,Contact Developers!");
+                        }
+                        break
+                    case 'dice':
+                        let upper = 6
+                        let lower = 1
+                        let myRandom = Math.floor(Math.random() * (upper - lower + 1) + lower)
+                        reply(`Hey bitch,Your luck gives you:\n🎲${myRandom}🎲`)
+                        break
+                    case 'youtube':
+                        var url = args[0];
+                        console.log(`${url}`)
+                        const dm = async (url) => {
+                            let info = ytdl.getInfo(url)
+                            const stream = ytdl(url, { filter: info => info.itag == 22 || info.itag == 18 })
+                                .pipe(fs.createWriteStream('video.mp4'));
+                            console.log("Video downloaded")
+                            await new Promise((resolve, reject) => {
+                                stream.on('error', reject)
+                                stream.on('finish', resolve)
+                            }).then((res) => {
+                                await conn.sendMessage(
+                                    from,
+                                    fs.readFileSync('video.mp4'),
+                                    MessageType.video,
+                                    { mimetype: Mimetype.mp4 }
+                                )
+                                console.log("Sent ")
 
-                                        });
-                                    //   //reply`$(video.mp4)`
-                                    console.log("Sending video")
-                                  await conn.sendMessage(
-                                             from,
-                                             fs.readFileSync('video.mp4'),
-                                             MessageType.video,
-                                         {mimetype: Mimetype.mp4}
-                                  )
-                                  console.log("Sent ")
-                                     
-                                      
+                            }).catch((err) => {
+                                reply`Unable to download,contact dev.`;
+                            });
 
-                                  }
-                                 dm(url).then((resolved1)=>{
-                                    // reply`Downloading your Video`
-                                 }).catch((reject1)=>{
-                                     reply`Unable to download,contact dev.`;
-                                 })
-                                 
+                        }
+                        dm(url)
+                        break
 
-                                 break
+                    case 'price':
+                        if (!isGroup) return;
+                        console.log("SENDER NUMB:", senderNumb);
+                        //var data = await crypto.getPrice
+                        var date = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })
+                        // if (!isGroupAdmins && !allowedNumbs.includes(senderNumb)) {
+                        //     reply("These are the admin commands");
+                        //     return;
+                        // }
+                        //previous
 
-                             case 'price':
-                                if (!isGroup) return;
-                                console.log("SENDER NUMB:", senderNumb);
-                                //var data = await crypto.getPrice
-                                var date = new Date().toLocaleString('en-US', {timeZone: 'Asia/Kolkata'})
-                                // if (!isGroupAdmins && !allowedNumbs.includes(senderNumb)) {
-                                //     reply("These are the admin commands");
-                                //     return;
-                                // }
-                                //previous
-            
-                                // let kprice = await getPrice(args[0]);
-                               // reply(kprice.toString());
-                               // console.log(kprice.toString());
-                               getPrice().then((resolved)=>{
-                                   var cc = args[0];
-                                   var cc1=cc.toUpperCase()+"INR"
-                                   cc2 = cc.toUpperCase()+"USDT";
-                                  var kprice=resolved.data[cc2]
-                                  var iPrice=resolved.data[cc1]
-                                   if(kprice){
-                                       reply(`${cc2} = $${Number(kprice)}`);
-                                       if(iPrice){
-                                           reply(`${cc1} = ₹${Number(iPrice)}`)
-                                       }
-                                   }else{
-                                       reply('Coin not found');
-                                   }
-                               }).catch((err)=>{
-                                   console.log(err);
-                               });
+                        // let kprice = await getPrice(args[0]);
+                        // reply(kprice.toString());
+                        // console.log(kprice.toString());
+                        getPrice().then((resolved) => {
+                            var cc = args[0];
+                            var cc1 = cc.toUpperCase() + "INR"
+                            cc2 = cc.toUpperCase() + "USDT";
+                            var kprice = resolved.data[cc2]
+                            var iPrice = resolved.data[cc1]
+                            if (kprice) {
+                                reply(`${cc2} = $${Number(kprice)}`);
+                                if (iPrice) {
+                                    reply(`${cc1} = ₹${Number(iPrice)}`)
+                                }
+                            } else {
+                                reply('Coin not found');
+                            }
+                        }).catch((err) => {
+                            console.log(err);
+                        });
 
-                                break
-                                 
+                        break
 
-                  
+
+
                     /////////////// ADMIN COMMANDS \\\\\\\\\\\\\\\
                     //reply = reply with tag 
                     //costum("ourTEXT",text) = reply without tagging
