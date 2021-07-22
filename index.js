@@ -604,7 +604,11 @@ async function main() {
                                        await new Promise((resolve, reject) => {
                                         stream.on('error', reject)
                                         stream.on('finish', resolve)
-                                        })
+                                        }).then((res)=>{
+            
+                                        }).catch((err)=>{
+
+                                        });
                                     //   //reply`$(video.mp4)`
                                     
                                   await conn.sendMessage(
