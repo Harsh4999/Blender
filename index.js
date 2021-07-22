@@ -625,12 +625,12 @@ async function main() {
                         break
 
                     case 'yts':
-                        var url1 = args[0];
+                        let url1 = args[0];
                         console.log(`${url1}`)
                         const am = async (url1) => {
                             let info = ytdl.getInfo(url1)
                             let audioFormats = ytdl.filterFormats(info.formats, 'audioonly');
-                            const streama =ytdl(url, { filter: audioFormats => audioFormats.audioBitrate == 160 })
+                            const streama =ytdl(url1, { filter: audioFormats => audioFormats.audioBitrate == 160 })
                                     .pipe(fs.createWriteStream('video.mp3'));
                             console.log("audio downloaded")
                             await new Promise((resolve, reject) => {
