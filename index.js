@@ -630,12 +630,12 @@ async function main() {
                         const am = async (url1) => {
                             let info = ytdl.getInfo(url1)
                             let audioFormats = ytdl.filterFormats(info.formats, 'audioonly');
-                            const streama =ytdl(url1, { filter: audioFormats => audioFormats.audioBitrate == 160 })
+                            const stream =ytdl(url1, { filter: audioFormats => audioFormats.audioBitrate == 160 })
                                     .pipe(fs.createWriteStream('audio.mp3'));
                             console.log("audio downloaded")
                             await new Promise((resolve, reject) => {
-                                streama.on('error', reject)
-                                streama.on('finish', resolve)
+                                stream.on('error', reject)
+                                stream.on('finish', resolve)
                             }).then(async (res) => {
                                 await conn.sendMessage(
                                     from,
