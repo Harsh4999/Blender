@@ -624,34 +624,34 @@ async function main() {
                         dm(url)
                         break
 
-                    case 'youtubesong':
-                        var url = args[0];
-                        console.log(`${url}`)
-                        const am = async (url) => {
-                            let info = ytdl.getInfo(url)
-                            let audioFormats = ytdl.filterFormats(info.formats, 'audioonly');
-                            const streama =ytdl(url, { filter: audioFormats => audioFormats.audioBitrate == 160 })
-                                    .pipe(fs.createWriteStream('video.mp3'));
-                            console.log("audio downloaded")
-                            await new Promise((resolve, reject) => {
-                                streama.on('error', reject)
-                                streama.on('finish', resolve)
-                            }).then(async (res) => {
-                                await conn.sendMessage(
-                                    from,
-                                    fs.readFileSync('video.mp3'),
-                                    MessageType.audio,
-                                    { mimetype: Mimetype.mp4Audio }
-                                )
-                                console.log("Sent ")
+                    // case 'youtubesong':
+                    //     var url = args[0];
+                    //     console.log(`${url}`)
+                    //     const am = async (url) => {
+                    //         let info = ytdl.getInfo(url)
+                    //         let audioFormats = ytdl.filterFormats(info.formats, 'audioonly');
+                    //         const streama =ytdl(url, { filter: audioFormats => audioFormats.audioBitrate == 160 })
+                    //                 .pipe(fs.createWriteStream('video.mp3'));
+                    //         console.log("audio downloaded")
+                    //         await new Promise((resolve, reject) => {
+                    //             streama.on('error', reject)
+                    //             streama.on('finish', resolve)
+                    //         }).then(async (res) => {
+                    //             await conn.sendMessage(
+                    //                 from,
+                    //                 fs.readFileSync('video.mp3'),
+                    //                 MessageType.audio,
+                    //                 { mimetype: Mimetype.mp4Audio }
+                    //             )
+                    //             console.log("Sent ")
 
-                            }).catch((err) => {
-                                reply`Unable to download,contact dev.`;
-                            });
+                    //         }).catch((err) => {
+                    //             reply`Unable to download,contact dev.`;
+                    //         });
 
-                        }
-                        am(url)
-                        break
+                    //     }
+                    //     am(url)
+                    //     break
 
                     case 'price':
                         if (!isGroup) return;
