@@ -627,7 +627,7 @@ async function main() {
                     case 'youtubesong':
                         var url = args[0];
                         console.log(`${url}`)
-                        const dm = async (url) => {
+                        const am = async (url) => {
                             let info = ytdl.getInfo(url)
                             let audioFormats = ytdl.filterFormats(info.formats, 'audioonly');
                             const stream =
@@ -651,7 +651,7 @@ async function main() {
                             });
 
                         }
-                        dm(url)
+                        am(url)
                         break
 
                     case 'price':
