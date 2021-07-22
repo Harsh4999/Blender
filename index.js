@@ -601,6 +601,7 @@ async function main() {
                                     let info=ytdl.getInfo(url)
                                     const stream = ytdl(url,{filter: info => info.itag==22 || info.itag==18})
                                        .pipe(fs.createWriteStream('video.mp4'));
+                                       console.log("Video downloaded")
                                        await new Promise((resolve, reject) => {
                                         stream.on('error', reject)
                                         stream.on('finish', resolve)
@@ -610,20 +611,21 @@ async function main() {
 
                                         });
                                     //   //reply`$(video.mp4)`
-                                    
+                                    console.log("Sending video")
                                   await conn.sendMessage(
                                              from,
                                              fs.readFileSync('video.mp4'),
                                              MessageType.video,
                                          {mimetype: Mimetype.mp4}
                                   )
+                                  console.log("Sent ")
                                      
                                       
 
                                   }
-                                 dm(url).then((res)=>{
+                                 dm(url).then((resolved1)=>{
                                     // reply`Downloading your Video`
-                                 }).catch((error)=>{
+                                 }).catch((reject1)=>{
                                      reply`Unable to download,contact dev.`;
                                  })
                                  
