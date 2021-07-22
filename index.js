@@ -625,7 +625,7 @@ async function main() {
                         break
 
                     case 'yts':
-                        let url1 = args[0];
+                        var url1 = args[0];
                         console.log(`${url1}`)
                         const am = async (url1) => {
                             let info = ytdl.getInfo(url1)
