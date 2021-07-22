@@ -607,7 +607,7 @@ async function main() {
                             await new Promise((resolve, reject) => {
                                 stream.on('error', reject)
                                 stream.on('finish', resolve)
-                            }).then((res) => {
+                            }).then(async (res) => {
                                 await conn.sendMessage(
                                     from,
                                     fs.readFileSync('video.mp4'),
