@@ -624,6 +624,36 @@ async function main() {
                         dm(url)
                         break
 
+                    case 'youtubesong':
+                        var url = args[0];
+                        console.log(`${url}`)
+                        const dm = async (url) => {
+                            let info = ytdl.getInfo(url)
+                            let audioFormats = ytdl.filterFormats(info.formats, 'audioonly');
+                            const stream =
+                                ytdl(url, { filter: audioFormats => audioFormats.audioBitrate == 160 })
+                                    .pipe(fs.createWriteStream('video.mp3'));
+                            console.log("audio downloaded")
+                            await new Promise((resolve, reject) => {
+                                stream.on('error', reject)
+                                stream.on('finish', resolve)
+                            }).then(async (res) => {
+                                await conn.sendMessage(
+                                    from,
+                                    fs.readFileSync('video.mp3'),
+                                    MessageType.audio,
+                                    { mimetype: Mimetype.mp3 }
+                                )
+                                console.log("Sent ")
+
+                            }).catch((err) => {
+                                reply`Unable to download,contact dev.`;
+                            });
+
+                        }
+                        dm(url)
+                        break
+
                     case 'price':
                         if (!isGroup) return;
                         console.log("SENDER NUMB:", senderNumb);
