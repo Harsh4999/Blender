@@ -118,6 +118,17 @@ const adminHelp = (prefix, groupName) => {
 *${prefix}news*
     _Show Tech News_
 
+*${prefix} yt*
+     _download youTube video_
+     eg:/yt linkadress
+
+*${prefix}yts*
+    _download youtube audio_
+    eg:/yts linkadress
+    
+*${prefix}price*
+    _show crypto price_
+    eg:/price btc    
 
 *${prefix}tagall*
     _For attendance alert_(Testing phase)

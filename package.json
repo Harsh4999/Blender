@@ -7,7 +7,6 @@
     "lib": "lib"
   },
   "scripts": {
-
     "start": "node index.js"
   },
   "keywords": [],
@@ -23,8 +22,7 @@
     "fs": "0.0.1-security",
     "pg": "^8.5.1",
     "urban-dictionary": "^3.0.1",
-    "wa-sticker-formatter": "^3.6.0",
-    "ytdl-core": "^4.9.0"
+    "wa-sticker-formatter": "^3.6.0"
   },
   "homepage": "https://github.com/karmaisgreat/simple-whatsapp-bot#readme",
   "devDependencies": {
