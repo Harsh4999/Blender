@@ -187,9 +187,10 @@ const postNews = async (category)=>{
     const res = await axios.request(config).catch((e) => '')
         let br = '*******************************';
 	//console.log(res.status)
+    n=`☆☆☆☆☆💥 ${category.toUpperCase} News 💥☆☆☆☆☆ \n\n`
 	for (let i = 0; i <=13; i++) {
 		let temp;
-		temp = "🌐 "+res.data.articles[i].title+"/n";
+		temp = "🌐 "+res.data.articles[i].title+"\n";
 		n = n + temp + "\n";
 		//n = n + br + "\n";
 	}
