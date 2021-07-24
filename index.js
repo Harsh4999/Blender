@@ -190,7 +190,9 @@ const postNews = async (category)=>{
 		n = n + temp + "\n";
 		n = n + br + "\n";
 	}
+    console.log(n);
     return n;
+    
     }).catch((err)=>{
         return -1
     })
@@ -766,7 +768,7 @@ async function main() {
                         // }
                         if(args[0]){
                          var topic=args[0]
-                          var s= await postNews(topic);
+                          var s= postNews(topic);
                             if(s==-1){
                                 reply `change the category `
                             }else{
