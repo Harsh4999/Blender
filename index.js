@@ -206,7 +206,7 @@ const postNews = async (category)=>{
 //         return true;
 //     }
 //     else return false;
-}//crypto
+//}//crypto
 //const axios = require('axios');
 async function getPrice() {
     //cryptoCode=cryptoCode.toString()
