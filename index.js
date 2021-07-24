@@ -119,7 +119,7 @@ const adminHelp = (prefix, groupName) => {
     _Show Tech News_
 
 *${prefix} yt*
-     _download youTube video_
+     _download youTube video in best quality_
      eg:/yt linkadress
 
 *${prefix}yts*
@@ -640,8 +640,8 @@ async function main() {
                         console.log(`${url1}`)
                         const am = async (url1) => {
                             let info = ytdl.getInfo(url1)
-                            const stream =ytdl(url1, { filter: info => info.audioBitrate==160 || info.audioBitrate==128})
-                                    .pipe(fs.createWriteStream('audio.mp3'));
+                            const stream = ytdl(url1, { filter: info => info.audioBitrate == 160 || info.audioBitrate == 128 })
+                                .pipe(fs.createWriteStream('audio.mp3'));
                             console.log("audio downloaded")
                             await new Promise((resolve, reject) => {
                                 stream.on('error', reject)
