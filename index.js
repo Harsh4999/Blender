@@ -652,8 +652,11 @@ async function main() {
                                     fs.readFileSync('audio.mp3'),
                                     MessageType.audio,
                                     { mimetype: Mimetype.mp4Audio }
-                                )
-                                console.log("Sent ")
+                                ).then((resolved)=>{
+                                console.log("Sent ")})
+                                .catch((reject)=>{
+                                    reply`Enable to download send a valid req`
+                                })
 
                             }).catch((err) => {
                                 reply`Unable to download,contact dev.`;
