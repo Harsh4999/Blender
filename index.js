@@ -179,14 +179,14 @@ const getNews = async () => {
 const postNews = async (category)=>{
     console.log(category)
     var n='';
-    let z=category.toUpperCase
+    let z=category.toUpperCase()
     var config = {
         method: 'GET',
-         url: `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=3a4f147812bd4428aea363ecdf2e6345`
+         url: `https://newsapi.org/v2/top-headlines?country=in&category=${z}&apiKey=3a4f147812bd4428aea363ecdf2e6345`
     }
     
     const res = await axios.request(config).catch((e) => '')
-        let br = '*******************************';
+        //let br = '*******************************';
 	//console.log(res.status)
     n=`☆☆☆☆☆💥 ${z} News 💥☆☆☆☆☆ \n\n`
 	for (let i = 0; i <=10; i++) {
