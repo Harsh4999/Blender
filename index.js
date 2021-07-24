@@ -182,7 +182,6 @@ const postNews = async (category)=>{
     }
     
     axios.request(config).then((res)=>{
-        console.log(typeof res.data.articles.length)
         var br = '*******************************';
 	//console.log(res.status)
 	for (let i = 0; i < res.data.articles.length; i++) {
