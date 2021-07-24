@@ -763,7 +763,8 @@ async function main() {
                         //     return;
                         // }
                         if(args[0]){
-                          var s= await postNews(args[0]);
+                         var topic=args[0].toString
+                          var s= await postNews(topic);
                             if(s==-1){
                                 reply `change the category `
                             }else{
