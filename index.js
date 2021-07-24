@@ -181,8 +181,8 @@ const postNews = async (category)=>{
          url: `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=3a4f147812bd4428aea363ecdf2e6345`
     }
     
-    axios.request(config).then((res)=>{
-        var br = '*******************************';
+    const res = await axios.request(config).catch((e) => '')
+        let br = '*******************************';
 	//console.log(res.status)
 	for (let i = 0; i < res.data.articles.length; i++) {
 		let temp;
@@ -190,13 +190,8 @@ const postNews = async (category)=>{
 		n = n + temp + "\n";
 		n = n + br + "\n";
 	}
-    //console.log(n);
+    //console.log(n);if im cosoling it it is giving object ....but its in not returning it
     return n;
-    
-    }).catch((err)=>{
-        return -1
-    })
-    
 }
 
 
@@ -768,7 +763,7 @@ async function main() {
                         // }
                         if(args[0]){
                          var topic=args[0]
-                          let s= await postNews(topic);
+                          let s= await postNews(topic); //is this where the error occur yes let me push
                           reply(s);
                         }else{
                         let news = await getNews();
