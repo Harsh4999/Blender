@@ -117,6 +117,9 @@ const adminHelp = (prefix, groupName) => {
 
 *${prefix}news*
     _Show Tech News_
+    _or /news <any category>_
+    _category could be sports,bunsiness or anything_
+
 
 *${prefix} yt*
      _download youTube video in best quality_
@@ -184,11 +187,11 @@ const postNews = async (category)=>{
     const res = await axios.request(config).catch((e) => '')
         let br = '*******************************';
 	//console.log(res.status)
-	for (let i = 0; i < res.data.articles.length; i++) {
+	for (let i = 0; i <=13; i++) {
 		let temp;
 		temp = res.data.articles[i].title;
-		n = n + temp + "\n";
-		n = n + br + "\n";
+		n = "🌐"+n + temp + "\n";
+		//n = n + br + "\n";
 	}
     //console.log(n);if im cosoling it it is giving object ....but its in not returning it
     return n;
