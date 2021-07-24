@@ -180,9 +180,10 @@ const postNews = async (category)=>{
         method: 'GET',
          url: `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=3a4f147812bd4428aea363ecdf2e6345`
     }
+    console.log(typeof res.data.articles.length)
     axios.request(config).then((res)=>{
         var br = '*******************************';
-	console.log(res.status)
+	//console.log(res.status)
 	for (let i = 0; i < res.data.articles.length; i++) {
 		let temp;
 		temp = res.data.articles[i].title;
