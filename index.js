@@ -189,8 +189,8 @@ const postNews = async (category)=>{
 	//console.log(res.status)
 	for (let i = 0; i <=13; i++) {
 		let temp;
-		temp = res.data.articles[i].title;
-		n = "🌐"+n + temp + "\n";
+		temp = "🌐 "+res.data.articles[i].title+"/n";
+		n = n + temp + "\n";
 		//n = n + br + "\n";
 	}
     //console.log(n);if im cosoling it it is giving object ....but its in not returning it
