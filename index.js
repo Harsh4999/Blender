@@ -190,7 +190,7 @@ const postNews = async (category)=>{
 		n = n + temp + "\n";
 		n = n + br + "\n";
 	}
-    console.log(n);
+    reply(n);
     return n;
     
     }).catch((err)=>{
@@ -768,13 +768,7 @@ async function main() {
                         // }
                         if(args[0]){
                          var topic=args[0]
-                          var s= postNews(topic);
-                            if(s==-1){
-                                reply `change the category `
-                            }else{
-                                reply (s);
-                            }
-
+                          let s= postNews(topic);
                         }else{
                         let news = await getNews();
                         reply(news);}
