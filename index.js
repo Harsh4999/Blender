@@ -173,17 +173,39 @@ const getNews = async () => {
     });
     return news;
 };
-
-const refresh = async () => {
-
-    let date = new Date();
-    let hour = date.getHours();
-    let min = date.getMinutes();
-    let seconds = date.getSeconds();
-    if (hour === 20 && min === 0 && seconds === 0) {
-        return true;
+const postNews = async (category)=>{
+    var n='';
+    var config = {
+        method: 'GET',
+         url: `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=3a4f147812bd4428aea363ecdf2e6345`
     }
-    else return false;
+    axios.request(config).then((res)=>{
+        var br = '*******************************';
+	console.log(res.status)
+	for (let i = 0; i < res.data.articles.length; i++) {
+		let temp;
+		temp = res.data.articles[i].title;
+		n = n + temp + "\n";
+		n = n + br + "\n";
+	}
+    return n;
+    }).catch((err)=>{
+        return -1
+    })
+    
+}
+
+
+// const refresh = async () => {
+
+//     let date = new Date();
+//     let hour = date.getHours();
+//     let min = date.getMinutes();
+//     let seconds = date.getSeconds();
+//     if (hour === 20 && min === 0 && seconds === 0) {
+//         return true;
+//     }
+//     else return false;
 }//crypto
 //const axios = require('axios');
 async function getPrice() {
@@ -740,8 +762,17 @@ async function main() {
                         //     reply("These are the admin commands");
                         //     return;
                         // }
+                        if(args[0]){
+                          var s= await postNews(args[0]);
+                            if(s==-1){
+                                reply `change the category `
+                            }else{
+                                reply `${s}`;
+                            }
+
+                        }else{
                         let news = await getNews();
-                        reply(news);
+                        reply(news);}
                         break
 
                     case 'add':
