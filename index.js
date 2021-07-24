@@ -174,6 +174,7 @@ const getNews = async () => {
     return news;
 };
 const postNews = async (category)=>{
+    console.log(category)
     var n='';
     var config = {
         method: 'GET',
@@ -768,7 +769,7 @@ async function main() {
                             if(s==-1){
                                 reply `change the category `
                             }else{
-                                reply `${s}`;
+                                reply (s);
                             }
 
                         }else{
