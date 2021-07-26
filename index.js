@@ -3,6 +3,7 @@ const express = require('express')
 const server = express()
 const axios = require('axios');
 const ud = require('urban-dictionary')
+const inshorts= require('inshorts-api');
 //const fs = require('fs');
 const ytdl = require('ytdl-core');
 const port = process.env.PORT || 8000;
@@ -176,25 +177,44 @@ const getNews = async () => {
     });
     return news;
 };
-const postNews = async (category)=>{
-    console.log(category)
-    var n='';
-    let z=category.toUpperCase()
-    var config = {
-        method: 'GET',
-         url: `https://newsapi.org/v2/top-headlines?country=in&category=${z}&apiKey=3a4f147812bd4428aea363ecdf2e6345`
+
+const postNews = async (categry)=>{
+    console.log(categry)
+    let n='';
+    let z=categry;
+    let arr =['national','business','sports','world','politics','technology','startup','entertainment','miscellaneous','hatke','science','automobile'];
+    if (!arr.includes(z)){
+        return "Enter a valid category:)";
     }
+    // var config = {
+    //     method: 'GET',
+    //      url: `https://newsapi.org/v2/top-headlines?country=in&category=${z}&apiKey=3a4f147812bd4428aea363ecdf2e6345`
+    // }
     
-    const res = await axios.request(config).catch((e) => '')
-        //let br = '*******************************';
+    // const res = await axios.request(config).catch((e) => '')
+    //     //let br = '*******************************';
 	//console.log(res.status)
     n=`☆☆☆☆☆💥 ${z} News 💥☆☆☆☆☆ \n\n`
-	for (let i = 0; i <=10; i++) {
+var options = {
+  lang: 'en',
+  category: z,
+  numOfResults: 13  
+}
+inshorts.get(options, function(result){
+  for(let i=0;i<result.length;i++){
+    //console.log(result[i].title);
+    let temp;
+	temp = "🌐 "+result[i].title+"\n";
+	n = n + temp + "\n";
+  }
+});
+   
+/* 	for (let i = 0; i <=10; i++) {
 		let temp;
 		temp = "🌐 "+res.data.articles[i].title+"\n";
 		n = n + temp + "\n";
 		//n = n + br + "\n";
-	}
+	} */
     //console.log(n);if im cosoling it it is giving object ....but its in not returning it
     return n;
 }
