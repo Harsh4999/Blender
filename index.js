@@ -119,6 +119,7 @@ const adminHelp = (prefix, groupName) => {
 *${prefix}news*
     _Show Tech News_
     _or /news <any category>_
+    _Use /list for whole valid list_
     _category could be sports,bunsiness or anything_
 
 
@@ -194,12 +195,12 @@ const postNews = async (categry)=>{
     // const res = await axios.request(config).catch((e) => '')
     //     //let br = '*******************************';
 	//console.log(res.status)
-    n=`☆☆☆☆☆💥 ${z} News 💥☆☆☆☆☆ \n\n`
 var options = {
   lang: 'en',
   category: z,
   numOfResults: 13  
 }
+n=`☆☆☆☆☆💥 ${z.toUpperCase()} News 💥☆☆☆☆☆ \n\n`
 await inshorts.get(options, function(result){
   for(let i=0;i<result.length;i++){
     //console.log(result[i].title);
@@ -681,6 +682,22 @@ async function main() {
                         }
                         dm(url)
                         break
+                        case 'list':
+                            reply`Use this options as category:
+national (India)
+business
+sports
+world
+politics
+technology
+startup
+entertainment
+miscellaneous
+hatke (unusual)
+science
+automobile
+                        `
+                        break;
 
                     case 'yts':
                         var url1 = args[0];
