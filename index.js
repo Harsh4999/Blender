@@ -683,7 +683,7 @@ async function main() {
                         dm(url)
                         break
                         case 'list':
-                            reply`Use this options as category:
+                            reply(`Use this options as category:
 national (India)
 business
 sports
@@ -696,7 +696,7 @@ miscellaneous
 hatke (unusual)
 science
 automobile
-                        `
+                        `)
                         break;
 
                     case 'yts':
