@@ -23,10 +23,12 @@
     "pg": "^8.5.1",
     "urban-dictionary": "^3.0.1",
     "wa-sticker-formatter": "^3.6.0",
-    "ytdl-core": "^4.9.0"
+    "ytdl-core": "^4.9.0",
+    "inshorts-api": "^1.0.3"
   },
   "homepage": "https://github.com/karmaisgreat/simple-whatsapp-bot#readme",
   "devDependencies": {
+    
   },
   "repository": {
     "type": "git",
