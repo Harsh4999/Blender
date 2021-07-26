@@ -200,14 +200,15 @@ var options = {
   category: z,
   numOfResults: 13  
 }
-inshorts.get(options, function(result){
+await inshorts.get(options, function(result){
   for(let i=0;i<result.length;i++){
     //console.log(result[i].title);
     let temp;
 	temp = "🌐 "+result[i].title+"\n";
 	n = n + temp + "\n";
+    console.log(n)
   }
-});
+}).catch((er)=>"");
    
 /* 	for (let i = 0; i <=10; i++) {
 		let temp;
