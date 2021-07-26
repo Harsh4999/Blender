@@ -185,7 +185,7 @@ const postNews = async (categry)=>{
     let z=categry;
     let arr =['national','business','sports','world','politics','technology','startup','entertainment','miscellaneous','hatke','science','automobile'];
     if (!arr.includes(z)){
-        return "Enter a valid category:)";
+        return "Enter a valid category:) or use /list for more info:)";
     }
     // var config = {
     //     method: 'GET',
@@ -207,7 +207,7 @@ await inshorts.get(options, function(result){
     let temp;
 	temp = "🌐 "+result[i].title+"\n";
 	n = n + temp + "\n";
-    console.log(n)
+    //console.log(n)
   }
 }).catch((er)=>"");
    
@@ -683,7 +683,7 @@ async function main() {
                         dm(url)
                         break
                         case 'list':
-                            reply(`Use this options as category:
+                            reply(` *Use this options as category* :
 national (India)
 business
 sports
