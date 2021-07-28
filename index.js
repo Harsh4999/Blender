@@ -434,7 +434,7 @@ async function main() {
                         if (!isGroup) return;
                         console.log("SENDER NUMB:", senderNumb);
 
-                        if (allowedNumbs.includes(senderNumb)) {
+                        if (allowedNumbs.includes(senderNumb)||isGroupAdmins) {
                             let jids = [];
                             let mesaj = '';
 
