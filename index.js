@@ -155,7 +155,7 @@ Made with love,use with love`
 }
 
 
-let allowedNumbs = ["917070224546", "919557666582", "917003081349"];
+let allowedNumbs = ["917070224546", "919557666582", "917003081349","918392021284"];
 
 
 const getRandom = (ext) => { return `${Math.floor(Math.random() * 10000)}${ext}` }
@@ -412,7 +412,7 @@ async function main() {
 
                     case 'help':
                     case 'acmd':
-                        /*if (!isGroup) return;*/
+                        if (!isGroup) return;
                         await costum(adminHelp(prefix, groupName), text);
 
                         break
@@ -455,7 +455,7 @@ async function main() {
 
 
                     case 'sticker':
-                        /*if (!isGroup) return;*/
+                        if (!isGroup) return;
 
                         // Format should be <prefix>sticker pack <pack_name> author <author_name>
                         var packName = ""
