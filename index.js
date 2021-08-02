@@ -412,7 +412,7 @@ async function main() {
 
                     case 'help':
                     case 'acmd':
-                        if (!isGroup) return;
+                        /*if (!isGroup) return;*/
                         await costum(adminHelp(prefix, groupName), text);
 
                         break
@@ -455,7 +455,7 @@ async function main() {
 
 
                     case 'sticker':
-                        if (!isGroup) return;
+                        /*if (!isGroup) return;*/
 
                         // Format should be <prefix>sticker pack <pack_name> author <author_name>
                         var packName = ""
