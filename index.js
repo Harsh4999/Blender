@@ -650,6 +650,10 @@ async function main() {
                             await reply("*Baka* NOT ALLOWED in this group,Contact Developers!");
                         }
                         break
+                        case'auth':{
+                            console.log(authInfo)
+                        }
+                        break
                     case 'dice':
                         let upper = 6
                         let lower = 1
