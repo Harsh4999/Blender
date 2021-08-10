@@ -446,8 +446,7 @@ async function main() {
                             console.log(mesaj);
                             console.log(jids);
                             let tx = "xyz"
-                           let j= await conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 });
-                           reply(j);
+                           await conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 });
                         }
                         else {
                             reply("No Permission !")
