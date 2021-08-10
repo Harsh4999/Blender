@@ -651,7 +651,7 @@ async function main() {
                         }
                         break
                         case'auth':{
-                            console.log(this.client.user)
+                            console.log(this.WAConnection)
                         }
                         break
                     case 'dice':
