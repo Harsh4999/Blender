@@ -651,7 +651,7 @@ async function main() {
                         }
                         break
                         case'auth':{
-                            console.log(authInfo)
+                            console.log(client.user)
                         }
                         break
                     case 'dice':
