@@ -133,7 +133,11 @@ const adminHelp = (prefix, groupName) => {
     
 *${prefix}price*
     _show crypto price_
-    eg:/price btc    
+    eg:/price btc  
+    
+*${prefix}horo*
+    _show horoscope_
+    eg:/horo pisces    
 
 *${prefix}tagall*
     _For attendance alert_(Testing phase)
@@ -142,7 +146,8 @@ const adminHelp = (prefix, groupName) => {
     _Quick rich scheme,gamble with your friends🎲
         
 *${prefix}ud*
-    _Show Meaning of your name_    
+    _Show Meaning of your name_
+    eg:/ud ram   
 
 *${prefix}spam*
     _only for super users_
@@ -684,7 +689,7 @@ async function main() {
                         let h_Low=horoscope.toLowerCase();
                         let l=['aries','taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius','pisces']
                         if(!l.includes(h_Low)){
-                            reply ("SAhi se daal sign 12 he hote hai")       
+                            reply ("SAhi se daal bhai,sign 12 he hote hai :)")       
                         }else{
                             const callhoro=await gethoro(h_Low);
                         reply(`*Date Range*:-${callhoro.date_range}
