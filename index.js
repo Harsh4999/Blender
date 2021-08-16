@@ -271,7 +271,7 @@ async function gethoro(sunsign){
         url: `http://horoscope-api.herokuapp.com/horoscope/today/${sunsign}`
     }
     let horo
-    await axio.request(mainconfig).then((res)=>{
+    await axios.request(mainconfig).then((res)=>{
         horo=res.data.horoscope
     
     })
