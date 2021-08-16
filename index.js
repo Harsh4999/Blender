@@ -274,6 +274,8 @@ async function gethoro(sunsign){
     await axios.request(mainconfig).then((res)=>{
         horo=res.data
     
+    }).catch((error)=>{
+        return"Sahi se daal bhai,sunsign 12 he hote hai..khud ka naya mat bana"
     })
     return horo;
     
@@ -680,6 +682,9 @@ async function main() {
                         console.log("SENDER NUMB:", senderNumb);
                         let horoscope=args[0];
                         const callhoro=await gethoro(horoscope)
+                        if(typeof(callhoro)==string){
+                            reply`${callhoro}`
+                        }
                         reply(`*Date Range*:-${callhoro.date_range}
 *Nature Hold's For you*:-${callhoro.description}
 *Compatibility*:-${callhoro.compatibility}
