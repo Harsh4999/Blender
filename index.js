@@ -683,7 +683,7 @@ async function main() {
                         let horoscope=args[0];
                         let h_Low=horoscope.toLowerCase();
                         let l=['aries','taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius','pisces']
-                        if(l.includes(h_Low)){
+                        if(!l.includes(h_Low)){
                             reply ("SAhi se daal sign 12 he hote hai")       
                         }else{
                             const callhoro=await gethoro(h_Low);
