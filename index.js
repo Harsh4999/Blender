@@ -270,7 +270,7 @@ async function gethoro(sunsign){
         method:'POST',
         url: `https://aztro.sameerkumar.website/?sign=${sunsign}&day=today`
     }
-    let l={'Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius,Pisces'}
+    // let l={'Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius,Pisces'}
     let horo
     await axios.request(mainconfig).then((res)=>{
         horo=res.data
