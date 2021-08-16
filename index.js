@@ -684,14 +684,14 @@ async function main() {
                         const callhoro=await gethoro(horoscope)
                         if(typeof(callhoro)=='string'){
                             reply`${callhoro}`
-                        }
+                        }else{
                         reply(`*Date Range*:-${callhoro.date_range}
 *Nature Hold's For you*:-${callhoro.description}
 *Compatibility*:-${callhoro.compatibility}
 *Mood*:-${callhoro.mood}
 *color*:-${callhoro.color}
 *Lucky Number*:-${callhoro.lucky_number}
-*Lucky time*:-${callhoro.lucky_time}                        `)
+*Lucky time*:-${callhoro.lucky_time}                       `)}
                             break
 
                     case 'yt':
