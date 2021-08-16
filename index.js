@@ -267,12 +267,12 @@ module.exports = {
 //Hroroscope function
 async function gethoro(sunsign){
     var mainconfig={
-        method:'get',
-        url: `http://horoscope-api.herokuapp.com/horoscope/today/${sunsign}`
+        method:'POST',
+        url: `https://aztro.sameerkumar.website/?sign=${sunsign}&day=today`
     }
     let horo
     await axios.request(mainconfig).then((res)=>{
-        horo=res.data.horoscope
+        horo=res.data
     
     })
     return horo;
@@ -674,13 +674,21 @@ async function main() {
                         let myRandom = Math.floor(Math.random() * (upper - lower + 1) + lower)
                         reply(`Hey bitch,Your luck gives you:\n🎲${myRandom}🎲`)
                         break
+
                         case 'horo':
                             if (!isGroup) return;
                         console.log("SENDER NUMB:", senderNumb);
                         let horoscope=args[0];
                         const callhoro=await gethoro(horoscope)
-                        reply(`Horoscope=${callhoro}`)
+                        reply(`*Date Range*:-${callhoro.date_range}
+*Nature Hold's For you*:-${callhoro.description}
+*Compatibility*:-${callhoro.compatibility}
+*Mood*:-${callhoro.mood}
+*color*:-${callhoro.color}
+*Lucky Number*:-${callhoro.lucky_number}
+*Lucky time*:-${callhoro.lucky_time}                        `)
                             break
+
                     case 'yt':
                         var url = args[0];
                         console.log(`${url}`)
