@@ -264,6 +264,20 @@ async function getPrice() {
 module.exports = {
     getPrice
 }
+//Hroroscope function
+async function gethoro(sunsign){
+    var mainconfig={
+        method:'get',
+        url: `http://horoscope-api.herokuapp.com/horoscope/today/${sunsign}`
+    }
+    let horo
+    await axio.request(mainconfig).then((res)=>{
+        horo=res.data.horoscope
+    
+    })
+    return horo;
+    
+}
 
 
 
@@ -660,6 +674,13 @@ async function main() {
                         let myRandom = Math.floor(Math.random() * (upper - lower + 1) + lower)
                         reply(`Hey bitch,Your luck gives you:\n🎲${myRandom}🎲`)
                         break
+                        case 'horo':
+                            if (!isGroup) return;
+                        console.log("SENDER NUMB:", senderNumb);
+                        let horoscope=args[0];
+                        const callhoro=await gethoro(horoscope)
+                        reply(`Horoscope=${callhoro}`)
+                            break
                     case 'yt':
                         var url = args[0];
                         console.log(`${url}`)
