@@ -682,7 +682,7 @@ async function main() {
                         console.log("SENDER NUMB:", senderNumb);
                         let horoscope=args[0];
                         const callhoro=await gethoro(horoscope)
-                        if(typeof(callhoro)==string){
+                        if(typeof(callhoro)=='string'){
                             reply`${callhoro}`
                         }
                         reply(`*Date Range*:-${callhoro.date_range}
