@@ -270,7 +270,6 @@ async function gethoro(sunsign){
         method:'POST',
         url: `https://aztro.sameerkumar.website/?sign=${sunsign}&day=today`
     }
-    // let l={'Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius,Pisces'}
     let horo
     await axios.request(mainconfig).then((res)=>{
         horo=res.data
@@ -682,11 +681,12 @@ async function main() {
                             if (!isGroup) return;
                         console.log("SENDER NUMB:", senderNumb);
                         let horoscope=args[0];
-                        const callhoro=await gethoro(horoscope)
-                        if(callhoro==false){
-                            reply(`sahi se daal`)
-                                
+                        let h_Low=horoscope.toLowerCase();
+                        let l=["aries","taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius","pisces"]
+                        if(l.includes(h_LOW)){
+                            reply ("SAhi se daal sign 12 he hote hai")       
                         }else{
+                            const callhoro=await gethoro(h_Low);
                         reply(`*Date Range*:-${callhoro.date_range}
 *Nature Hold's For you*:-${callhoro.description}
 *Compatibility*:-${callhoro.compatibility}
