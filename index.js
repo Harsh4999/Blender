@@ -751,22 +751,36 @@ hatke (unusual)
 science
 automobile`)
 break
-   case'but':
+   case'todo':
    const rows = [
-    {title: 'Row 1', description: "Hello it's description 1", rowId:"rowid1"},
-    {title: 'Row 2', description: "Hello it's description 2", rowId:"rowid2"}
+    {title: 'UPCOMING FEATURES', description: "ADD : EVAL FUNCTION ,DAILY QUIZES", rowId:"rowid1"}
    ]
    
    const sections = [{title: "Section 1", rows: rows}]
    
    const button = {
     buttonText: 'Click Me!',
-    description: "Hello it's list message",
+    description: "Click on it to view the update RoadMap of the BOT",
     sections: sections,
     listType: 1
    }
-   
    const sendMsg = await conn.sendMessage(from, button, MessageType.listMessage)
+   break
+   case'sut':
+   const buttons = [
+    {buttonId: 'id1', buttonText: {displayText: 'Button 1'}, type: 1},
+    {buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1}
+  ]
+  
+  const buttonMessage = {
+      contentText: "Hi it's button message",
+      footerText: 'Hello World',
+      buttons: buttons,
+      headerType: 1
+  }
+  
+  const sendMsg = await conn.sendMessage(from, buttonMessage, MessageType.buttonsMessage)
+   
                         
                         break;
 
