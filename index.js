@@ -477,7 +477,8 @@ async function main() {
                             // reply(taggy)
                             //reply(mesaj);
                             let tx = "xyz"
-                            await conn.sendMessage(from, mesaj, MessageType.extendedText,{ contextInfo: { mentionedJid: jids },previewType: 0 });
+                            await conn.sendMessage(from, mesaj, MessageType.extendedText)
+                            /* { contextInfo: { mentionedJid: jids },previewType: 0 });*/
                            //taggy(" ");
                         }
                         else {
