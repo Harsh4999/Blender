@@ -438,7 +438,7 @@ async function main() {
                     case 'help':
                     case 'acmd':
                         if (!isGroup) return;
-                        await costum(adminHelp(prefix, groupName), text);
+                        await costum(adminHelp(prefix, groupName), text,buttonMessage,buttons,listMessage);
 
                         break
 
