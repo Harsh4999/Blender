@@ -753,7 +753,7 @@ automobile`)
 break
    case'todo':
    const rows = [
-    {title: 'UPCOMING FEATURES', description: "ADD : EVAL FUNCTION ,DAILY QUIZES", rowId:"rowid1"}
+    {title: '/help', description: "", rowId:"rowid1"}
    ]
    
    const sections = [{title: "Section 1", rows: rows}]
