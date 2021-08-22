@@ -464,14 +464,17 @@ async function main() {
                             let mesaj = '';
 
                             for (let i of groupMembers) {
+                                console.log(i.id)
                                 mesaj += '@' + i.id.split('@')[0] + ' ';
+                                console.log(mesaj)
                                 jids.push(i.id.replace('c.us', 's.whatsapp.net'));
-                                taggy=mesaj.concat(jids)
+                                // taggy=mesaj.concat(jids)
                             }
                             // var tx = message.reply_message.text
+                            console.log("Outside loop")
                             console.log(mesaj);
                             console.log(jids);
-                            reply(taggy)
+                            // reply(taggy)
                             //reply(mesaj);
                             let tx = "xyz"
                             await conn.sendMessage(from, mesaj, MessageType.extendedText,{ contextInfo: { mentionedJid: jids },previewType: 0 });
