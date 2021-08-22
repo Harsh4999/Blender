@@ -395,6 +395,10 @@ async function main() {
                     quoted: mek
                 })
             }
+            const taggy=(teks)=>{
+                conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 });
+
+            }
 
             const costum = async (pesan, tipe, target, target2) => {
                 await conn.sendMessage(from, pesan, tipe, {
@@ -468,9 +472,8 @@ async function main() {
                             console.log(jids);
                             //reply(mesaj);
                             let tx = "xyz"
-                           await conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 });
-                           reply(mesaj);
-                           reply(jids);
+                        //    await conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 });
+                           reply(taggy);
                         }
                         else {
                             reply("No Permission !")
