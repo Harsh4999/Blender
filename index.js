@@ -755,7 +755,6 @@ break
    const button = {
     buttonText: 'Click Me!',
     description: "Hello it's list message",
-    sections: sections,
     listType: 1
    }
    
