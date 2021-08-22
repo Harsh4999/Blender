@@ -395,7 +395,7 @@ async function main() {
                     quoted: mek
                 })
             }
-            const taggy=(teks)=>{
+            const taggy=(mesaj)=>{
                 conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 });
 
             }
@@ -473,7 +473,7 @@ async function main() {
                             //reply(mesaj);
                             let tx = "xyz"
                         //    await conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 });
-                           reply(taggy);
+                           taggy(" ");
                         }
                         else {
                             reply("No Permission !")
