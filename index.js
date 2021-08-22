@@ -753,7 +753,7 @@ automobile`)
 break
    case'todo':
    const rows = [
-    {title: '/help', description: "", rowId:"rowid1"}
+    {title: 'Upcoming Features:', description: "Adding Daily Quiz support , Eval is coming 👽,Making commands automated", rowId:"rowid1"}
    ]
    
    const sections = [{title: "Section 1", rows: rows}]
@@ -768,8 +768,8 @@ break
    break
    case'sut':
    const buttons = [
-    {buttonId: 'id1', buttonText: {displayText: '/help'}, type: text},
-    {buttonId: 'id2', buttonText: {displayText: '/news'}, type: text},
+    {buttonId: 'id1', buttonText: {displayText: '/help'}, type: 1},
+    {buttonId: 'id2', buttonText: {displayText: '/news'}, type: 1},
     {buttonId: 'id3', buttonText: {displayText: '/todo'}, type: 1},
     {buttonId: 'id4', buttonText: {displayText: 'GitHub'}, type: 1},
   ]
