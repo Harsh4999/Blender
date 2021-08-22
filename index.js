@@ -768,13 +768,15 @@ break
    break
    case'sut':
    const buttons = [
-    {buttonId: 'id1', buttonText: {displayText: 'Button 1'}, type: 1},
-    {buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1}
+    {buttonId: 'id1', buttonText: {displayText: '/help'}, type: 1},
+    {buttonId: 'id2', buttonText: {displayText: '/news'}, type: 1},
+    {buttonId: 'id3', buttonText: {displayText: '/todo'}, type: 1},
+    {buttonId: 'id4', buttonText: {displayText: 'GitHub'}, type: 1},
   ]
   
   const buttonMessage = {
-      contentText: "Hi it's button message",
-      footerText: 'Hello World',
+      contentText: "Hi Check out my Features",
+      footerText: 'version-2.0',
       buttons: buttons,
       headerType: 1
   }
