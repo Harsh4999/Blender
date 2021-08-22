@@ -779,7 +779,7 @@ break
       headerType: 1
   }
   
-  const sendMsg = await conn.sendMessage(from, buttonMessage, MessageType.buttonsMessage)
+  const sendBMsg = await conn.sendMessage(from, buttonMessage, MessageType.buttonsMessage)
    
                         
                         break;
