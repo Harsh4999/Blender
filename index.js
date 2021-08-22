@@ -1055,9 +1055,9 @@ break
                         conn.groupLeave(from)
                         break;
 
-                    // default:
-                    //     reply(`*Bakka*,Type Right commands or else,I'll ban you Type */help* for Assistance`)
-                    //     break;
+                    default:
+                        reply(`*Bakka*,Type Right commands or else,I'll ban you Type */help* for Assistance`)
+                        break;
                 }
             }
         } catch (e) {
