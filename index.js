@@ -7,7 +7,7 @@ const inshorts= require('inshorts-api');
 //const fs = require('fs');
 const ytdl = require('ytdl-core');
 const port = process.env.PORT || 8000;
-server.get('/', (req, res) => { res.send('K-Bot server running...') })
+server.get('/', (req, res) => { res.send('V-Bot server running...') })
 server.listen(port, () => {
     console.clear()
     console.log('\nWeb-server running!\n')
@@ -34,13 +34,13 @@ const {
 const db = require('./database');
 
 // LOAD ADDITIONAL NPM PACKAGES
-const fs = require('fs')
-const ffmpeg = require('fluent-ffmpeg')
-const WSF = require('wa-sticker-formatter')
+const fs = require('fs')//file module
+const ffmpeg = require('fluent-ffmpeg')//sticker module
+const WSF = require('wa-sticker-formatter')//sticker module
 
 async function fetchauth() {
     try {
-        auth_result = await db.query('select * from auth;');
+        auth_result = await db.query('select * from auth;');//checking auth table
         console.log('Fetching login data...')
         auth_row_count = await auth_result.rowCount;
         if (auth_row_count == 0) {
@@ -56,7 +56,7 @@ async function fetchauth() {
             }
         }
     } catch {
-        console.log('Creating database...')
+        console.log('Creating database...')//if login fail create a db
         await db.query('CREATE TABLE auth(clientID text, serverToken text, clientToken text, encKey text, macKey text);');
         await fetchauth();
     }
@@ -65,7 +65,7 @@ async function fetchauth() {
 
 // BASIC SETTINGS
 prefix = '/';
-source_link = 'https://github.com/karmaisgreat/simple-whatsapp-bot';
+source_link = 'https://github.com/cysosancher/V-bot';
 
 // LOAD CUSTOM FUNCTIONS
 const getGroupAdmins = (participants) => {
@@ -160,7 +160,7 @@ Made with love,use with love`
 }
 
 
-let allowedNumbs = ["917070224546", "919557666582", "917003081349","918392021284"];
+let allowedNumbs = ["917070224546", "916353553554"];
 
 
 const getRandom = (ext) => { return `${Math.floor(Math.random() * 10000)}${ext}` }
@@ -682,15 +682,12 @@ async function main() {
                             await reply("*Baka* NOT ALLOWED in this group,Contact Developers!");
                         }
                         break
-                        case'auth':{
-                            console.log(this.WAConnection)
-                        }
-                        break
+                       
                     case 'dice':
                         let upper = 6
                         let lower = 1
                         let myRandom = Math.floor(Math.random() * (upper - lower + 1) + lower)
-                        reply(`Hey bitch,Your luck gives you:\n🎲${myRandom}🎲`)
+                        reply(`Hey,Your luck gives you:\n🎲${myRandom}🎲`)
                         break
 
                         case 'horo':
@@ -752,8 +749,18 @@ entertainment
 miscellaneous
 hatke (unusual)
 science
-automobile
-                        `)
+automobile`)
+break
+   case'but':
+   const button = {
+    buttonText: 'Click Me!',
+    description: "Hello it's list message",
+    sections: sections,
+    listType: 1
+   }
+   
+   const sendMsg = await conn.sendMessage(id, button, MessageType.listMessage)
+                        
                         break;
 
                     case 'yts':

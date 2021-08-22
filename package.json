@@ -21,7 +21,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "fs": "0.0.1-security",
     "pg": "^8.5.1",
-    "urban-dictionary": "^3.0.1",
+    "urban-dictionary": "^3.0.2",
     "wa-sticker-formatter": "^3.6.0",
     "ytdl-core": "^4.9.1",
     "inshorts-api": "^1.0.3"
