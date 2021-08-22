@@ -395,10 +395,10 @@ async function main() {
                     quoted: mek
                 })
             }
-            const taggy=(mesaj)=>{
-                conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 });
+            // const taggy=(mesaj)=>{
+            //     conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 });
 
-            }
+            // }
 
             const costum = async (pesan, tipe, target, target2) => {
                 await conn.sendMessage(from, pesan, tipe, {
@@ -466,14 +466,16 @@ async function main() {
                             for (let i of groupMembers) {
                                 mesaj += '@' + i.id.split('@')[0] + ' ';
                                 jids.push(i.id.replace('c.us', 's.whatsapp.net'));
+                                taggy=mesaj.concat(jids)
                             }
                             // var tx = message.reply_message.text
                             console.log(mesaj);
                             console.log(jids);
+                            reply(taggy)
                             //reply(mesaj);
                             let tx = "xyz"
-                        //    await conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 });
-                           taggy(" ");
+                            await conn.sendMessage(from, mesaj, MessageType.extendedText,{ contextInfo: { mentionedJid: jids },previewType: 0 });
+                           //taggy(" ");
                         }
                         else {
                             reply("No Permission !")
