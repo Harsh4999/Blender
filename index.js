@@ -373,11 +373,12 @@ async function main() {
                 listMessage,
                 buttonsMessage,
             } = MessageType
-            body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text:(type == 'listMessage')&& mek.message.listMessage.startsWith(prifix)?mek.message.listMessage.text :(type == 'buttonsMessage')&& mek.message.buttonsMessage.startsWith(prifix)?mek.message.buttonsMessage.text :''
+            body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text:''
+            // (type == 'listMessage')&& mek.message.listMessage.startsWith(prifix)?mek.message.listMessage.text :(type == 'buttonsMessage')&& mek.message.buttonsMessage.startsWith(prifix)?mek.message.buttonsMessage.text :
 
             const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
             const args = body.trim().split(/ +/).slice(1)
-            //const isCmd = body.startsWith(prefix)
+            const isCmd = body.startsWith(prefix)
 
             errors = {
                 admin_error: '_❌ ERROR: Admin se baat kar,tere bas ka nai hai...(*Baka*Mujhe Admin bana Pehle) ❌_'
@@ -429,7 +430,7 @@ async function main() {
             let senderNumb = sender.split('@')[0];
             //console.log("SENDER NUMB:", senderNumb);
 
-            if (isGroup) {
+            if (isCmd && isGroup) {
                 console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName)
 
                 /////////////// COMMANDS \\\\\\\\\\\\\\\
@@ -441,7 +442,7 @@ async function main() {
                     case 'help':
                     case 'acmd':
                         if (!isGroup) return;
-                        await costum(adminHelp(prefix, groupName), text,buttonMessage,buttons,listMessage);
+                        await costum(adminHelp(prefix, groupName), text);
 
                         break
 
