@@ -758,7 +758,7 @@ break
     listType: 1
    }
    
-   const sendMsg = await conn.sendMessage(id, button, MessageType.listMessage)
+   const sendMsg = await conn.sendMessage(from, button, MessageType.listMessage)
                         
                         break;
 
