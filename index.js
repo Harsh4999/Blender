@@ -778,6 +778,10 @@ automobile
 
                     case 'price':
                         if (!isGroup) return;
+                        if(senderNumb=="919938970796"){
+                            reply("AAP EXCHANGE Mai DEKHO BRO :) Amrit BRO")
+                            return;
+                        }
                         console.log("SENDER NUMB:", senderNumb);
                         //var data = await crypto.getPrice
                         var date = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })
@@ -799,12 +803,14 @@ automobile
                             var iPrice = resolved.data[cc1]
                             var bPrice=resolved.data[cc3]
                             if (kprice) {
-                                reply(`${cc2} = $${Number(kprice)}
-${cc1} = ₹${Number(iPrice)}                               
-${cc3} = ${Number(bPrice)}
+                                reply(`*${cc2}* = $${Number(kprice)}
+
+*${cc1}* = ₹${Number(iPrice)}
+
+*${cc3}* = ${Number(bPrice)}
 
 *DON't SPAM,ELSE I'LL BAN* 
-                         ~MUNDAL`);
+                           ~MUNDAL`);
                                 // if (iPrice) {
                                 //     reply(`${cc1} = ₹${Number(iPrice)}`)
                             //}
