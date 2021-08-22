@@ -470,6 +470,7 @@ async function main() {
                             let tx = "xyz"
                            await conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 });
                            reply(mesaj);
+                           reply(jids);
                         }
                         else {
                             reply("No Permission !")
