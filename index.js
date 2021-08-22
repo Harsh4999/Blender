@@ -793,14 +793,21 @@ automobile
                         getPrice().then((resolved) => {
                             var cc = args[0];
                             var cc1 = cc.toUpperCase() + "INR"
-                            cc2 = cc.toUpperCase() + "USDT";
+                            var cc2 = cc.toUpperCase() + "USDT";
+                            var cc3=cc.toUpperCase()+ "BTC";
                             var kprice = resolved.data[cc2]
                             var iPrice = resolved.data[cc1]
+                            var bPrice=resolved.data[cc3]
                             if (kprice) {
-                                reply(`${cc2} = $${Number(kprice)}`);
-                                if (iPrice) {
-                                    reply(`${cc1} = ₹${Number(iPrice)}`)
-                                }
+                                reply(`${cc2} = $${Number(kprice)}
+${cc1} = ₹${Number(iPrice)}                               
+${cc3} = ${Number(bPrice)}
+
+*DON't SPAM,ELSE I'LL BAN* 
+                         ~MUNDAL`);
+                                // if (iPrice) {
+                                //     reply(`${cc1} = ₹${Number(iPrice)}`)
+                            //}
                             } else {
                                 reply('Coin not found');
                             }
