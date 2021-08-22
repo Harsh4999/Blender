@@ -479,7 +479,7 @@ async function main() {
                             let tx = "xyz"
                             await conn.sendMessage(from, mesaj, MessageType.extendedText,
                              { contextInfo: { mentionedJid: jids } },{
-                                 quoted: mek
+                                 quoted: "kuvh"
                              });
                            //taggy(" ");
                         }
