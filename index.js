@@ -370,17 +370,17 @@ async function main() {
                 document,
                 audio,
                 product,
-                listMessage,
-                buttonsMessage,
+                // listMessage,
+                // buttonsMessage,
                 buttonResponseMessage,
                 tittle,
             } = MessageType
-            body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text:
-            (type == 'listMessage')&& mek.message.listMessage.text.startsWith(prifix)?mek.message.listMessage.text :(type == 'buttonsMessage')&& mek.message.buttonResponseMessage.title.startsWith(prifix)?mek.message.buttonResponseMessage.title : ''
+            body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text:''
+            // (type == 'listMessage')&& mek.message.listMessage.text.startsWith(prifix)?mek.message.listMessage.text :(type == 'buttonsMessage')&& mek.message.buttonResponseMessage.title.startsWith(prifix)?mek.message.buttonResponseMessage.title : ''
 
             const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
             const args = body.trim().split(/ +/).slice(1)
-            const isCmd = body.startsWith(prefix)
+            //const isCmd = body.startsWith(prefix)
 
             errors = {
                 admin_error: '_❌ ERROR: Admin se baat kar,tere bas ka nai hai...(*Baka*Mujhe Admin bana Pehle) ❌_'
@@ -432,7 +432,7 @@ async function main() {
             let senderNumb = sender.split('@')[0];
             //console.log("SENDER NUMB:", senderNumb);
 
-            if (isCmd && isGroup) {
+            if (isCmd || isGroup) {
                 console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName)
 
                 /////////////// COMMANDS \\\\\\\\\\\\\\\
