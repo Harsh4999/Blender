@@ -372,17 +372,16 @@ async function main() {
                 product,
                 listMessage,
                 buttonsMessage,
-                buttonResponseMessage,
+                
                 
             } = MessageType
-            body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text :(type=='buttonResponseMessage')?console.log("done here"):console.log("failed")
+            body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text :mek.message.buttonsResponseMessage.selectedDisplayText.startsWith(prefix)?mek.message.buttonsResponseMessage.selectedDisplayText:console.log("failed")
             // (type == 'listMessage')&& mek.message.listMessage.startsWith(prifix)?mek.message.listMessage :(type == 'buttonsMessage')&& mek.message.buttonsMessage.startsWith(prifix)?mek.message.buttonsMessage: (type=='buttonResponseMessage' || 'buttonsMessage')&&mek.message.buttonMessage.startsWith(prefix)?console.log(mek.message.buttonMessage.text):console.log("failed")
             
 
-            const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
+            const command =  body.slice(1).trim().split(/ +/).shift().toLowerCase()
             const args = body.trim().split(/ +/).slice(1)
             const isCmd = body.startsWith(prefix)
-
             errors = {
                 admin_error: '_❌ ERROR: Admin se baat kar,tere bas ka nai hai...(*Baka*Mujhe Admin bana Pehle) ❌_'
             }
@@ -406,6 +405,7 @@ async function main() {
             //     conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 });
 
             // }
+
 
             const costum = async (pesan, tipe, target, target2) => {
                 await conn.sendMessage(from, pesan, tipe, {
@@ -434,6 +434,7 @@ async function main() {
             //console.log("SENDER NUMB:", senderNumb);
 
             if (isGroup) {
+               
                 console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName,typeof(mek))
 
                 /////////////// COMMANDS \\\\\\\\\\\\\\\
@@ -773,7 +774,7 @@ break
    }
    const sendMsg = await conn.sendMessage(from, button, MessageType.listMessage)
    break
-   case'sut':
+   case'commands':
    const buttons = [
     {buttonId: 'id1', buttonText: {displayText: '/help'}, type: 1},
     {buttonId: 'id2', buttonText: {displayText: '/news'}, type: 1},
