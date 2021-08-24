@@ -432,7 +432,7 @@ async function main() {
             let senderNumb = sender.split('@')[0];
             //console.log("SENDER NUMB:", senderNumb);
 
-            if (isCmd || isGroup) {
+            if (isGroup) {
                 console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName)
 
                 /////////////// COMMANDS \\\\\\\\\\\\\\\
