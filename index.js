@@ -372,6 +372,8 @@ async function main() {
                 product,
                 listMessage,
                 buttonsMessage,
+                buttonResponseMessage,
+                tittle,
             } = MessageType
             body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text:
             (type == 'listMessage')&& mek.message.listMessage.text.startsWith(prifix)?mek.message.listMessage.text :(type == 'buttonsMessage')&& mek.message.buttonResponseMessage.title.startsWith(prifix)?mek.message.buttonResponseMessage.title : ''
