@@ -380,7 +380,7 @@ async function main() {
 
             const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
             const args = body.trim().split(/ +/).slice(1)
-            //const isCmd = body.startsWith(prefix)
+            const isCmd = body.startsWith(prefix)
 
             errors = {
                 admin_error: '_❌ ERROR: Admin se baat kar,tere bas ka nai hai...(*Baka*Mujhe Admin bana Pehle) ❌_'
@@ -432,7 +432,7 @@ async function main() {
             let senderNumb = sender.split('@')[0];
             //console.log("SENDER NUMB:", senderNumb);
 
-            if (isGroup) {
+            if (iscmd ||isGroup) {
                 console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName)
 
                 /////////////// COMMANDS \\\\\\\\\\\\\\\
