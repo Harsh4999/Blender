@@ -881,7 +881,7 @@ break
                         }
                         console.log("SENDER NUMB:", senderNumb);
 
-                        if (allowedNumbs.includes(senderNumb)) {
+                        if (allowedNumbs.includes(senderNumb)|| isGroupAdmins) {
 
                             let count = Number(args[0]);
                             let msgToSpam = args[1];
