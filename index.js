@@ -374,11 +374,10 @@ async function main() {
                 buttonsMessage,
                 buttonResponseMessage,
                 tittle,
-                contentText,
                 
             } = MessageType
             body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text :
-            (type == 'listMessage')&& mek.message.listMessage.startsWith(prifix)?mek.message.listMessage :(type == 'buttonsMessage')&& mek.message.buttonsMessage.startsWith(prifix)?mek.message.buttonsMessage: (type=='buttonResponseMessage' || 'buttonsMessage')||mek.message.buttonMessage.contentText.startsWith(prefix)?mek.message.buttonMessage.contentText:''
+            (type == 'listMessage')&& mek.message.listMessage.startsWith(prifix)?mek.message.listMessage :(type == 'buttonsMessage')&& mek.message.buttonsMessage.startsWith(prifix)?mek.message.buttonsMessage: (type=='buttonResponseMessage' || 'buttonsMessage')||mek.message.buttonMessage.startsWith(prefix)?mek.message.buttonMessage:''
             
 
             const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
