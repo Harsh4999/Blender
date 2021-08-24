@@ -370,13 +370,15 @@ async function main() {
                 document,
                 audio,
                 product,
-                // listMessage,
-                // buttonsMessage,
+                listMessage,
+                buttonsMessage,
                 buttonResponseMessage,
                 tittle,
+                
             } = MessageType
             body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text :
-            (type == 'listMessage')&& mek.message.listMessage.startsWith(prifix)?mek.message.listMessage :(type == 'buttonsMessage')&& mek.message.buttonResponseMessage.title.startsWith(prifix)?mek.message.buttonResponseMessage.title : ''
+            (type == 'listMessage')&& mek.message.listMessage.startsWith(prifix)?mek.message.listMessage :(type == 'buttonsMessage')&& mek.message.buttonsMessage.text.startsWith(prifix)?mek.message.buttonsMessage.text : ''
+            
 
             const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
             const args = body.trim().split(/ +/).slice(1)
@@ -433,7 +435,7 @@ async function main() {
             //console.log("SENDER NUMB:", senderNumb);
 
             if (isGroup) {
-                console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName, typeof(command),typeof(mek))
+                console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName,typeof(mek))
 
                 /////////////// COMMANDS \\\\\\\\\\\\\\\
 
