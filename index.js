@@ -433,7 +433,7 @@ async function main() {
             //console.log("SENDER NUMB:", senderNumb);
 
             if (isGroup) {
-                console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName, mek.message.conversation, mek.message.buttonsMessage)
+                console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName, typeof(command),typeof(mek))
 
                 /////////////// COMMANDS \\\\\\\\\\\\\\\
 
