@@ -65,7 +65,7 @@ async function fetchauth() {
 
 // BASIC SETTINGS
 prefix = '/';
-source_link = 'https://github.com/crysosancher/Blender';
+source_link = 'https://github.com/Harsh4999/Blender';
 
 // LOAD CUSTOM FUNCTIONS
 const getGroupAdmins = (participants) => {
