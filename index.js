@@ -65,7 +65,7 @@ async function fetchauth() {
 
 // BASIC SETTINGS
 prefix = '/';
-source_link = 'https://github.com/cysosancher/V-bot';
+source_link = 'https://github.com/Harsh4999/Blender';
 
 // LOAD CUSTOM FUNCTIONS
 const getGroupAdmins = (participants) => {
@@ -766,7 +766,7 @@ science
 automobile`)
 break
                         case'source':
-                        reply(' *Stay Tuned its on the way* ✈️✈️')
+                        reply('${source_link}')
                         break
    case'list':
    const row1 = [
