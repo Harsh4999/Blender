@@ -32,7 +32,7 @@
 1. After downloading and installing Heroku CLI in your system login to heroku cli using `heroku login` in command prompt or powershell.
 2. Add ffmpeg (*for sticker support*) in your heroku app using `heroku buildpacks:add https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git -a <your-app-name>`
 3. After adding ffmpeg now add 'Heroku Buildpack for Node.js' using  `heroku buildpacks:add https://github.com/heroku/heroku-buildpack-nodejs.git -a <your-app-name>`
-4. Now download or clone the `simple-whatsapp-bot` repo from (https://github.com/Harsh4999/Blender) 
+4. Now download or clone the `Blender` repo from (https://github.com/Harsh4999/Blender) 
 5. Now enter in `simple-whatsapp-bot` directory using `cd simple-whatsapp-bot` in command prompt or terminal.
 6. Now init the git using `git init`
 7. Create the remote region using `heroku git:remote -a <your-app-name>`
@@ -75,10 +75,10 @@ Explore more by using it eg:Get to know your Horoscope,news and a lot more fun.
    You can use (http://kaffeine.herokuapp.com) to ping the heroku app every 30 minutes to prevent it from sleeping.
    
 ## 🤝 Contributers
-
-<a href="https://github.com/crysosancher/V-Bot/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Synthesized-Infinity/Whatsapp-Botto-Void" />
+<a href="https://github.com/Harsh4999/GOOGLE-MEET-BOT/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Harsh4999/GOOGLE-MEET-BOT" />
 </a>
+
 
 # Tech stacks:-
 ## Baileys :-  
