@@ -33,7 +33,7 @@
 2. Add ffmpeg (*for sticker support*) in your heroku app using `heroku buildpacks:add https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git -a <your-app-name>`
 3. After adding ffmpeg now add 'Heroku Buildpack for Node.js' using  `heroku buildpacks:add https://github.com/heroku/heroku-buildpack-nodejs.git -a <your-app-name>`
 4. Now download or clone the `Blender` repo from (https://github.com/Harsh4999/Blender) 
-5. Now enter in `simple-whatsapp-bot` directory using `cd simple-whatsapp-bot` in command prompt or terminal.
+5. Now enter in `Blender` directory using `cd Blender` in command prompt or terminal.
 6. Now init the git using `git init`
 7. Create the remote region using `heroku git:remote -a <your-app-name>`
 8. Now deploy the repo in your heroku app using :
@@ -75,8 +75,8 @@ Explore more by using it eg:Get to know your Horoscope,news and a lot more fun.
    You can use (http://kaffeine.herokuapp.com) to ping the heroku app every 30 minutes to prevent it from sleeping.
    
 ## 🤝 Contributers
-<a href="https://github.com/Harsh4999/GOOGLE-MEET-BOT/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Harsh4999/GOOGLE-MEET-BOT" />
+<a href="https://github.com/crysosancher/Blender/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=crysosancher/Blender" />
 </a>
 
 
