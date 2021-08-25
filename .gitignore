@@ -1,3 +1,4 @@
+!package-lock.json
+!indexold.js
 node_modules/
-*lock.json
-*old.js
+
