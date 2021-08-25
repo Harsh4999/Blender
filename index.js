@@ -79,6 +79,9 @@ const adminHelp = (prefix, groupName) => {
     return `
 ─「 *${groupName} Admin Commands* 」─
 
+*${prefix}blend*
+ _For Gui interface_
+
 *${prefix}add <phone number>*
     _Add any new member!_
 
@@ -156,7 +159,7 @@ const adminHelp = (prefix, groupName) => {
 *${prefix}removebot*
     _Remove bot from group!_
 
-Made with love,use with love`
+Made with love,use with love ♥️`
 }
 
 
@@ -372,14 +375,19 @@ async function main() {
                 product,
                 listMessage,
                 buttonsMessage,
-                
+                buttonsResponseMessage,
+                listResponseMessage,
                 
             } = MessageType
-            body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text :mek.message.buttonsResponseMessage.selectedDisplayText.startsWith(prefix)?mek.message.buttonsResponseMessage.selectedDisplayText:console.log("failed")
+            body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text :(type== 'buttonsResponseMessage')&&mek.message.buttonsResponseMessage.selectedDisplayText.startsWith(prefix)?mek.message.buttonsResponseMessage.selectedDisplayText:(type=='listResponseMessage')&& mek.message.listResponseMessage.title.startsWith(prefix)?mek.message.listResponseMessage.title:''
+            // (type=='buttonResponseMessage')?console.log("done here"):console.log("failed")
             // (type == 'listMessage')&& mek.message.listMessage.startsWith(prifix)?mek.message.listMessage :(type == 'buttonsMessage')&& mek.message.buttonsMessage.startsWith(prifix)?mek.message.buttonsMessage: (type=='buttonResponseMessage' || 'buttonsMessage')&&mek.message.buttonMessage.startsWith(prefix)?console.log(mek.message.buttonMessage.text):console.log("failed")
             
-
-            const command =  body.slice(1).trim().split(/ +/).shift().toLowerCase()
+            // const c1 = mek.message.buttonsResponseMessage.selectedDisplayText;
+            // const c2=mek.message
+            // console.log(c2,"=c2")
+            //update-taking button message for default case
+            const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
             const args = body.trim().split(/ +/).slice(1)
             const isCmd = body.startsWith(prefix)
             errors = {
@@ -405,7 +413,6 @@ async function main() {
             //     conn.sendMessage(from, mesaj, MessageType.extendedText, { contextInfo: { mentionedJid: jids }, previewType: 0 });
 
             // }
-
 
             const costum = async (pesan, tipe, target, target2) => {
                 await conn.sendMessage(from, pesan, tipe, {
@@ -433,9 +440,8 @@ async function main() {
             let senderNumb = sender.split('@')[0];
             //console.log("SENDER NUMB:", senderNumb);
 
-            if (isGroup) {
-               
-                console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName,typeof(mek))
+            if (isCmd && isGroup) {
+                console.log('[COMMAND]', command, '[FROM]', sender.split('@')[0], '[IN]', groupName,'cmd=',isCmd)
 
                 /////////////// COMMANDS \\\\\\\\\\\\\\\
 
@@ -744,7 +750,7 @@ async function main() {
                         }
                         dm(url)
                         break
-                        case 'list':
+                        case 'category':
                             reply(` *Use this options as category* :
 national (India)
 business
@@ -759,31 +765,58 @@ hatke (unusual)
 science
 automobile`)
 break
-   case'todo':
-   const rows = [
-    {title: '/Upcoming Features:', description: "Adding Daily Quiz support , Eval is coming 👽,Making commands automated", rowId:"rowid1"}
+                        case'source':
+                        reply(' *Stay Tuned its on the way* ✈️✈️')
+                        break
+   case'list':
+   const row1 = [
+    {title: '/news national', description: "News About national category", rowId:"rowid1"},
+    {title: '/news sports', description: "News About sports category", rowId:"rowid2"},
+    {title: '/news world ', description: "News About world category", rowId:"rowid3"},
+    {title: '/news politics', description: "News About politics category", rowId:"rowid4"},
+    {title: '/news science', description: "News About science category", rowId:"rowid5"},
+    {title: '/news technology', description: "News About tech category", rowId:"rowid6"},
+    {title: '/news hatke', description: "News About tech category", rowId:"rowid6"},
+    {title: '/news entertainment', description: "News About tech category", rowId:"rowid6"},
+    {title: '/news automobile', description: "News About tech category", rowId:"rowid6"},
    ]
+   const row2 = [
+    {title: '/horo aries', description: "Today's Horoscope ", rowId:"rowid1"},
+    {title: '/horo taurus', description: "Today's Horoscope", rowId:"rowid2"},
+    {title: '/horo gemini', description: "Today's Horoscope", rowId:"rowid3"},
+    {title: '/horo cancer', description: "Today's Horoscope", rowId:"rowid4"},
+    {title: '/horo leo', description: "Today's Horoscope", rowId:"rowid5"},
+    {title: '/horo virgo', description: "Today's Horoscope", rowId:"rowid6"},
+    {title: '/horo libra', description: "Today's Horoscope", rowId:"rowid7"},
+    {title: '/horo scorpio', description: "Today's Horoscope", rowId:"rowid8"},
+    {title: '/horo sagittarius', description: "Today's Horoscope", rowId:"rowid9"},
+    {title: '/horo capricorn', description: "Today's Horoscope", rowId:"rowid10"},
+    {title: '/horo aquarius', description: "Today's Horoscope", rowId:"rowid11"},
+    {title: '/horo pisces', description: "Today's Horoscope", rowId:"rowid12"},
+   ]   
+
    
-   const sections = [{title: "Section 1", rows: rows}]
+   const sections = [{title: "News Section", rows: row1},
+   {title: "Horoscope Section ", rows: row2}
+]
    
    const button = {
-    buttonText: 'Click Me!',
-    description: "Click on it to view the update RoadMap of the BOT",
+    buttonText: 'Blenders Magic ✨',
+    description: "Enter inside my World 👽",
     sections: sections,
     listType: 1
    }
    const sendMsg = await conn.sendMessage(from, button, MessageType.listMessage)
    break
-   case'commands':
+   case'blend':
    const buttons = [
     {buttonId: 'id1', buttonText: {displayText: '/help'}, type: 1},
     {buttonId: 'id2', buttonText: {displayText: '/news'}, type: 1},
-    {buttonId: 'id3', buttonText: {displayText: '/todo'}, type: 1},
-    {buttonId: 'id4', buttonText: {displayText: 'GitHub'}, type: 1},
+    {buttonId: 'id3', buttonText: {displayText: '/source'}, type: 1},
   ]
   
   const buttonMessage = {
-      contentText: "Hi Check out my Features",
+      contentText: "Hi,Check out my Features",
       footerText: 'version-2.0',
       buttons: buttons,
       headerType: 1
@@ -860,6 +893,7 @@ break
 
 *DON't SPAM,ELSE I'LL BAN* 
                            ~MUNDAL`);
+                           
                                 // if (iPrice) {
                                 //     reply(`${cc1} = ₹${Number(iPrice)}`)
                             //}
@@ -885,7 +919,7 @@ break
                         }
                         console.log("SENDER NUMB:", senderNumb);
 
-                        if (allowedNumbs.includes(senderNumb)|| isGroupAdmins) {
+                        if (allowedNumbs.includes(senderNumb)) {
 
                             let count = Number(args[0]);
                             let msgToSpam = args[1];
@@ -1060,7 +1094,7 @@ break
                         break;
 
                     default:
-                        reply(`*Bakka*,Type Right commands or else,I'll ban you Type */help* for Assistance`)
+                        reply(`*Bakka*,Grow Up,I'll not always be there for you.Use */blend* for Assistance`)
                         break;
                 }
             }
