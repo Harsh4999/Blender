@@ -65,7 +65,7 @@ async function fetchauth() {
 
 // BASIC SETTINGS
 prefix = '/';
-source_link = 'https://github.com/Harsh4999/Blender';
+source_link = 'https://github.com/crysosancher/Blender';
 
 // LOAD CUSTOM FUNCTIONS
 const getGroupAdmins = (participants) => {
@@ -81,6 +81,9 @@ const adminHelp = (prefix, groupName) => {
 
 *${prefix}blend*
  _For Gui interface_
+
+*${prefix}list*
+ _For Automated Commands_
 
 *${prefix}add <phone number>*
     _Add any new member!_
@@ -766,7 +769,7 @@ science
 automobile`)
 break
                         case'source':
-                        reply('${source_link}')
+                        reply(`${source_link}`)
                         break
    case'list':
    const row1 = [
