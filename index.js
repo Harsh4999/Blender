@@ -669,36 +669,6 @@ async function main() {
 
                         break
 
-                    case 'snu':
-                        if (!isGroup) return;
-                        if (groupName == "Cambradge Univaarsity📚🪄🍻🤩" || groupName == "Temp" || groupName == "Chinku minku ❤🤧") {
-                            reply(`*Facality Members info :-*
-  
- – *Joy Sir*(Class Teacher) mail id: joy.d@snuniv.ac.in
-  *phoneNo*: +91 89815 32753
-
- – *Mousumi* ma'am (HOD Cse) mail id: mousumi.b@snuniv.ac.in
- 
- – *Chemistry* Prof's ID(Sudipta Mam): sudipta.b@snuniv.ac.in
- 	
- – *Electronics* Prof's ID: ayan.m@snuniv.ac.in
- 
- – *Cleartest Web Link*: https://test.direct.cleartestonline.com/
-
- – *MProcess* Prof's ID: paramanand.n@snuniv.ac.in
-
- – *English* Mam : you can directly text her on her whatsapp from offical group😜
-
- – *Chandan Sir* mailId: chan.muk@gmail.com
- – *DriveLink*: https://drive.google.com/drive/folders/1exyMsuw4m3pnhZvQvox-5g2m9DKBgiPN              
- 
- –For any other assest,You can get in touch with Kaninika🌚(only With her concern)
- `)
-                        }
-                        else {
-                            await reply("*Baka* NOT ALLOWED in this group,Contact Developers!");
-                        }
-                        break
                        
                     case 'dice':
                         let upper = 6
