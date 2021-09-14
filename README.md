@@ -68,6 +68,8 @@
 | `/source`             |       -                      | Get the bot source |
 | `/yt <YOutube Link>`  |       -                      | Download youtube videos|
 | `/yts <YOutube Link>` |       -                      | Download youtube audios|
+| `/idp <InstaHandle>`  |       -                      | Download Insta profile picture of your crush 😜 |
+|`/insta <InstapostUrl>`|       -                      | Download Insta media |
 
 Explore more by using it eg:Get to know your Horoscope,news and a lot more fun.
 # Note:-
